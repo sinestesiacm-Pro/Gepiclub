@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gepiclub Travel | Agencia de Viajes &amp; Experiencias de Vida</title>
+  <meta name="description" content="Gepiclub Travel: Agencia de viajes de lujo y club de beneficios en el Perú y el mundo. Vuelos, resorts 4 y 5 estrellas, paquetes todo incluido, cruceros y expediciones privadas con tarifas preferenciales.">
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+  
+  <!-- Premium Editorial Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <!-- Top Notification & Currency Bar -->
+  <aside class="top-bar" aria-label="Información de atención">
+    <div class="container">
+      <div class="top-bar-left">
+        <span class="brand-motto-tag">Tu Club de Beneficios en todo el Perú y el Mundo</span>
+        <span class="top-bar-divider">|</span>
+        <span class="top-bar-phone">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-inline"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          Central de Atención: <strong>+51 999 999 999</strong>
+        </span>
+      </div>
+      <div class="top-bar-right">
+        <div class="currency-select-wrapper">
+          <label for="currency-selector">Moneda:</label>
+          <select id="currency-selector" aria-label="Seleccionar moneda">
+            <option value="USD">USD ($)</option>
+            <option value="PEN">PEN (S/)</option>
+          </select>
+        </div>
+        <span class="top-bar-status-pill">
+          <span class="dot-online"></span> Disponibilidad en Vivo
+        </span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header" id="main-header">
+    <div class="header-container container">
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo-link" aria-label="Gepiclub Travel">
+        <img src="assets/images/logo.jpg" alt="Logo Gepiclub Travel" class="brand-logo-img">
+        <div class="brand-text-block">
+          <div class="brand-text-name">Gepi<span>club</span></div>
+          <span class="brand-text-tag">Travel &amp; Experiences</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links Menu (Dedicated Pages) -->
+      <nav aria-label="Navegación principal">
+        <ul class="nav-links-menu" id="nav-links-menu">
+          <li class="nav-link-item"><a href="vuelos.html">Vuelos</a></li>
+          <li class="nav-link-item"><a href="hoteles.html">Hoteles</a></li>
+          <li class="nav-link-item"><a href="paquetes.html">Paquetes</a></li>
+          <li class="nav-link-item"><a href="cruceros.html">Cruceros</a></li>
+          <li class="nav-link-item"><a href="excursiones.html">Excursiones</a></li>
+          <li class="nav-link-item"><a href="#commercial-offers">Servicios</a></li>
+          <li class="nav-link-item"><a href="#club-membership">Membresía</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions: Minimalist Search Icon + Auth Buttons -->
+      <div class="header-actions">
+        <!-- Minimalist Vector Search Icon Button (Triggers Glassmorphic Search) -->
+        <button class="header-search-icon-btn" id="header-search-icon-btn" aria-label="Abrir buscador interactivo" title="Buscar vuelos, hoteles o paquetes">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <!-- User Authentication Box -->
+        <div id="header-auth-box" class="header-auth-container">
+          <button class="btn btn-outline-navy btn-sm" id="header-login-btn" onclick="window.gepiApp.openLoginModal('login')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            Acceso Clientes
+          </button>
+          <button class="btn btn-primary btn-sm" onclick="window.gepiApp.openLoginModal('register')">
+            Membresía Club
+          </button>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menú">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section (Clean & Airy without bottom search bar) -->
+  <section class="hero-section" id="hero-section">
+    <div class="hero-background-decor"></div>
+    <div class="container hero-grid">
+      <!-- Left Column: Inspiring Editorial Copy -->
+      <div class="hero-text-content">
+        <div class="hero-badge-pill">
+          <span class="dot"></span>
+          <span>Agencia de Viajes &amp; Club de Beneficios</span>
+        </div>
+
+        <h1 class="hero-main-title">
+          Más que viajes,
+          <span class="editorial-accent">experiencias de vida</span>
+        </h1>
+
+        <span class="hero-tagline-family">Familias que viven grandes historias</span>
+
+        <p class="hero-description">
+          Vive más por menos. Diseñamos itinerarios a la medida con tarifas preferenciales en vuelos nacionales e internacionales, resorts 4 y 5 estrellas, paquetes todo incluido y concierge dedicado en cada paso.
+        </p>
+
+        <div class="hero-cta-buttons">
+          <button class="btn btn-primary" onclick="window.gepiApp.openHeaderSearch()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            Buscar Vuelos &amp; Hoteles
+          </button>
+          <a href="vuelos.html" class="btn btn-outline-navy">
+            Ver Vuelos Disponibles
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+        </div>
+
+        <div class="hero-pillars-row">
+          <span>Explora</span>
+          <span class="bullet">•</span>
+          <span>Descubre</span>
+          <span class="bullet">•</span>
+          <span>Disfruta</span>
+          <span class="bullet">•</span>
+          <span>Vive Más</span>
+        </div>
+      </div>
+
+      <!-- Right Column: Family & Mascot Presentation -->
+      <div class="hero-media-showcase">
+        <div class="hero-family-frame">
+          <img src="assets/images/hero-family.jpg" alt="Familia en resort de playa con Gepiclub">
+        </div>
+
+        <!-- Floating Mascot Badge: Gepi & Kusi -->
+        <div class="hero-mascots-floating-card">
+          <img src="assets/images/mascots.jpg" alt="Mascotas Gepi y Kusi" class="mascot-thumb-img">
+          <div>
+            <div class="mascot-info-title">Gepi &amp; Kusi te acompañan</div>
+            <div class="mascot-info-sub">Tu próxima aventura empieza aquí</div>
+            <span class="mascot-luggage-tag">EXPLORA • DESCUBRE • DISFRUTA</span>
+          </div>
+        </div>
+
+        <!-- Floating Stat Badge -->
+        <div class="hero-stats-floating-badge">
+          <div class="number">Hasta -40%</div>
+          <div class="label">Tarifas Negociadas de Club</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recommended Flights Section (Inspiring Destination Cards) -->
+  <section class="recommended-flights-section" id="recommended-flights">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="section-tagline">Rutas Destacadas</span>
+        <h2 class="section-title">Vuelos Recomendados de Temporada</h2>
+        <p class="section-subtitle">
+          Tarifas preferenciales negociadas directamente con aerolíneas aliadas para salidas desde Lima hacia los destinos más cotizados.
+        </p>
+      </div>
+
+      <div class="recommended-flights-grid">
+        <!-- 1. Lima a Miami -->
+        <article class="flight-dest-card">
+          <div class="dest-card-media">
+            <img src="assets/images/flight-window.jpg" alt="Vuelo a Miami" loading="lazy">
+            <span class="dest-airline-badge">LATAM / American Airlines</span>
+            <span class="dest-route-badge">LIM ➔ MIA</span>
+          </div>
+          <div class="dest-card-body">
+            <div class="dest-info-col">
+              <h3>Miami, Florida</h3>
+              <p>Vuelo directo • 5h 50m • Equipaje incluido</p>
+            </div>
+            <div class="dest-price-col">
+              <span class="dest-price-from">Desde</span>
+              <div class="dest-price-amount"><span class="currency-symbol">$</span> 415 <span class="currency-code">USD</span></div>
+              <a href="vuelos.html?from=LIM&to=MIA" class="btn btn-primary btn-sm mt-2">Ver Vuelos</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. Lima a Cancún -->
+        <article class="flight-dest-card">
+          <div class="dest-card-media">
+            <img src="assets/images/cancun-resort.jpg" alt="Vuelo a Cancún" loading="lazy">
+            <span class="dest-airline-badge">LATAM / Avianca</span>
+            <span class="dest-route-badge">LIM ➔ CUN</span>
+          </div>
+          <div class="dest-card-body">
+            <div class="dest-info-col">
+              <h3>Cancún &amp; Riviera Maya</h3>
+              <p>Vuelo directo • 5h 25m • Tarifa de socio</p>
+            </div>
+            <div class="dest-price-col">
+              <span class="dest-price-from">Desde</span>
+              <div class="dest-price-amount"><span class="currency-symbol">$</span> 360 <span class="currency-code">USD</span></div>
+              <a href="vuelos.html?from=LIM&to=CUN" class="btn btn-primary btn-sm mt-2">Ver Vuelos</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. Lima a Madrid -->
+        <article class="flight-dest-card">
+          <div class="dest-card-media">
+            <img src="assets/images/madrid.jpg" alt="Vuelo a Madrid España" loading="lazy">
+            <span class="dest-airline-badge">Iberia / Air Europa</span>
+            <span class="dest-route-badge">LIM ➔ MAD</span>
+          </div>
+          <div class="dest-card-body">
+            <div class="dest-info-col">
+              <h3>Madrid, España</h3>
+              <p>Vuelo directo nocturno • 11h 40m</p>
+            </div>
+            <div class="dest-price-col">
+              <span class="dest-price-from">Desde</span>
+              <div class="dest-price-amount"><span class="currency-symbol">$</span> 780 <span class="currency-code">USD</span></div>
+              <a href="vuelos.html?from=LIM&to=MAD" class="btn btn-primary btn-sm mt-2">Ver Vuelos</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. Lima a Cusco -->
+        <article class="flight-dest-card">
+          <div class="dest-card-media">
+            <img src="assets/images/machu-picchu.jpg" alt="Vuelo a Cusco Perú" loading="lazy">
+            <span class="dest-airline-badge">LATAM Perú / SKY</span>
+            <span class="dest-route-badge">LIM ➔ CUZ</span>
+          </div>
+          <div class="dest-card-body">
+            <div class="dest-info-col">
+              <h3>Cusco Imperial</h3>
+              <p>Vuelo directo nacional • 1h 20m</p>
+            </div>
+            <div class="dest-price-col">
+              <span class="dest-price-from">Desde</span>
+              <div class="dest-price-amount"><span class="currency-symbol">$</span> 59 <span class="currency-code">USD</span></div>
+              <a href="vuelos.html?from=LIM&to=CUZ" class="btn btn-primary btn-sm mt-2">Ver Vuelos</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5. Lima a Cartagena -->
+        <article class="flight-dest-card">
+          <div class="dest-card-media">
+            <img src="assets/images/cruise.jpg" alt="Vuelo a Cartagena" loading="lazy">
+            <span class="dest-airline-badge">Avianca / LATAM</span>
+            <span class="dest-route-badge">LIM ➔ CTG</span>
+          </div>
+          <div class="dest-card-body">
+            <div class="dest-info-col">
+              <h3>Cartagena de Indias</h3>
+              <p>Conexión ágil • Caribe colombiano</p>
+            </div>
+            <div class="dest-price-col">
+              <span class="dest-price-from">Desde</span>
+              <div class="dest-price-amount"><span class="currency-symbol">$</span> 210 <span class="currency-code">USD</span></div>
+              <a href="vuelos.html?from=LIM&to=CTG" class="btn btn-primary btn-sm mt-2">Ver Vuelos</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6. Cruceros del Caribe -->
+        <article class="flight-dest-card">
+          <div class="dest-card-media">
+            <img src="assets/images/cruise.jpg" alt="Crucero por el Caribe" loading="lazy">
+            <span class="dest-airline-badge">Royal Caribbean</span>
+            <span class="dest-route-badge">Miami ➔ Caribe</span>
+          </div>
+          <div class="dest-card-body">
+            <div class="dest-info-col">
+              <h3>Caribe &amp; Bahamas</h3>
+              <p>7 Noches • Wonder of the Seas</p>
+            </div>
+            <div class="dest-price-col">
+              <span class="dest-price-from">Desde</span>
+              <div class="dest-price-amount"><span class="currency-symbol">$</span> 690 <span class="currency-code">USD</span></div>
+              <a href="cruceros.html" class="btn btn-primary btn-sm mt-2">Ver Crucero</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="vuelos.html" class="btn btn-secondary">
+          Explorar Todos los Vuelos Disponibles
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo-Rich Commercial Priority Offers (Transformed to Match Reference Flyer & Screenshot 3) -->
+  <section class="commercial-offer-section" id="commercial-offers">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="section-tagline">Oferta Comercial Prioritaria</span>
+        <h2 class="section-title">Servicios que Organizan tu Próximo Viaje</h2>
+        <p class="section-subtitle">
+          Cada propuesta distingue con absoluta claridad qué incluye la oferta, qué no incluye, disponibilidad y tarifas transparentes.
+        </p>
+      </div>
+
+      <!-- 8 Photo-Rich Commercial Service Cards -->
+      <div class="commercial-cards-grid">
+        <!-- 1. Vuelos -->
+        <article class="commercial-visual-card" onclick="window.location.href='vuelos.html'">
+          <div class="card-top-thumbnail">
+            <img src="assets/images/flight-window.jpg" alt="Vuelos nacionales e internacionales" loading="lazy">
+            <span class="card-category-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+              Vuelos
+            </span>
+          </div>
+          <div class="card-visual-body">
+            <div class="card-title-group">
+              <h3>Vuelos Comerciales</h3>
+              <span class="card-subtitle-text">Nacionales e internacionales</span>
+            </div>
+            <div class="card-focus-paragraph">
+              <strong>Enfoque comercial:</strong>
+              Cotización según disponibilidad y aerolíneas habilitadas en tiempo real. Asignación de equipaje y cabina sin sorpresas.
+            </div>
+            <div class="card-action-bar">
+              <div class="card-price-display">
+                Desde
+                <strong><span class="currency-symbol">$</span> 59 <span class="currency-code">USD</span></strong>
+              </div>
+              <span class="card-circle-arrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. Hoteles -->
+        <article class="commercial-visual-card" onclick="window.location.href='hoteles.html'">
+          <div class="card-top-thumbnail">
+            <img src="assets/images/cancun-resort.jpg" alt="Hoteles 4 y 5 estrellas" loading="lazy">
+            <span class="card-category-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"></path><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"></path></svg>
+              Hoteles
+            </span>
+          </div>
+          <div class="card-visual-body">
+            <div class="card-title-group">
+              <h3>Hoteles &amp; Resorts</h3>
+              <span class="card-subtitle-text">4 y 5 estrellas en todo el mundo</span>
+            </div>
+            <div class="card-focus-paragraph">
+              <strong>Enfoque comercial:</strong>
+              Alojamiento y resorts según oferta disponible, propiedades con piscina, desayunos buffet y convenios directos.
+            </div>
+            <div class="card-action-bar">
+              <div class="card-price-display">
+                Noche desde
+                <strong><span class="currency-symbol">$</span> 165 <span class="currency-code">USD</span></strong>
+              </div>
+              <span class="card-circle-arrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. Paquetes Todo Incluido -->
+        <article class="commercial-visual-card" onclick="window.location.href='paquetes.html'">
+          <div class="card-top-thumbnail">
+            <img src="assets/images/caribbean-resort.jpg" alt="Paquetes todo incluido" loading="lazy">
+            <span class="card-category-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+              Paquetes
+            </span>
+          </div>
+          <div class="card-visual-body">
+            <div class="card-title-group">
+              <h3>Paquetes Todo Incluido</h3>
+              <span class="card-subtitle-text">Vuelos + hotel + traslados</span>
+            </div>
+            <div class="card-focus-paragraph">
+              <strong>Enfoque comercial:</strong>
+              Combinaciones de servicios claramente especificadas en cada promoción (vuelo, alojamiento, comidas y traslados privados).
+            </div>
+            <div class="card-action-bar">
+              <div class="card-price-display">
+                Paquete desde
+                <strong><span class="currency-symbol">$</span> 395 <span class="currency-code">USD</span></strong>
+              </div>
+              <span class="card-circle-arrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. Cruceros -->
+        <article class="commercial-visual-card" onclick="window.location.href='cruceros.html'">
+          <div class="card-top-thumbnail">
+            <img src="assets/images/cruise.jpg" alt="Cruceros internacionales" loading="lazy">
+            <span class="card-category-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.5 0 2.5 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path><path d="M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6"></path></svg>
+              Cruceros
+            </span>
+          </div>
+          <div class="card-visual-body">
+            <div class="card-title-group">
+              <h3>Cruceros de Lujo</h3>
+              <span class="card-subtitle-text">Los mejores destinos en el mar</span>
+            </div>
+            <div class="card-focus-paragraph">
+              <strong>Enfoque comercial:</strong>
+              Alternativas de viaje marítimo mediante navieras internacionales habilitadas (Royal Caribbean, MSC, Celebrity Cruises).
+            </div>
+            <div class="card-action-bar">
+              <div class="card-price-display">
+                Cabina desde
+                <strong><span class="currency-symbol">$</span> 690 <span class="currency-code">USD</span></strong>
+              </div>
+              <span class="card-circle-arrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5. Excursiones -->
+        <article class="commercial-visual-card" onclick="window.location.href='excursiones.html'">
+          <div class="card-top-thumbnail">
+            <img src="assets/images/machu-picchu.jpg" alt="Excursiones y aventura" loading="lazy">
+            <span class="card-category-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+              Tours
+            </span>
+          </div>
+          <div class="card-visual-body">
+            <div class="card-title-group">
+              <h3>Excursiones &amp; Aventura</h3>
+              <span class="card-subtitle-text">Tours, cultura y naturaleza</span>
+            </div>
+            <div class="card-focus-paragraph">
+              <strong>Enfoque comercial:</strong>
+              Machu Picchu, Montaña de 7 Colores y Paracas con guías oficiales certificados, tickets garantizados y traslados privados.
+            </div>
+            <div class="card-action-bar">
+              <div class="card-price-display">
+                Tour desde
+                <strong><span class="currency-symbol">$</span> 48 <span class="currency-code">USD</span></strong>
+              </div>
+              <span class="card-circle-arrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6. Asistencia Médica -->
+        <article class="commercial-visual-card" onclick="window.gepiApp.openMedicalModal()">
+          <div class="card-top-thumbnail">
+            <img src="assets/images/medical.jpg" alt="Asistencia médica internacional" loading="lazy">
+            <span class="card-category-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              Asistencia
+            </span>
+          </div>
+          <div class="card-visual-body">
+            <div class="card-title-group">
+              <h3>Asistencia Médica</h3>
+              <span class="card-subtitle-text">Viaja tranquilo en todo momento</span>
+            </div>
+            <div class="card-focus-paragraph">
+              <strong>Enfoque comercial:</strong>
+              Coberturas internacionales ante emergencias de salud, demoras de vuelo, extravío de equipaje y soporte 24 horas.
+            </div>
+            <div class="card-action-bar">
+              <div class="card-price-display">
+                Cobertura
+                <strong>Incluida en Membresía</strong>
+              </div>
+              <span class="card-circle-arrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 7. Viaja en Familia -->
+        <article class="commercial-visual-card" onclick="window.gepiApp.openAdvisorModal('Viaje Familiar')">
+          <div class="card-top-thumbnail">
+            <img src="assets/images/hero-family.jpg" alt="Viaja en familia" loading="lazy">
+            <span class="card-category-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+              Familia
+            </span>
+          </div>
+          <div class="card-visual-body">
+            <div class="card-title-group">
+              <h3>Viaja en Familia</h3>
+              <span class="card-subtitle-text">Recuerdos para siempre</span>
+            </div>
+            <div class="card-focus-paragraph">
+              <strong>Enfoque comercial:</strong>
+              Paquetes adaptados con tarifas preferenciales para menores, resorts familiares con kids club y planes multigeneracionales.
+            </div>
+            <div class="card-action-bar">
+              <div class="card-price-display">
+                Planes
+                <strong>Diseñados a Medida</strong>
+              </div>
+              <span class="card-circle-arrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 8. Asesoría Personalizada -->
+        <article class="commercial-visual-card" onclick="window.gepiApp.openAdvisorModal('Asesoría Especializada')">
+          <div class="card-top-thumbnail">
+            <img src="assets/images/advisor.jpg" alt="Asesoría personalizada concierge" loading="lazy">
+            <span class="card-category-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+              Concierge
+            </span>
+          </div>
+          <div class="card-visual-body">
+            <div class="card-title-group">
+              <h3>Asesoría Personalizada</h3>
+              <span class="card-subtitle-text">Te acompañamos en cada paso</span>
+            </div>
+            <div class="card-focus-paragraph">
+              <strong>Enfoque comercial:</strong>
+              Acompañamiento antes, durante la selección de boletos y en la postventa directa con un agente de viajes asignado.
+            </div>
+            <div class="card-action-bar">
+              <div class="card-price-display">
+                Atención
+                <strong>Concierge 24/7</strong>
+              </div>
+              <span class="card-circle-arrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gepi Club Exclusive Membership Section -->
+  <section class="club-membership-section" id="club-membership">
+    <div class="container club-grid">
+      <!-- Left: Membership Perks & 3 Hero Getaways -->
+      <div class="club-content-left">
+        <span class="club-headline-badge">Membresía Privada de Viajes</span>
+        <h2 class="club-title">
+          Una membresía para <br>
+          <span class="pink">vivir más por menos</span>
+        </h2>
+        <p class="club-description">
+          Diseñada para familias y viajeros frecuentes que valoran la excelencia: estadías anuales bonificadas, acceso a tarifas de mayorista y asistencia integral en cada destino.
+        </p>
+
+        <!-- 3 Hero Getaways -->
+        <div class="hero-destinations-strip">
+          <div class="hero-destination-box" onclick="window.location.href='paquetes.html'">
+            <div class="dest-country-code">MÉXICO</div>
+            <div class="dest-name">Cancún</div>
+            <div class="dest-tag">Estadía Bonificada</div>
+          </div>
+          <div class="hero-destination-box" onclick="window.location.href='vuelos.html?to=MIA'">
+            <div class="dest-country-code">EE.UU.</div>
+            <div class="dest-name">Miami</div>
+            <div class="dest-tag">Tarifas Negociadas</div>
+          </div>
+          <div class="hero-destination-box" onclick="window.location.href='paquetes.html'">
+            <div class="dest-country-code">COLOMBIA</div>
+            <div class="dest-name">Cartagena</div>
+            <div class="dest-tag">Playas &amp; Ciudad Amurallada</div>
+          </div>
+        </div>
+
+        <!-- Key Membership Perks List -->
+        <div class="club-perks-list">
+          <div class="club-perk-item">
+            <span class="perk-check-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <div class="perk-text">
+              <strong>Estadías anuales bonificadas:</strong>
+              <p>Noches de resort incluidas cada año en destinos seleccionados del Caribe y Norteamérica.</p>
+            </div>
+          </div>
+          <div class="club-perk-item">
+            <span class="perk-check-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <div class="perk-text">
+              <strong>Tarifas preferenciales en vuelos:</strong>
+              <p>Ahorros directos de entre $30 y $150 USD por boleto frente a tarifas comerciales públicas.</p>
+            </div>
+          </div>
+          <div class="club-perk-item">
+            <span class="perk-check-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <div class="perk-text">
+              <strong>Concierge y Asistencia Médica:</strong>
+              <p>Un asesor dedicado te respalda por WhatsApp en cualquier momento durante tu estadía.</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" onclick="window.gepiApp.openLoginModal('register')">
+          Solicitar Membresía Gepi Club
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+
+      <!-- Right: Mascots 3D Feature Card -->
+      <div class="club-mascots-card">
+        <img src="assets/images/mascots.jpg" alt="Mascotas Gepi y Kusi">
+        <div class="mascot-speech-bubble">
+          Conoce a <strong>Gepi &amp; Kusi</strong>, embajadores oficiales de tus próximas vacaciones. Te acompañan para que disfrutes más de cada destino.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mobile App Section -->
+  <section class="app-banner-section" id="app-download">
+    <div class="container app-banner-grid">
+      <div class="app-banner-content">
+        <h2>
+          Descarga nuestra app
+          <span class="script-sub">Tu próxima aventura en la palma de tu mano</span>
+        </h2>
+        <p>Gestiona tus reservas, consulta tus puntos acumulados y accede a promociones exclusivas de último minuto estés donde estés.</p>
+
+        <div class="app-banner-features">
+          <div class="app-feat-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF007F" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Promociones exclusivas
+          </div>
+          <div class="app-feat-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF007F" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Beneficios todo el año
+          </div>
+          <div class="app-feat-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF007F" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Reserva fácil desde la app
+          </div>
+        </div>
+
+        <div class="app-store-badges">
+          <!-- Official Google Play Vector Badge -->
+          <a href="#" class="store-badge-btn" onclick="event.preventDefault(); window.gepiApp.showToast('App para Android disponible próximamente en Google Play');">
+            <svg class="store-svg-icon" width="22" height="22" viewBox="0 0 512 512">
+              <path fill="#4CAF50" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z"/>
+              <path fill="#FF3D00" d="M26.2 31.2C14.7 44.5 8 63.8 8 87.2v337.6c0 23.4 6.7 42.7 18.2 56L266 241.1 26.2 31.2z"/>
+              <path fill="#FFC107" d="M488.7 236.4l-63.5-36.5-68.5 68.5 68.5 68.5 64.1-36.8c18.4-10.6 27.6-26.6 27.6-43.7 0-17.1-9.2-33.1-28.2-40z"/>
+              <path fill="#1E88E5" d="M325.3 277.7l60.1 60.1L104.6 499l220.7-221.3z"/>
+            </svg>
+            <div class="badge-text">
+              <span>DISPONIBLE EN</span>
+              <strong>Google Play</strong>
+            </div>
+          </a>
+
+          <!-- Official Apple App Store Vector Badge -->
+          <a href="#" class="store-badge-btn" onclick="event.preventDefault(); window.gepiApp.showToast('App para iOS disponible próximamente en App Store');">
+            <svg class="store-svg-icon" width="22" height="22" viewBox="0 0 170 170" fill="currentColor">
+              <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.04-7.59-7.77-11.7-14.19-6.07-9.5-10.9-20.25-14.49-32.25-3.59-12-5.39-23.01-5.39-33.03 0-14.28 3.59-26.06 10.77-35.33 7.18-9.27 16.29-14 27.33-14.19 5.33 0 11.2 1.45 17.61 4.35 6.41 2.91 10.45 4.36 12.13 4.36 1.45 0 5.6-1.5 12.44-4.51 6.84-3 12.35-4.37 16.53-4.11 12.01.63 21.6 4.96 28.77 12.98-10.66 6.42-15.89 15.35-15.7 26.8.23 9.07 3.54 16.66 9.94 22.77 6.41 6.11 14.14 9.77 23.2 10.98-2.11 6.31-4.75 12.92-7.92 19.82zM119.22 33.15c0-6.9 2.53-13.62 7.6-20.15 5.06-6.53 11.44-10.87 19.14-13 1.15 6.7.04 13.3-3.33 19.8-3.37 6.5-9.12 11.11-17.25 13.82-.44-.15-.7-.25-.79-.31-.83-.05-3.37-.09-5.37-.16z"/>
+            </svg>
+            <div class="badge-text">
+              <span>DESCÁRGALO EN EL</span>
+              <strong>App Store</strong>
+            </div>
+          </a>
+
+          <button class="btn btn-primary" onclick="window.gepiApp.openLoginModal('register')">
+            Únete a Gepi Club
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="app-mockup-visual">
+        <img src="assets/images/cancun-resort.jpg" alt="Experiencias exclusivas Gepi Club">
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <div class="container footer-grid">
+      <!-- Col 1: Brand Info -->
+      <div class="footer-brand-col">
+        <div class="brand-text-name text-white">Gepi<span style="color:#38B6FF">club</span> <span style="font-size:0.9rem; color:#FFF">Travel</span></div>
+        <p>
+          Tu agencia de viajes y club de beneficios en todo el Perú y el mundo. Transformamos la manera en que viajas a través de tarifas preferenciales, tecnología de vanguardia y concierge dedicado.
+        </p>
+        <div class="accreditation-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <span>Agencia Acreditada • Operador Oficial</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Servicios -->
+      <div class="footer-col">
+        <h4 class="footer-heading">Servicios</h4>
+        <ul class="footer-links">
+          <li><a href="vuelos.html">Vuelos Comerciales</a></li>
+          <li><a href="hoteles.html">Hoteles 4 y 5 Estrellas</a></li>
+          <li><a href="paquetes.html">Paquetes Todo Incluido</a></li>
+          <li><a href="cruceros.html">Cruceros Internacionales</a></li>
+          <li><a href="excursiones.html">Excursiones &amp; Aventura</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Club & Membresía -->
+      <div class="footer-col">
+        <h4 class="footer-heading">Club &amp; Clientes</h4>
+        <ul class="footer-links">
+          <li><a href="#club-membership">Beneficios de Socio</a></li>
+          <li><a href="#" onclick="event.preventDefault(); window.gepiApp.openLoginModal('register')">Membresía Anual</a></li>
+          <li><a href="#" onclick="event.preventDefault(); window.gepiApp.openMedicalModal()">Asistencia Médica</a></li>
+          <li><a href="#" onclick="event.preventDefault(); window.gepiApp.openAdvisorModal('Preguntas Frecuentes')">Preguntas Frecuentes</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Contacto & Legal -->
+      <div class="footer-col footer-contact-info">
+        <h4 class="footer-heading">Atención y Oficinas</h4>
+        <p>Av. El Sol, Miraflores, Lima — Perú</p>
+        <p>Central: +51 999 999 999</p>
+        <p>contacto@gepiclub.com</p>
+        <p>Atención: Lunes a Domingo, 24 horas</p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom-bar">
+      <div>
+        &copy; 2026 Gepiclub Travel. Todos los derechos reservados. RUC 20608934521.
+      </div>
+      <div class="footer-motto-phrase">
+        VIAJA • DESCUBRE • DISFRUTA • VIVE MÁS
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       GLASSMORPHIC SEARCH MODAL (TRIGGERED BY MINIMALIST SEARCH ICON)
+       ========================================================================== -->
+  <div class="glass-search-modal" id="glass-search-modal">
+    <div class="glass-search-card">
+      <div class="glass-search-header">
+        <div class="glass-search-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-inline"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          Buscador de Viajes Gepiclub
+        </div>
+        <button class="glass-close-btn" onclick="window.gepiApp.closeGlassSearch()" aria-label="Cerrar buscador">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <!-- Search Service Tabs inside Glassmorphic Modal -->
+      <div class="search-tabs-nav" role="tablist">
+        <button class="search-tab-btn active" data-tab="vuelos" role="tab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+          Vuelos
+        </button>
+        <button class="search-tab-btn" data-tab="hoteles" role="tab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"></path><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"></path></svg>
+          Hoteles
+        </button>
+        <button class="search-tab-btn" data-tab="paquetes" role="tab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          Paquetes Todo Incluido
+        </button>
+        <button class="search-tab-btn" data-tab="cruceros" role="tab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.5 0 2.5 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path><path d="M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6"></path></svg>
+          Cruceros
+        </button>
+        <button class="search-tab-btn" data-tab="tours" role="tab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+          Excursiones
+        </button>
+      </div>
+
+      <!-- Tab 1: VUELOS -->
+      <div class="search-panel-form active" data-tab="vuelos">
+        <form action="vuelos.html" method="GET">
+          <div class="search-form-grid">
+            <div class="form-group">
+              <label class="form-label" for="glass-flight-from">Origen</label>
+              <div class="form-input-wrapper">
+                <span class="input-icon-left"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.3c.4-.2.6-.6.5-1.1z"></path></svg></span>
+                <input type="text" id="glass-flight-from" name="from" class="form-control" value="LIM" placeholder="LIM — Lima" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="glass-flight-to">Destino</label>
+              <div class="form-input-wrapper">
+                <span class="input-icon-left"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
+                <input type="text" id="glass-flight-to" name="to" class="form-control" value="MIA" placeholder="MIA, CUN, MAD..." required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="glass-flight-dep">Fecha Ida</label>
+              <div class="form-input-wrapper">
+                <span class="input-icon-left"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
+                <input type="date" id="glass-flight-dep" name="dep" class="form-control" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="glass-flight-pax">Pasajeros</label>
+              <div class="form-input-wrapper">
+                <span class="input-icon-left"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg></span>
+                <select id="glass-flight-pax" name="pax" class="form-control">
+                  <option value="1">1 Pasajero</option>
+                  <option value="2">2 Pasajeros</option>
+                  <option value="3">3+ Familia</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block">Buscar Vuelos</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Tab 2: HOTELES -->
+      <div class="search-panel-form" data-tab="hoteles">
+        <form action="hoteles.html" method="GET">
+          <div class="search-form-grid">
+            <div class="form-group" style="grid-column: span 2;">
+              <label class="form-label">Destino o Hotel</label>
+              <div class="form-input-wrapper">
+                <span class="input-icon-left"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
+                <input type="text" name="dest" class="form-control" value="Cancún, México" placeholder="Cancún, Miami, Cusco...">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Check-in</label>
+              <input type="date" name="in" class="form-control">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Categoría</label>
+              <select name="stars" class="form-control">
+                <option value="5">5 Estrellas Luxury</option>
+                <option value="4">4 Estrellas</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block">Buscar Hoteles</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Tab 3: PAQUETES -->
+      <div class="search-panel-form" data-tab="paquetes">
+        <form action="paquetes.html" method="GET">
+          <div class="search-form-grid">
+            <div class="form-group" style="grid-column: span 3;">
+              <label class="form-label">Destino Todo Incluido</label>
+              <select name="pkg" class="form-control">
+                <option value="cancun">Cancún &amp; Riviera Maya All-Inclusive</option>
+                <option value="miami">Miami &amp; Orlando Mágico</option>
+                <option value="cartagena">Cartagena de Indias &amp; Barú</option>
+                <option value="cusco">Cusco &amp; Machu Picchu VIP</option>
+              </select>
+            </div>
+            <div class="form-group" style="grid-column: span 2;">
+              <button type="submit" class="btn btn-primary btn-block">Ver Paquetes</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Tab 4: CRUCEROS -->
+      <div class="search-panel-form" data-tab="cruceros">
+        <form action="cruceros.html" method="GET">
+          <div class="search-form-grid">
+            <div class="form-group" style="grid-column: span 3;">
+              <label class="form-label">Destino de Crucero</label>
+              <select name="region" class="form-control">
+                <option value="caribe">Caribe Tropical &amp; Bahamas (Royal Caribbean)</option>
+                <option value="mediterraneo">Mediterráneo Clásico &amp; Joyas Europeas</option>
+              </select>
+            </div>
+            <div class="form-group" style="grid-column: span 2;">
+              <button type="submit" class="btn btn-primary btn-block">Explorar Cruceros</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Tab 5: TOURS -->
+      <div class="search-panel-form" data-tab="tours">
+        <form action="excursiones.html" method="GET">
+          <div class="search-form-grid">
+            <div class="form-group" style="grid-column: span 3;">
+              <label class="form-label">Excursión</label>
+              <input type="text" name="q" class="form-control" value="Machu Picchu" placeholder="Machu Picchu, Vinicunca, Paracas...">
+            </div>
+            <div class="form-group" style="grid-column: span 2;">
+              <button type="submit" class="btn btn-primary btn-block">Ver Excursiones</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login & Registration Modal -->
+  <div class="modal-container" id="login-modal" role="dialog" aria-modal="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Área de Socios Gepiclub</h3>
+        <button class="modal-close-btn" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="auth-tabs-row">
+          <button class="auth-tab-btn active" data-tab="login" onclick="window.gepiApp.switchAuthTab('login')">Iniciar Sesión</button>
+          <button class="auth-tab-btn" data-tab="register" onclick="window.gepiApp.switchAuthTab('register')">Nuevo Socio (Únete)</button>
+        </div>
+
+        <form id="login-form-element">
+          <div class="form-group mb-3">
+            <label class="form-label" for="login-email">Correo Electrónico</label>
+            <input type="email" id="login-email" class="form-control" placeholder="tu@correo.com" required>
+          </div>
+          <div class="form-group mb-3">
+            <label class="form-label" for="login-password">Contraseña</label>
+            <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block mb-3">Acceder a Mi Cuenta</button>
+
+          <div class="demo-login-box">
+            <p>Acceso de prueba rápida para socios:</p>
+            <button type="button" class="btn btn-outline-navy btn-sm" onclick="window.gepiApp.demoLogin()">Acceder como Socio Platino Demo</button>
+          </div>
+        </form>
+
+        <form id="register-form-element" class="hidden">
+          <div class="form-group mb-2">
+            <label class="form-label" for="reg-name">Nombre y Apellidos</label>
+            <input type="text" id="reg-name" class="form-control" placeholder="Carlos Mendoza" required>
+          </div>
+          <div class="form-group mb-2">
+            <label class="form-label" for="reg-email">Correo Electrónico</label>
+            <input type="email" id="reg-email" class="form-control" placeholder="carlos@ejemplo.com" required>
+          </div>
+          <div class="form-group mb-2">
+            <label class="form-label" for="reg-phone">Teléfono / WhatsApp</label>
+            <input type="tel" id="reg-phone" class="form-control" placeholder="+51 987 654 321" required>
+          </div>
+          <div class="form-group mb-3">
+            <label class="form-label" for="reg-dni">DNI / Documento</label>
+            <input type="text" id="reg-dni" class="form-control" placeholder="Número de documento">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Activar Membresía Gepi Club (Bono 500 Pts)</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script src="assets/js/amadeus-service.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/search-engine.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
