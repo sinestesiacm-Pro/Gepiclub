@@ -125,6 +125,21 @@ class GepiApp {
       });
     }
 
+    // Minimalist Mobile Currency Pills
+    document.querySelectorAll('.currency-pill-btn').forEach(btn => {
+      if (window.gepiSearchEngine && btn.dataset.cur === window.gepiSearchEngine.currentCurrency) {
+        btn.classList.add('active');
+      }
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const cur = btn.dataset.cur;
+        if (window.gepiSearchEngine) {
+          window.gepiSearchEngine.setCurrency(cur);
+          this.showToast(`Moneda seleccionada: ${cur}`);
+        }
+      });
+    });
+
     // Minimalist Search Icon in Header
     const headerSearchBtn = document.getElementById('header-search-icon-btn');
     if (headerSearchBtn) {

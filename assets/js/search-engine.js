@@ -228,10 +228,17 @@ class SearchEngine {
     this.currentCurrency = curr;
     localStorage.setItem('gepi_currency', curr);
     document.querySelectorAll('.currency-symbol').forEach(el => {
-      el.textContent = curr === 'PEN' ? 'S/' : '$';
+      el.textContent = curr === 'PEN' ? 'S/' : (curr === 'EUR' ? '€' : '$');
     });
     document.querySelectorAll('.currency-code').forEach(el => {
       el.textContent = curr;
+    });
+    const currencySelect = document.getElementById('currency-selector');
+    if (currencySelect && currencySelect.value !== curr) {
+      currencySelect.value = curr;
+    }
+    document.querySelectorAll('.currency-pill-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.cur === curr);
     });
     this.renderCurrentResults();
   }

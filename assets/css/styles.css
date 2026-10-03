@@ -808,55 +808,49 @@ img {
   margin-top: 2px;
 }
 
-/* Floating Mascot Pill - 100% INSIDE the frame at bottom */
-.hero-mascots-floating-card {
+/* Floating Verified Luxury Agency Badge - 100% INSIDE the frame at bottom */
+.hero-agency-badge {
   position: absolute;
   bottom: 16px;
   left: 16px;
   right: 16px;
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  padding: 0.75rem 1rem;
+  padding: 0.85rem 1.15rem;
   border-radius: var(--radius-md);
   box-shadow: 0 12px 30px rgba(10, 27, 64, 0.12);
-  border: 1.5px solid rgba(0, 115, 230, 0.15);
+  border: 1.5px solid rgba(0, 115, 230, 0.18);
   display: flex;
   align-items: center;
   gap: 0.85rem;
   z-index: 5;
 }
 
-.mascot-thumb-img {
-  width: 52px;
-  height: 52px;
-  border-radius: var(--radius-full);
-  object-fit: cover;
-  border: 2px solid var(--primary-pink);
+.agency-badge-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 115, 230, 0.1);
+  color: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
 }
 
-.mascot-info-title {
+.agency-badge-title {
   font-weight: 800;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   color: var(--navy-deep);
+  font-family: var(--font-heading);
+  letter-spacing: -0.2px;
 }
 
-.mascot-info-sub {
-  font-size: 0.74rem;
+.agency-badge-sub {
+  font-size: 0.76rem;
   color: var(--text-muted);
-}
-
-.mascot-luggage-tag {
-  background: var(--primary-pink);
-  color: #FFF;
-  font-size: 0.62rem;
-  font-weight: 700;
-  padding: 2px 7px;
-  border-radius: 4px;
-  display: inline-block;
-  margin-top: 2px;
-  letter-spacing: 0.5px;
+  font-weight: 500;
 }
 
 /* ==========================================================================
@@ -1259,32 +1253,82 @@ img {
   font-size: 0.85rem;
 }
 
-.club-mascots-card {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1.5px solid rgba(255, 255, 255, 0.12);
+/* VIP Luxury Platinum Membership Card Mockup */
+.club-card-preview {
+  position: relative;
+  background: linear-gradient(135deg, #0A1B40 0%, #162B55 60%, #0F2042 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
   border-radius: var(--radius-lg);
-  padding: 1.75rem;
-  backdrop-filter: blur(12px);
-  text-align: center;
-  box-shadow: var(--shadow-card);
+  padding: 2.2rem;
+  color: #FFFFFF;
+  box-shadow: 0 20px 50px rgba(5, 14, 35, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 250px;
+  max-width: 440px;
+  margin: 0 auto;
 }
 
-.club-mascots-card img {
-  border-radius: var(--radius-md);
+.club-card-chip {
+  width: 44px;
+  height: 32px;
+  background: linear-gradient(135deg, #D4AF37 0%, #FFDF73 50%, #AA820A 100%);
+  border-radius: 6px;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
   margin-bottom: 1.25rem;
-  max-height: 380px;
-  width: 100%;
-  object-fit: cover;
 }
 
-.mascot-speech-bubble {
-  background: #FFFFFF;
-  color: var(--navy-deep);
-  padding: 0.9rem 1.25rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.92rem;
-  font-weight: 500;
-  box-shadow: var(--shadow-subtle);
+.club-card-brand {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.club-card-brand span {
+  color: #38B6FF;
+}
+
+.club-card-brand small {
+  font-size: 0.72rem;
+  color: #FCD34D;
+  letter-spacing: 2px;
+  font-weight: 800;
+}
+
+.club-card-number {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.15rem;
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 1.5rem 0 1.25rem 0;
+}
+
+.club-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 1rem;
+}
+
+.club-card-label {
+  display: block;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.8px;
+  margin-bottom: 2px;
+}
+
+.club-card-val {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #FFFFFF;
 }
 
 /* ==========================================================================
@@ -2585,14 +2629,28 @@ img {
     max-width: 100% !important;
   }
 
-  .top-bar-left {
+  body {
+    padding-top: 58px !important;
+  }
+
+  /* Hide top utility bar on mobile so the header NEVER shifts or jumps when scrolling */
+  .top-utility-bar {
     display: none !important;
   }
 
-  .top-bar-right {
+  /* Permanently Fixed Header on Mobile: NEVER moves when scrolling */
+  .main-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
     width: 100% !important;
-    justify-content: center !important;
-    gap: 1.25rem !important;
+    z-index: 2000 !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid var(--border-light) !important;
+    box-shadow: 0 2px 10px rgba(10, 27, 64, 0.05) !important;
   }
 
   .header-container {
@@ -2632,7 +2690,7 @@ img {
     height: 40px !important;
   }
 
-  /* Full Screen Mobile Menu Panel */
+  /* Minimalist Full-Screen Mobile Drawer */
   .nav-links-menu {
     display: flex !important;
     position: fixed !important;
@@ -2641,20 +2699,21 @@ img {
     height: 100vh !important;
     height: 100dvh !important;
     background: rgba(255, 255, 255, 0.98) !important;
-    backdrop-filter: blur(25px) !important;
-    -webkit-backdrop-filter: blur(25px) !important;
+    backdrop-filter: blur(28px) !important;
+    -webkit-backdrop-filter: blur(28px) !important;
     flex-direction: column !important;
-    padding: 5.5rem 1.75rem 2.5rem !important;
+    justify-content: space-between !important;
+    padding: 5.5rem 2rem 2.5rem !important;
     box-shadow: none !important;
     border: none !important;
     gap: 0 !important;
-    z-index: 2050 !important;
+    z-index: 1900 !important;
     overflow-y: auto !important;
     opacity: 0 !important;
     visibility: hidden !important;
     pointer-events: none !important;
-    transform: translateY(-12px) !important;
-    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s !important;
+    transform: translateY(-8px) !important;
+    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s !important;
   }
 
   .nav-links-menu.mobile-active {
@@ -2665,84 +2724,93 @@ img {
   }
 
   .nav-links-menu .nav-link-item {
-    border-bottom: 1px solid rgba(15, 23, 42, 0.07);
-    width: 100%;
+    border: none !important;
+    width: 100% !important;
   }
 
   .nav-links-menu .nav-link-item a {
-    display: flex !important;
+    display: inline-flex !important;
     align-items: center !important;
-    justify-content: space-between !important;
-    padding: 1.05rem 0.25rem !important;
-    font-size: 1.15rem !important;
-    font-weight: 700 !important;
+    justify-content: flex-start !important;
+    padding: 0.6rem 0 !important;
+    font-size: 1.45rem !important;
+    font-weight: 800 !important;
+    font-family: var(--font-heading) !important;
     color: var(--navy-deep) !important;
+    letter-spacing: -0.5px !important;
     text-decoration: none !important;
-    transition: color 0.15s ease;
-  }
-
-  .nav-links-menu .nav-link-item a:hover {
-    color: var(--primary-blue) !important;
+    transition: color 0.15s ease, transform 0.15s ease !important;
   }
 
   .nav-links-menu .nav-link-item a::after {
-    content: '→';
-    font-size: 1.2rem;
-    color: var(--primary-blue);
-    opacity: 0.6;
-    transition: transform 0.2s ease;
+    display: none !important;
   }
 
-  .nav-links-menu .nav-link-item a:hover::after {
-    transform: translateX(4px);
+  .nav-links-menu .nav-link-item a:active {
+    color: var(--primary-pink) !important;
+    transform: translateX(4px) !important;
   }
 
-  /* Settings / Parameters block inside Full Screen Mobile Menu */
-  .mobile-menu-settings-box {
-    margin-top: 1.5rem;
-    padding: 1.25rem;
-    background: var(--sky-light);
-    border-radius: var(--radius-md);
-    border: 1px solid rgba(0, 115, 230, 0.12);
+  /* Minimalist Footer inside Mobile Drawer */
+  .mobile-menu-minimal-footer {
+    padding-top: 1.8rem !important;
+    border-top: 1px solid rgba(15, 23, 42, 0.08) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+    list-style: none !important;
+    margin-top: 1.5rem !important;
   }
 
-  .mobile-menu-settings-title {
-    font-size: 0.72rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--primary-blue);
-    margin-bottom: 0.85rem;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+  .minimal-currency-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    color: var(--text-muted) !important;
   }
 
-  .mobile-settings-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.75rem;
-    font-size: 0.85rem;
-    color: var(--navy-deep);
-    font-weight: 600;
+  .currency-pill-btn {
+    border: 1px solid rgba(10, 27, 64, 0.12) !important;
+    background: #FFFFFF !important;
+    color: var(--navy-deep) !important;
+    padding: 0.3rem 0.75rem !important;
+    border-radius: var(--radius-full) !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: all 0.15s ease !important;
   }
 
-  .mobile-settings-select {
-    padding: 0.35rem 0.75rem;
-    border-radius: var(--radius-xs);
-    border: 1px solid rgba(0, 115, 230, 0.25);
-    background: #FFFFFF;
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: var(--navy-deep);
+  .currency-pill-btn.active {
+    background: var(--navy-deep) !important;
+    color: #FFFFFF !important;
+    border-color: var(--navy-deep) !important;
   }
 
-  .mobile-menu-auth-btns {
-    display: flex;
-    flex-direction: column;
-    gap: 0.65rem;
-    margin-top: 1.25rem;
+  .minimal-auth-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 1rem !important;
+  }
+
+  .minimal-auth-link, .minimal-concierge-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+  }
+
+  .minimal-auth-link {
+    color: var(--primary-blue) !important;
+  }
+
+  .minimal-concierge-link {
+    color: #059669 !important;
   }
 
   .hero-section {
@@ -2765,16 +2833,16 @@ img {
     height: 280px !important;
   }
 
-  .hero-mascots-floating-card {
+  .hero-agency-badge {
     padding: 0.6rem 0.85rem !important;
     bottom: 10px !important;
     left: 10px !important;
     right: 10px !important;
   }
 
-  .mascot-thumb-img {
-    width: 44px !important;
-    height: 44px !important;
+  .agency-badge-icon {
+    width: 34px !important;
+    height: 34px !important;
   }
 
   .hero-stats-floating-badge {

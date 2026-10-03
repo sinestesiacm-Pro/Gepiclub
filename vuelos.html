@@ -52,31 +52,26 @@
           <li class="nav-link-item"><a href="paquetes.html">Paquetes</a></li>
           <li class="nav-link-item"><a href="cruceros.html">Cruceros</a></li>
           <li class="nav-link-item"><a href="excursiones.html">Excursiones</a></li>
+          <li class="nav-link-item"><a href="index.html#club-membership">Club de Socios</a></li>
           <li class="nav-link-item"><a href="index.html#commercial-offers">Servicios</a></li>
-          <li class="nav-link-item"><a href="index.html#club-membership">Membresía</a></li>
 
-          <!-- Mobile Parameters & Settings Section -->
-          <li class="mobile-menu-settings-box">
-            <div class="mobile-menu-settings-title">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-              Parámetros y Preferencias
+          <!-- Minimalist Bottom Footer -->
+          <li class="mobile-menu-minimal-footer">
+            <div class="minimal-currency-row">
+              <span class="minimal-label">Moneda:</span>
+              <button type="button" class="currency-pill-btn active" data-cur="USD" onclick="window.gepiApp.changeCurrency('USD')">USD ($)</button>
+              <button type="button" class="currency-pill-btn" data-cur="PEN" onclick="window.gepiApp.changeCurrency('PEN')">PEN (S/)</button>
+              <button type="button" class="currency-pill-btn" data-cur="EUR" onclick="window.gepiApp.changeCurrency('EUR')">EUR (€)</button>
             </div>
-            <div class="mobile-settings-row">
-              <span>Moneda</span>
-              <select class="mobile-settings-select" onchange="window.gepiApp.changeCurrency(this.value)">
-                <option value="USD">USD ($)</option>
-                <option value="PEN">PEN (S/)</option>
-                <option value="EUR">EUR (€)</option>
-                <option value="MXN">MXN ($)</option>
-              </select>
-            </div>
-            <div class="mobile-settings-row">
-              <span>Región</span>
-              <span style="font-size:0.8rem; font-weight:700; color:var(--primary-blue);">ES • Global / Latam</span>
-            </div>
-            <div class="mobile-menu-auth-btns">
-              <button class="btn btn-outline-navy btn-sm btn-block" onclick="window.gepiApp.openLoginModal('login')">Acceso Clientes</button>
-              <button class="btn btn-primary btn-sm btn-block" onclick="window.gepiApp.openLoginModal('register')">Membresía Club</button>
+            <div class="minimal-auth-row">
+              <a href="#" onclick="event.preventDefault(); window.gepiApp.openLoginModal('login');" class="minimal-auth-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                Acceso Socios
+              </a>
+              <a href="https://wa.me/51999999999" target="_blank" class="minimal-concierge-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                Concierge 24/7
+              </a>
             </div>
           </li>
         </ul>
