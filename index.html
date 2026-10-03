@@ -104,70 +104,73 @@
     </div>
   </header>
 
-  <!-- Hero Section (Clean & Airy without bottom search bar) -->
+  <!-- Hero Section (Atmospheric Luxury & Responsive) -->
   <section class="hero-section" id="hero-section">
     <div class="hero-background-decor"></div>
     <div class="container hero-grid">
-      <!-- Left Column: Inspiring Editorial Copy -->
+      <!-- Left Column: Inspiring High-End Agency Copy -->
       <div class="hero-text-content">
         <div class="hero-badge-pill">
           <span class="dot"></span>
-          <span>Agencia de Viajes &amp; Club de Beneficios</span>
+          <span>Agencia de Viajes Exclusiva • Concierge 24/7</span>
         </div>
 
         <h1 class="hero-main-title">
-          Más que viajes,
-          <span class="editorial-accent">experiencias de vida</span>
+          Viajes extraordinarios, <br>
+          <span class="hero-clean-accent">tarifas privilegiadas.</span>
         </h1>
 
-        <span class="hero-tagline-family">Familias que viven grandes historias</span>
-
         <p class="hero-description">
-          Vive más por menos. Diseñamos itinerarios a la medida con tarifas preferenciales en vuelos nacionales e internacionales, resorts 4 y 5 estrellas, paquetes todo incluido y concierge dedicado en cada paso.
+          Accede a vuelos en tiempo real, resorts 5 estrellas y paquetes a la medida con beneficios exclusivos de socio y asesoría personalizada en cada destino.
         </p>
 
         <div class="hero-cta-buttons">
           <button class="btn btn-primary" onclick="window.gepiApp.openHeaderSearch()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             Buscar Vuelos &amp; Hoteles
           </button>
-          <a href="vuelos.html" class="btn btn-outline-navy">
-            Ver Vuelos Disponibles
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </a>
+          <button class="btn btn-outline-glass" onclick="window.gepiApp.openAdvisorModal('Asesoría Especializada')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Hablar con Concierge
+          </button>
         </div>
 
-        <div class="hero-pillars-row">
-          <span>Explora</span>
-          <span class="bullet">•</span>
-          <span>Descubre</span>
-          <span class="bullet">•</span>
-          <span>Disfruta</span>
-          <span class="bullet">•</span>
-          <span>Vive Más</span>
+        <div class="hero-trust-metrics">
+          <div class="hero-trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Disponibilidad en Vivo</span>
+          </div>
+          <div class="hero-trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Tarifas Negociadas de Club</span>
+          </div>
+          <div class="hero-trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Emisión y Soporte 24/7</span>
+          </div>
         </div>
       </div>
 
-      <!-- Right Column: Family & Mascot Presentation -->
+      <!-- Right Column: Luxury Sunset Resort Presentation -->
       <div class="hero-media-showcase">
         <div class="hero-family-frame">
-          <img src="assets/images/hero-family.jpg" alt="Familia en resort de playa con Gepiclub">
-        </div>
+          <img src="assets/images/hero-luxury.jpg" alt="Resort de lujo frente al mar con piscina infinita al atardecer">
 
-        <!-- Floating Mascot Badge: Gepi & Kusi -->
-        <div class="hero-mascots-floating-card">
-          <img src="assets/images/mascots.jpg" alt="Mascotas Gepi y Kusi" class="mascot-thumb-img">
-          <div>
-            <div class="mascot-info-title">Gepi &amp; Kusi te acompañan</div>
-            <div class="mascot-info-sub">Tu próxima aventura empieza aquí</div>
-            <span class="mascot-luggage-tag">EXPLORA • DESCUBRE • DISFRUTA</span>
+          <!-- Floating Stat Badge (Cleanly inside frame) -->
+          <div class="hero-stats-floating-badge">
+            <div class="number">Hasta -40%</div>
+            <div class="label">Tarifas de Club</div>
           </div>
-        </div>
 
-        <!-- Floating Stat Badge -->
-        <div class="hero-stats-floating-badge">
-          <div class="number">Hasta -40%</div>
-          <div class="label">Tarifas Negociadas de Club</div>
+          <!-- Mascot Concierge Card (Cleanly inside frame at bottom) -->
+          <div class="hero-mascots-floating-card">
+            <img src="assets/images/mascots.jpg" alt="Mascotas Gepi y Kusi" class="mascot-thumb-img">
+            <div>
+              <div class="mascot-info-title">Gepi &amp; Kusi te acompañan</div>
+              <div class="mascot-info-sub">Tu próxima aventura empieza aquí</div>
+              <span class="mascot-luggage-tag">EXPLORA • DESCUBRE • DISFRUTA</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
