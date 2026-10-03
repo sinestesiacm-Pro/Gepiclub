@@ -722,10 +722,11 @@ class SearchEngine {
               <div class="club-amount">${symbol} ${clubPrice.toLocaleString()}</div>
               <span class="club-savings-alert">Ahorro: ${symbol} ${savings.toLocaleString()} / noche</span>
             </div>
-            <button class="btn btn-primary btn-block mt-2" onclick="window.gepiSearchEngine.openBookingModal('hotel', '${hotel.id}')">
+            <button class="btn btn-primary btn-block" onclick="window.gepiSearchEngine.openBookingModal('hotel', '${hotel.id}')">
               Reservar Tarifa
             </button>
-            <button class="btn btn-outline-navy btn-sm btn-block mt-1" onclick="window.gepiApp.openWhatsAppInquiry('Hotel: ${hotel.name}')">
+            <button class="btn btn-outline-navy btn-block" onclick="window.gepiApp.openWhatsAppInquiry('Hotel: ${hotel.name}')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-inline"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
               Consultar con Asesor
             </button>
           </div>
@@ -778,10 +779,11 @@ class SearchEngine {
               <div class="club-amount">${symbol} ${clubPrice.toLocaleString()}</div>
               <span class="club-savings-alert">Ahorro: ${symbol} ${savings.toLocaleString()}</span>
             </div>
-            <button class="btn btn-primary btn-block mt-2" onclick="window.gepiSearchEngine.openBookingModal('paquete', '${pkg.id}')">
+            <button class="btn btn-primary btn-block" onclick="window.gepiSearchEngine.openBookingModal('paquete', '${pkg.id}')">
               Reservar Paquete
             </button>
-            <button class="btn btn-outline-navy btn-sm btn-block mt-1" onclick="window.gepiApp.openWhatsAppInquiry('Paquete: ${pkg.title}')">
+            <button class="btn btn-outline-navy btn-block" onclick="window.gepiApp.openWhatsAppInquiry('Paquete: ${pkg.title}')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-inline"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
               Itinerario a Medida
             </button>
           </div>
@@ -834,10 +836,11 @@ class SearchEngine {
               <div class="club-amount">${symbol} ${clubPrice.toLocaleString()}</div>
               <span class="club-savings-alert">Ahorro: ${symbol} ${savings.toLocaleString()}</span>
             </div>
-            <button class="btn btn-primary btn-block mt-2" onclick="window.gepiSearchEngine.openBookingModal('crucero', '${cr.id}')">
+            <button class="btn btn-primary btn-block" onclick="window.gepiSearchEngine.openBookingModal('crucero', '${cr.id}')">
               Reservar Cabina
             </button>
-            <button class="btn btn-outline-navy btn-sm btn-block mt-1" onclick="window.gepiApp.openWhatsAppInquiry('Crucero: ${cr.name}')">
+            <button class="btn btn-outline-navy btn-block" onclick="window.gepiApp.openWhatsAppInquiry('Crucero: ${cr.name}')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-inline"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
               Consultar con Naviera
             </button>
           </div>
@@ -892,10 +895,11 @@ class SearchEngine {
               <div class="club-amount">${symbol} ${clubPrice.toLocaleString()}</div>
               <span class="club-savings-alert">Ahorro: ${symbol} ${savings.toLocaleString()}</span>
             </div>
-            <button class="btn btn-primary btn-block mt-2" onclick="window.gepiSearchEngine.openBookingModal('tour', '${tour.id}')">
+            <button class="btn btn-primary btn-block" onclick="window.gepiSearchEngine.openBookingModal('tour', '${tour.id}')">
               Reservar Excursión
             </button>
-            <button class="btn btn-outline-navy btn-sm btn-block mt-1" onclick="window.gepiApp.openWhatsAppInquiry('Tour: ${tour.title}')">
+            <button class="btn btn-outline-navy btn-block" onclick="window.gepiApp.openWhatsAppInquiry('Tour: ${tour.title}')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-inline"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
               Consultar con Guía
             </button>
           </div>

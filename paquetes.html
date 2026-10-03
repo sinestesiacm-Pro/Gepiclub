@@ -54,6 +54,31 @@
           <li class="nav-link-item"><a href="excursiones.html">Excursiones</a></li>
           <li class="nav-link-item"><a href="index.html#commercial-offers">Servicios</a></li>
           <li class="nav-link-item"><a href="index.html#club-membership">Membresía</a></li>
+
+          <!-- Mobile Parameters & Settings Section -->
+          <li class="mobile-menu-settings-box">
+            <div class="mobile-menu-settings-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              Parámetros y Preferencias
+            </div>
+            <div class="mobile-settings-row">
+              <span>Moneda</span>
+              <select class="mobile-settings-select" onchange="window.gepiApp.changeCurrency(this.value)">
+                <option value="USD">USD ($)</option>
+                <option value="PEN">PEN (S/)</option>
+                <option value="EUR">EUR (€)</option>
+                <option value="MXN">MXN ($)</option>
+              </select>
+            </div>
+            <div class="mobile-settings-row">
+              <span>Región</span>
+              <span style="font-size:0.8rem; font-weight:700; color:var(--primary-blue);">ES • Global / Latam</span>
+            </div>
+            <div class="mobile-menu-auth-btns">
+              <button class="btn btn-outline-navy btn-sm btn-block" onclick="window.gepiApp.openLoginModal('login')">Acceso Clientes</button>
+              <button class="btn btn-primary btn-sm btn-block" onclick="window.gepiApp.openLoginModal('register')">Membresía Club</button>
+            </div>
+          </li>
         </ul>
       </nav>
 
@@ -65,15 +90,17 @@
           <button class="btn btn-outline-navy btn-sm" onclick="window.gepiApp.openLoginModal('login')">Acceso Clientes</button>
           <button class="btn btn-primary btn-sm" onclick="window.gepiApp.openLoginModal('register')">Membresía Club</button>
         </div>
-        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menú">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir Menú">
+          <span class="hamburger-bar bar-1"></span>
+          <span class="hamburger-bar bar-2"></span>
+          <span class="hamburger-bar bar-3"></span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Banner -->
-  <section class="page-header-banner">
+  <!-- Banner with rich tropical photography -->
+  <section class="page-header-banner banner-paquetes">
     <div class="container page-header-content">
       <span class="page-header-badge">Itinerarios Completos Llave en Mano</span>
       <h1 class="page-header-title">Paquetes Vacacionales Todo Incluido</h1>
@@ -83,10 +110,18 @@
     </div>
   </section>
 
-  <!-- Filter & Search Console -->
+  <!-- Filter & Search Console (Retractable on Mobile) -->
   <section class="page-search-wrapper container">
+    <button class="mobile-filter-bar-toggle" id="mobile-filter-toggle" onclick="window.gepiApp.toggleMobileFilters()" aria-label="Modificar Paquetes">
+      <div class="toggle-left">
+        <span class="toggle-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg></span>
+        <span class="filter-summary-text">Filtrar Destinos &amp; Presupuesto</span>
+        <span class="toggle-badge">Filtros</span>
+      </div>
+      <span class="toggle-chevron">▾</span>
+    </button>
     <div class="search-card-box">
-      <form id="package-filter-form" onsubmit="event.preventDefault(); window.gepiSearchEngine.renderPackageCards();">
+      <form id="package-filter-form" onsubmit="event.preventDefault(); window.gepiSearchEngine.renderPackageCards(); window.gepiApp.toggleMobileFilters();">
         <div class="search-form-grid">
           <div class="form-group" style="grid-column: span 3;">
             <label class="form-label" for="package-destination-select">Destino del Paquete</label>

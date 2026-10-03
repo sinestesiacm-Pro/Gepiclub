@@ -55,7 +55,7 @@
         </div>
       </a>
 
-      <!-- Navigation Links Menu (Dedicated Pages) -->
+      <!-- Navigation Links Menu (Dedicated Pages + Mobile Fullscreen Drawer) -->
       <nav aria-label="Navegación principal">
         <ul class="nav-links-menu" id="nav-links-menu">
           <li class="nav-link-item"><a href="vuelos.html">Vuelos</a></li>
@@ -65,6 +65,31 @@
           <li class="nav-link-item"><a href="excursiones.html">Excursiones</a></li>
           <li class="nav-link-item"><a href="#commercial-offers">Servicios</a></li>
           <li class="nav-link-item"><a href="#club-membership">Membresía</a></li>
+
+          <!-- Mobile Parameters & Settings Section -->
+          <li class="mobile-menu-settings-box">
+            <div class="mobile-menu-settings-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              Parámetros y Preferencias
+            </div>
+            <div class="mobile-settings-row">
+              <span>Moneda</span>
+              <select class="mobile-settings-select" onchange="window.gepiApp.changeCurrency(this.value)">
+                <option value="USD">USD ($)</option>
+                <option value="PEN">PEN (S/)</option>
+                <option value="EUR">EUR (€)</option>
+                <option value="MXN">MXN ($)</option>
+              </select>
+            </div>
+            <div class="mobile-settings-row">
+              <span>Región</span>
+              <span style="font-size:0.8rem; font-weight:700; color:var(--primary-blue);">ES • Global / Latam</span>
+            </div>
+            <div class="mobile-menu-auth-btns">
+              <button class="btn btn-outline-navy btn-sm btn-block" onclick="window.gepiApp.openLoginModal('login')">Acceso Clientes</button>
+              <button class="btn btn-primary btn-sm btn-block" onclick="window.gepiApp.openLoginModal('register')">Membresía Club</button>
+            </div>
+          </li>
         </ul>
       </nav>
 
@@ -92,13 +117,11 @@
           </button>
         </div>
 
-        <!-- Mobile Menu Toggle Button -->
-        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menú">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
+        <!-- Mobile Menu Toggle Button (Animated Morph to 'X') -->
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir Menú">
+          <span class="hamburger-bar bar-1"></span>
+          <span class="hamburger-bar bar-2"></span>
+          <span class="hamburger-bar bar-3"></span>
         </button>
       </div>
     </div>
@@ -723,7 +746,10 @@
     <div class="container footer-grid">
       <!-- Col 1: Brand Info -->
       <div class="footer-brand-col">
-        <div class="brand-text-name text-white">Gepi<span style="color:#38B6FF">club</span> <span style="font-size:0.9rem; color:#FFF">Travel</span></div>
+        <div class="footer-logo-row">
+          <img src="assets/images/logo.jpg" alt="Logo Gepiclub" class="footer-logo-img">
+          <span class="footer-logo-title">Gepiclub <span>Travel</span></span>
+        </div>
         <p>
           Tu agencia de viajes y club de beneficios en todo el Perú y el mundo. Transformamos la manera en que viajas a través de tarifas preferenciales, tecnología de vanguardia y concierge dedicado.
         </p>

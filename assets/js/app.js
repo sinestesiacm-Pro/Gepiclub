@@ -152,12 +152,23 @@ class GepiApp {
       });
     });
 
-    // Mobile Hamburger
+    // Mobile Hamburger (Morphs into 'X') & Full Screen Drawer
     const mobileMenuBtn = document.getElementById('mobile-menu-toggle');
     const navLinks = document.getElementById('nav-links-menu');
     if (mobileMenuBtn && navLinks) {
       mobileMenuBtn.addEventListener('click', () => {
+        const isOpen = mobileMenuBtn.classList.toggle('active');
         navLinks.classList.toggle('mobile-active');
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      });
+
+      // Close full-screen menu when clicking any nav link
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenuBtn.classList.remove('active');
+          navLinks.classList.remove('mobile-active');
+          document.body.style.overflow = '';
+        });
       });
     }
 
@@ -299,6 +310,20 @@ class GepiApp {
   closeModal(modalId) {
     const m = document.getElementById(modalId);
     if (m) m.classList.remove('active');
+  }
+
+  toggleMobileFilters() {
+    const toggleBtn = document.getElementById('mobile-filter-toggle');
+    const searchCard = document.querySelector('.page-search-wrapper .search-card-box');
+    if (!searchCard) return;
+    const isOpen = searchCard.classList.toggle('is-open');
+    if (toggleBtn) {
+      toggleBtn.classList.toggle('is-open', isOpen);
+      const text = toggleBtn.querySelector('.filter-summary-text');
+      if (text) {
+        text.textContent = isOpen ? 'Ocultar Filtros' : 'Modificar Búsqueda & Filtros';
+      }
+    }
   }
 
   setupAuthObserver() {
