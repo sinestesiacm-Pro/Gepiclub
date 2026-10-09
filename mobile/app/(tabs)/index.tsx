@@ -330,7 +330,7 @@ export default function FlightsScreen() {
                 })
               }
               activeOpacity={0.9}>
-              <Image source={require('@/assets/images/cancun-resort.jpg')} style={styles.miniCardImage} />
+              <Image source={require('@/assets/images/hotel-suite.jpg')} style={styles.miniCardImage} />
               <View style={styles.miniCardBadge}>
                 <Text style={styles.miniCardBadgeText}>COSMETICA</Text>
               </View>

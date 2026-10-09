@@ -65,7 +65,7 @@ export default function ServiceDetailScreen() {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     }
     router.push({
-      pathname: '/checkout/index',
+      pathname: '/checkout' as any,
       params: {
         serviceId: service.id,
         optionId: selectedOption?.id,

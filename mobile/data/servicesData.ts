@@ -231,7 +231,7 @@ export const SERVICES_CATALOG: ServiceItem[] = [
     location: 'Treviso / Riviera del Brenta',
     rating: 4.8,
     reviewsCount: 175,
-    image: require('@/assets/images/cancun-resort.jpg'),
+    image: require('@/assets/images/hero-luxury.jpg'),
     shortDescription: 'Campi panoramici coperti di ultima generazione con lounge riservata.',
     fullDescription:
       'Un ambiente raffinato e riservato per gli amanti del Padel e del Tennis. Campi con vetri panoramici senza montanti, illuminazione LED antiriflesso, maestri federali per lezioni private e club house esclusiva con ristorante.',
