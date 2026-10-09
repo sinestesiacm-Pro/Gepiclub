@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Linking,
+  Platform,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -27,7 +28,7 @@ export function HeaderBrand({ showConcierge = true }: HeaderBrandProps) {
       style={[
         styles.headerContainer,
         {
-          paddingTop: Math.max(insets.top, 44) + 6,
+          paddingTop: Platform.OS === 'android' ? 10 : Math.max(insets.top, 44) + 6,
         },
       ]}>
       {/* Brand row: Isotype + Code Text */}

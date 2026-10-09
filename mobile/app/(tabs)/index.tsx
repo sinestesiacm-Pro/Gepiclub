@@ -16,52 +16,68 @@ import * as Haptics from 'expo-haptics';
 
 import { BrandColors } from '@/constants/Colors';
 import { HeaderBrand } from '@/components/HeaderBrand';
+import { DestinationBannerCard } from '@/components/DestinationBannerCard';
 
 const POPULAR_ROUTES = [
   {
     id: '1',
-    fromCode: 'VCE',
-    fromCity: 'Venezia',
-    toCode: 'LIM',
-    toCity: 'Lima',
-    airline: 'LATAM • Iberia',
-    duration: '14h 20m • 1 scalo',
-    classType: 'Business Class',
-    standardPrice: '€1.290',
-    vipPrice: '€980',
-    discount: '-24%',
-    tag: 'Rotta Consigliata',
+    category: 'Vuelos',
+    city: 'Madrid',
+    image: require('@/assets/images/madrid.jpg'),
+    discountText: 'de descuento',
+    disclaimer: '*Iberia & Air Europa Business',
+    price: '€580',
     serviceId: 'volo-business-vce-lim',
   },
   {
     id: '2',
-    fromCode: 'FCO',
-    fromCity: 'Roma',
-    toCode: 'MIA',
-    toCity: 'Miami',
-    airline: 'ITA Airways',
-    duration: '10h 45m • Diretto',
-    classType: 'Business Class',
-    standardPrice: '€1.450',
-    vipPrice: '€1.120',
-    discount: '-23%',
-    tag: 'Volo Diretto',
+    category: 'Vuelos',
+    city: 'Miami',
+    image: require('@/assets/images/caribbean-resort.jpg'),
+    discountText: 'de descuento',
+    disclaimer: '*volo diretto ITA Airways',
+    price: '€690',
     serviceId: 'volo-business-vce-lim',
   },
   {
     id: '3',
-    fromCode: 'LIM',
-    fromCity: 'Lima',
-    toCode: 'CUZ',
-    toCity: 'Cusco',
-    airline: 'LATAM Airlines',
-    duration: '1h 15m • Diretto',
-    classType: 'Premium Economy',
-    standardPrice: '$165',
-    vipPrice: '$110',
-    discount: '-33%',
-    tag: 'Ande & Machu Picchu',
-    serviceId: 'sanctuary-lodge',
+    category: 'Vuelos',
+    city: 'Lima',
+    image: require('@/assets/images/machu-picchu.jpg'),
+    discountText: 'de descuento',
+    disclaimer: '*LATAM Airlines VIP Class',
+    price: '€890',
+    serviceId: 'volo-business-vce-lim',
+  },
+  {
+    id: '4',
+    category: 'Vuelos',
+    city: 'Cancún',
+    image: require('@/assets/images/cancun-resort.jpg'),
+    discountText: 'de descuento',
+    disclaimer: '*tariffe privilegiate per soci',
+    price: '€640',
+    serviceId: 'volo-business-vce-lim',
+  },
+  {
+    id: '5',
+    category: 'Vuelos',
+    city: 'Cartagena',
+    image: require('@/assets/images/cruise.jpg'),
+    discountText: 'de descuento',
+    disclaimer: '*collegamento via Bogotà VIP',
+    price: '€720',
+    serviceId: 'volo-business-vce-lim',
+  },
+  {
+    id: '6',
+    category: 'Vuelos',
+    city: 'Punta Cana',
+    image: require('@/assets/images/hotel-suite.jpg'),
+    discountText: 'de descuento',
+    disclaimer: '*resort charter incluso',
+    price: '€780',
+    serviceId: 'volo-business-vce-lim',
   },
 ];
 
@@ -348,73 +364,31 @@ export default function FlightsScreen() {
 
         {/* Recommended Flight Deals Header */}
         <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Rotte Esclusive del Club</Text>
-          <Text style={styles.sectionSubtitle}>Tariffe preferenziali con sconti fino al 35%</Text>
+          <Text style={styles.sectionTitle}>Vuelos Sugeridos & Destinos del Club</Text>
+          <Text style={styles.sectionSubtitle}>Tariffe preferenziali con sconti fino al 40%</Text>
         </View>
 
-        {/* Route Cards */}
-        {POPULAR_ROUTES.map((route) => (
-          <TouchableOpacity
-            key={route.id}
-            style={styles.routeCard}
-            onPress={() =>
-              router.push({
-                pathname: '/service/[id]',
-                params: { id: route.serviceId },
-              })
-            }
-            activeOpacity={0.92}>
-            <View style={styles.routeCardHeader}>
-              <View style={styles.routeTagPill}>
-                <Text style={styles.routeTagText}>{route.tag}</Text>
-              </View>
-              <Text style={styles.airlineText}>{route.airline}</Text>
-            </View>
-
-            <View style={styles.routeCardBody}>
-              <View style={styles.routeCardSegment}>
-                <Text style={styles.routeCardCode}>{route.fromCode}</Text>
-                <Text style={styles.routeCardCity}>{route.fromCity}</Text>
-              </View>
-
-              <View style={styles.routeDurationBox}>
-                <Ionicons name="airplane" size={15} color={BrandColors.primaryBlue} />
-                <View style={styles.routeDurationLine} />
-                <Text style={styles.routeDurationText}>{route.duration}</Text>
-              </View>
-
-              <View style={[styles.routeCardSegment, { alignItems: 'flex-end' }]}>
-                <Text style={styles.routeCardCode}>{route.toCode}</Text>
-                <Text style={styles.routeCardCity}>{route.toCity}</Text>
-              </View>
-            </View>
-
-            <View style={styles.routeCardFooter}>
-              <View>
-                <Text style={styles.standardPriceText}>Tariffa pubblica {route.standardPrice}</Text>
-                <View style={styles.vipPriceRow}>
-                  <Text style={styles.vipPriceText}>{route.vipPrice}</Text>
-                  <View style={styles.discountBadge}>
-                    <Text style={styles.discountBadgeText}>{route.discount}</Text>
-                  </View>
-                </View>
-              </View>
-
-              <TouchableOpacity
-                style={styles.selectRouteBtn}
-                onPress={() =>
-                  router.push({
-                    pathname: '/service/[id]',
-                    params: { id: route.serviceId },
-                  })
-                }
-                activeOpacity={0.8}>
-                <Text style={styles.selectRouteBtnText}>Vedi Volo</Text>
-                <Ionicons name="chevron-forward" size={13} color={BrandColors.primaryBlue} />
-              </TouchableOpacity>
-            </View>
-          </TouchableOpacity>
-        ))}
+        {/* Route Cards (Screenshot 3 Full-Bleed Luxury Banner Style) */}
+        <View style={{ marginTop: 6 }}>
+          {POPULAR_ROUTES.map((route) => (
+            <DestinationBannerCard
+              key={route.id}
+              category={route.category || 'Vuelos'}
+              categoryIcon="airplane"
+              destination={route.city}
+              image={route.image}
+              discountText={route.discountText}
+              disclaimer={route.disclaimer}
+              price={route.price}
+              onPress={() =>
+                router.push({
+                  pathname: '/service/[id]',
+                  params: { id: route.serviceId },
+                })
+              }
+            />
+          ))}
+        </View>
       </ScrollView>
     </View>
   );

@@ -3,6 +3,7 @@ import { DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
+import { Platform, StatusBar as RNStatusBar } from 'react-native';
 import 'react-native-reanimated';
 
 import { AuthProvider } from '@/context/AuthContext';
@@ -24,6 +25,15 @@ export default function RootLayout() {
   const [loaded, error] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
+
+  // Configure Android status bar color to seamlessly match white header
+  useEffect(() => {
+    if (Platform.OS === 'android') {
+      RNStatusBar.setBackgroundColor('#FFFFFF');
+      RNStatusBar.setBarStyle('dark-content');
+      RNStatusBar.setTranslucent(false);
+    }
+  }, []);
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {

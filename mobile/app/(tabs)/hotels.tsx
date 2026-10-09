@@ -19,6 +19,7 @@ import * as Haptics from 'expo-haptics';
 
 import { BrandColors } from '@/constants/Colors';
 import { HeaderBrand } from '@/components/HeaderBrand';
+import { DestinationBannerCard } from '@/components/DestinationBannerCard';
 
 const CATEGORIES = ['Tutti', '5★ Lusso', 'Vista Mare', 'Resort & Spa', 'All-Inclusive'];
 
@@ -26,58 +27,74 @@ const HOTELS_DATA = [
   {
     id: '1',
     serviceId: 'hotel-cipriani',
-    name: 'Belmond Hotel Cipriani',
-    location: 'Isola della Giudecca, Venezia',
-    rating: '5.0',
-    reviews: '482 recensioni',
-    image: require('@/assets/images/hotel-suite.jpg'),
-    perks: ['Upgrade Gratuito', 'Colazione Gourmet', '$100 Spa Credit'],
-    regularPrice: '€1.150',
-    vipPrice: '€890',
-    discount: '-23%',
-    featured: true,
+    category: 'Hoteles',
+    city: 'Madrid',
+    name: 'Mandarin Oriental Ritz & Four Seasons',
+    location: 'Madrid, España',
+    image: require('@/assets/images/madrid.jpg'),
+    discountText: 'de descuento',
+    disclaimer: '*aplica en hoteles seleccionados',
+    price: '€280',
   },
   {
     id: '2',
-    serviceId: 'sanctuary-lodge',
-    name: 'Sanctuary Lodge, A Belmond Hotel',
-    location: 'Machu Picchu, Perù',
-    rating: '4.9',
-    reviews: '310 recensioni',
-    image: require('@/assets/images/machu-picchu.jpg'),
-    perks: ['Accesso Esclusivo Rovine', 'Pensione Completa', 'Guida Privata'],
-    regularPrice: '$980',
-    vipPrice: '$740',
-    discount: '-25%',
-    featured: false,
+    serviceId: 'cancun-resort',
+    category: 'Hoteles',
+    city: 'Miami',
+    name: 'Faena Hotel & 1 Hotel South Beach',
+    location: 'Miami Beach, USA',
+    image: require('@/assets/images/caribbean-resort.jpg'),
+    discountText: 'de descuento',
+    disclaimer: '*aplica en hoteles seleccionados',
+    price: '$340',
   },
   {
     id: '3',
-    serviceId: 'virgin-active-collection',
-    name: 'Virgin Active Collection Club & Spa',
-    location: 'Venezia Mestre / Padova / Milano',
-    rating: '4.9',
-    reviews: '390 recensioni',
-    image: require('@/assets/images/hero-luxury.jpg'),
-    perks: ['Pass Open VIP', '2 Sedute PT Incluse', 'Accesso Spa & Sauna'],
-    regularPrice: '€230',
-    vipPrice: '€160',
-    discount: '-30%',
-    featured: false,
+    serviceId: 'sanctuary-lodge',
+    category: 'Hoteles',
+    city: 'Lima',
+    name: 'Miraflores Park & Country Club Lima',
+    location: 'Lima, Perú',
+    image: require('@/assets/images/machu-picchu.jpg'),
+    discountText: 'de descuento',
+    disclaimer: '*aplica en hoteles seleccionados',
+    price: '$180',
   },
   {
     id: '4',
-    serviceId: 'sartoria-veneta',
-    name: 'Atelier Sartoria Veneta Bespoke',
-    location: 'Venezia / Verona / Milano',
-    rating: '5.0',
-    reviews: '140 recensioni',
-    image: require('@/assets/images/madrid.jpg'),
-    perks: ['Misura a Domicilio', 'Tessuto Loro Piana', 'Camicia Giza Inclusa'],
-    regularPrice: '€1.950',
-    vipPrice: '€1.400',
-    discount: '-28%',
-    featured: false,
+    serviceId: 'cancun-resort',
+    category: 'Hoteles',
+    city: 'Cancún',
+    name: 'Grand Fiesta Americana Coral Beach',
+    location: 'Cancún, México',
+    image: require('@/assets/images/cancun-resort.jpg'),
+    discountText: 'de descuento',
+    disclaimer: '*aplica en hoteles seleccionados',
+    price: '$290',
+  },
+  {
+    id: '5',
+    serviceId: 'caribbean-luxury',
+    category: 'Hoteles',
+    city: 'Cartagena',
+    name: 'Sofitel Legend Santa Clara & Bastión',
+    location: 'Cartagena de Indias, Colombia',
+    image: require('@/assets/images/cruise.jpg'),
+    discountText: 'de descuento',
+    disclaimer: '*aplica en hoteles seleccionados',
+    price: '$210',
+  },
+  {
+    id: '6',
+    serviceId: 'hotel-cipriani',
+    category: 'Hoteles',
+    city: 'Punta Cana',
+    name: 'Eden Roc Cap Cana & Tortuga Bay',
+    location: 'Punta Cana, Rep. Dominicana',
+    image: require('@/assets/images/hotel-suite.jpg'),
+    discountText: 'de descuento',
+    disclaimer: '*aplica en hoteles seleccionados',
+    price: '$380',
   },
 ];
 
@@ -185,89 +202,22 @@ export default function HotelsScreen() {
           <Ionicons name="chevron-forward" size={18} color={BrandColors.navyDeep} />
         </TouchableOpacity>
 
-        {/* Hotel Cards List */}
-        {HOTELS_DATA.map((hotel) => (
-          <TouchableOpacity
-            key={hotel.id}
-            style={styles.hotelCard}
-            onPress={() => handleSelectService(hotel.serviceId)}
-            activeOpacity={0.92}>
-            <View style={styles.imageContainer}>
-              <Image source={hotel.image} style={styles.hotelImage} resizeMode="cover" />
-              <LinearGradient
-                colors={['rgba(0,0,0,0.3)', 'transparent', 'rgba(10, 27, 64, 0.75)']}
-                style={styles.imageGradient}
-              />
-
-              {/* Badges on Image */}
-              <View style={styles.imageTopRow}>
-                {hotel.featured ? (
-                  <View style={styles.featuredBadge}>
-                    <Text style={styles.featuredBadgeText}>SELEZIONE DIAMANTE</Text>
-                  </View>
-                ) : (
-                  <View style={styles.emptyBadge} />
-                )}
-
-                <View style={styles.ratingBadge}>
-                  <Ionicons name="star" size={12} color={BrandColors.goldVip} />
-                  <Text style={styles.ratingText}>{hotel.rating}</Text>
-                </View>
-              </View>
-
-              {/* Location Tag */}
-              <View style={styles.imageBottomRow}>
-                <View style={styles.locationPill}>
-                  <Ionicons name="location-sharp" size={12} color="#FFFFFF" />
-                  <Text style={styles.locationText}>{hotel.location}</Text>
-                </View>
-              </View>
-            </View>
-
-            {/* Hotel Card Details */}
-            <View style={styles.cardContent}>
-              <Text style={styles.hotelName}>{hotel.name}</Text>
-
-              {/* Perks Row */}
-              <View style={styles.perksList}>
-                {hotel.perks.map((perk, index) => (
-                  <View key={index} style={styles.perkChip}>
-                    <Ionicons name="checkmark-circle" size={12} color={BrandColors.goldVip} />
-                    <Text style={styles.perkChipText}>{perk}</Text>
-                  </View>
-                ))}
-              </View>
-
-              {/* Price & Booking Button */}
-              <View style={styles.cardFooter}>
-                <View>
-                  <Text style={styles.regularPriceText}>Tariffa pubblica {hotel.regularPrice}</Text>
-                  <View style={styles.vipPriceContainer}>
-                    <Text style={styles.vipPrice}>{hotel.vipPrice}</Text>
-                    <Text style={styles.nightText}>/ quota</Text>
-                    <View style={styles.discountPill}>
-                      <Text style={styles.discountText}>{hotel.discount}</Text>
-                    </View>
-                  </View>
-                </View>
-
-                <TouchableOpacity
-                  style={styles.bookButton}
-                  onPress={() => handleSelectService(hotel.serviceId)}
-                  activeOpacity={0.88}>
-                  <LinearGradient
-                    colors={[BrandColors.primaryBlue, BrandColors.navyDeep]}
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 1, y: 0 }}
-                    style={styles.bookGradient}>
-                    <Text style={styles.bookButtonText}>Vedi Dettagli</Text>
-                    <Ionicons name="arrow-forward" size={13} color="#FFFFFF" style={{ marginLeft: 4 }} />
-                  </LinearGradient>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </TouchableOpacity>
-        ))}
+        {/* Hotel Cards List (Screenshot 3 Full-Bleed Luxury Banner Style) */}
+        <View style={{ marginTop: 6 }}>
+          {HOTELS_DATA.map((hotel) => (
+            <DestinationBannerCard
+              key={hotel.id}
+              category={hotel.category}
+              categoryIcon="bed-outline"
+              destination={hotel.city}
+              image={hotel.image}
+              discountText={hotel.discountText}
+              disclaimer={hotel.disclaimer}
+              price={hotel.price}
+              onPress={() => handleSelectService(hotel.serviceId)}
+            />
+          ))}
+        </View>
       </ScrollView>
     </View>
   );
