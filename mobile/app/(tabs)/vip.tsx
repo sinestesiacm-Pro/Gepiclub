@@ -9,12 +9,14 @@ import {
   Platform,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Haptics from 'expo-haptics';
 
 import { BrandColors } from '@/constants/Colors';
 import { HeaderBrand } from '@/components/HeaderBrand';
+import { useAuth } from '@/context/AuthContext';
 
 const PRIVILEGES = [
   {
@@ -46,13 +48,25 @@ const PRIVILEGES = [
 
 export default function VipClubScreen() {
   const insets = useSafeAreaInsets();
+  const router = useRouter();
+  const { profile, user } = useAuth();
+
+  const cardHolder =
+    profile?.full_name?.toUpperCase() ||
+    (user?.email ? user.email.split('@')[0].toUpperCase() : 'LUCA');
+  const cardNumber = profile?.vip_card_number || '••••  ••••  ••••  8829';
+  const cardTier = profile?.membership_tier === 'GOLD_VIP' ? 'GOLD VIP' : 'BLACK ELITE';
+  const points = (profile?.club_points ?? 42500).toLocaleString('it-IT');
+  const creditValue = Math.round((profile?.club_points ?? 42500) * 0.02);
 
   const handleOpenWhatsApp = () => {
     if (Platform.OS === 'ios') {
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     }
     Linking.openURL(
-      'https://wa.me/51999999999?text=Salve%20Concierge%20Gepiclub,%20sono%20il%20socio%20Luca%20(ID:%20GP-8829-VIP).%20Desidero%20assistenza%20per%20un%20viaggio.'
+      `https://wa.me/51999999999?text=Salve%20Concierge%20Gepiclub,%20sono%20il%20socio%20${encodeURIComponent(
+        cardHolder
+      )}%20(ID:%20${encodeURIComponent(cardNumber)}).%20Desidero%20assistenza%20per%20un%20viaggio.`
     );
   };
 
@@ -94,7 +108,7 @@ export default function VipClubScreen() {
           <View style={styles.cardTopRow}>
             <View style={styles.cardBrandBadge}>
               <Text style={styles.cardBrandText}>GEPICLUB</Text>
-              <Text style={styles.cardTierText}>BLACK ELITE</Text>
+              <Text style={styles.cardTierText}>{cardTier}</Text>
             </View>
 
             <View style={styles.cardChip}>
@@ -103,20 +117,20 @@ export default function VipClubScreen() {
           </View>
 
           <View style={styles.cardNumberBox}>
-            <Text style={styles.cardNumber}>••••  ••••  ••••  8829</Text>
+            <Text style={styles.cardNumber}>{cardNumber}</Text>
           </View>
 
           <View style={styles.cardBottomRow}>
             <View>
               <Text style={styles.cardLabel}>TITOLARE CARTA</Text>
-              <Text style={styles.cardHolderName}>LUCA</Text>
+              <Text style={styles.cardHolderName}>{cardHolder}</Text>
             </View>
 
             <View style={{ alignItems: 'flex-end' }}>
               <Text style={styles.cardLabel}>STATUS</Text>
               <View style={styles.statusPill}>
                 <View style={styles.statusDot} />
-                <Text style={styles.statusText}>SOCIO FONDATORE</Text>
+                <Text style={styles.statusText}>SOCIO ATTIVO</Text>
               </View>
             </View>
           </View>
@@ -128,13 +142,21 @@ export default function VipClubScreen() {
             <Text style={styles.balanceLabel}>SALDO PUNTI GEPICLUB</Text>
             <View style={styles.balanceRow}>
               <Ionicons name="sparkles" size={20} color={BrandColors.goldVip} />
-              <Text style={styles.balanceValue}>42.500</Text>
+              <Text style={styles.balanceValue}>{points}</Text>
               <Text style={styles.balanceCurrency}>pts</Text>
             </View>
-            <Text style={styles.balanceCredit}>Valore stimato: €850 di crediti viaggio</Text>
+            <Text style={styles.balanceCredit}>Valore stimato: €{creditValue} di crediti viaggio</Text>
           </View>
 
-          <TouchableOpacity style={styles.redeemBtn} activeOpacity={0.8}>
+          <TouchableOpacity
+            style={styles.redeemBtn}
+            onPress={() => {
+              if (Platform.OS === 'ios') {
+                Haptics.selectionAsync();
+              }
+              router.push('/marketplace');
+            }}
+            activeOpacity={0.8}>
             <Text style={styles.redeemBtnText}>Usa Punti</Text>
             <Ionicons name="arrow-forward" size={13} color={BrandColors.primaryBlue} />
           </TouchableOpacity>
@@ -180,6 +202,33 @@ export default function VipClubScreen() {
             </View>
           </LinearGradient>
         </View>
+
+        {/* Marketplace VIP Banner */}
+        <TouchableOpacity
+          style={styles.vipMarketBanner}
+          onPress={() => {
+            if (Platform.OS === 'ios') {
+              Haptics.selectionAsync();
+            }
+            router.push('/marketplace');
+          }}
+          activeOpacity={0.88}>
+          <View style={styles.vipMarketIconBox}>
+            <Ionicons name="storefront" size={20} color={BrandColors.goldDark} />
+          </View>
+          <View style={{ flex: 1, marginLeft: 12 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text style={styles.vipMarketTitle}>Marketplace & Convenzioni</Text>
+              <View style={styles.vipMarketBadge}>
+                <Text style={styles.vipMarketBadgeText}>B2B VIP</Text>
+              </View>
+            </View>
+            <Text style={styles.vipMarketSub}>
+              Palestre d'élite, sartoria su misura, cliniche estetiche e resort esclusivi
+            </Text>
+          </View>
+          <Ionicons name="chevron-forward" size={18} color={BrandColors.navyDeep} />
+        </TouchableOpacity>
 
         {/* Exclusive Privileges List */}
         <View style={styles.privilegesHeader}>
@@ -521,5 +570,52 @@ const styles = StyleSheet.create({
     fontSize: 11,
     color: BrandColors.grayMuted,
     lineHeight: 15,
+  },
+  vipMarketBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 16,
+    padding: 14,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: 'rgba(212, 175, 55, 0.35)',
+    shadowColor: '#0A1B40',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.04,
+    shadowRadius: 8,
+    elevation: 2,
+  },
+  vipMarketIconBox: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    backgroundColor: 'rgba(212, 175, 55, 0.15)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  vipMarketTitle: {
+    fontSize: 14,
+    fontWeight: '800',
+    color: BrandColors.navyDeep,
+  },
+  vipMarketBadge: {
+    backgroundColor: BrandColors.navyDeep,
+    paddingHorizontal: 6,
+    paddingVertical: 1,
+    borderRadius: 4,
+    marginLeft: 6,
+  },
+  vipMarketBadgeText: {
+    color: BrandColors.goldVip,
+    fontSize: 9,
+    fontWeight: '800',
+    letterSpacing: 0.5,
+  },
+  vipMarketSub: {
+    fontSize: 11,
+    color: BrandColors.grayMuted,
+    lineHeight: 15,
+    marginTop: 2,
   },
 });

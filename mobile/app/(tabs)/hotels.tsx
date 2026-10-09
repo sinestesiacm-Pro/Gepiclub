@@ -8,10 +8,14 @@ import {
   Image,
   TextInput,
   Linking,
+  Platform,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+
+import { useRouter } from 'expo-router';
+import * as Haptics from 'expo-haptics';
 
 import { BrandColors } from '@/constants/Colors';
 import { HeaderBrand } from '@/components/HeaderBrand';
@@ -21,6 +25,7 @@ const CATEGORIES = ['Tutti', '5★ Lusso', 'Vista Mare', 'Resort & Spa', 'All-In
 const HOTELS_DATA = [
   {
     id: '1',
+    serviceId: 'hotel-cipriani',
     name: 'Belmond Hotel Cipriani',
     location: 'Isola della Giudecca, Venezia',
     rating: '5.0',
@@ -34,6 +39,7 @@ const HOTELS_DATA = [
   },
   {
     id: '2',
+    serviceId: 'sanctuary-lodge',
     name: 'Sanctuary Lodge, A Belmond Hotel',
     location: 'Machu Picchu, Perù',
     rating: '4.9',
@@ -47,43 +53,48 @@ const HOTELS_DATA = [
   },
   {
     id: '3',
-    name: 'Grand Velas Riviera Maya',
-    location: 'Playa del Carmen, Caraibi',
+    serviceId: 'virgin-active-collection',
+    name: 'Virgin Active Collection Club & Spa',
+    location: 'Venezia Mestre / Padova / Milano',
     rating: '4.9',
-    reviews: '520 recensioni',
+    reviews: '390 recensioni',
     image: require('@/assets/images/hero-luxury.jpg'),
-    perks: ['Ultra All-Inclusive', 'Suite Fronte Mare', 'Maggiordomo Privato'],
-    regularPrice: '$760',
-    vipPrice: '$520',
-    discount: '-32%',
+    perks: ['Pass Open VIP', '2 Sedute PT Incluse', 'Accesso Spa & Sauna'],
+    regularPrice: '€230',
+    vipPrice: '€160',
+    discount: '-30%',
     featured: false,
   },
   {
     id: '4',
-    name: 'Mandarin Oriental Ritz',
-    location: 'Madrid, Spagna',
-    rating: '4.9',
-    reviews: '290 recensioni',
+    serviceId: 'sartoria-veneta',
+    name: 'Atelier Sartoria Veneta Bespoke',
+    location: 'Venezia / Verona / Milano',
+    rating: '5.0',
+    reviews: '140 recensioni',
     image: require('@/assets/images/madrid.jpg'),
-    perks: ['Late Check-out 16:00', 'Transfer NCC Omaggio', 'Welcome Champagne'],
-    regularPrice: '€840',
-    vipPrice: '€610',
-    discount: '-27%',
+    perks: ['Misura a Domicilio', 'Tessuto Loro Piana', 'Camicia Giza Inclusa'],
+    regularPrice: '€1.950',
+    vipPrice: '€1.400',
+    discount: '-28%',
     featured: false,
   },
 ];
 
 export default function HotelsScreen() {
   const insets = useSafeAreaInsets();
+  const router = useRouter();
   const [activeCategory, setActiveCategory] = useState('Tutti');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const handleBookHotel = (hotelName: string) => {
-    Linking.openURL(
-      `https://wa.me/51999999999?text=Salve%20Gepiclub,%20vorrei%20prenotare%20con%20tariffa%20VIP%20la%20struttura:%20${encodeURIComponent(
-        hotelName
-      )}`
-    );
+  const handleSelectService = (serviceId: string) => {
+    if (Platform.OS === 'ios') {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
+    router.push({
+      pathname: '/service/[id]',
+      params: { id: serviceId },
+    });
   };
 
   return (
@@ -147,9 +158,40 @@ export default function HotelsScreen() {
           ))}
         </ScrollView>
 
+        {/* Marketplace Shortcut Banner */}
+        <TouchableOpacity
+          style={styles.marketplaceBannerCard}
+          onPress={() => {
+            if (Platform.OS === 'ios') {
+              Haptics.selectionAsync();
+            }
+            router.push('/marketplace');
+          }}
+          activeOpacity={0.88}>
+          <View style={styles.marketplaceBannerIcon}>
+            <Ionicons name="storefront" size={20} color={BrandColors.goldDark} />
+          </View>
+          <View style={{ flex: 1, marginLeft: 12 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text style={styles.marketplaceBannerTitle}>Marketplace del Club</Text>
+              <View style={styles.newBadge}>
+                <Text style={styles.newBadgeText}>VIP</Text>
+              </View>
+            </View>
+            <Text style={styles.marketplaceBannerSub}>
+              Palestre d'élite, alta sartoria e med-beauty con sconti fino al -35%
+            </Text>
+          </View>
+          <Ionicons name="chevron-forward" size={18} color={BrandColors.navyDeep} />
+        </TouchableOpacity>
+
         {/* Hotel Cards List */}
         {HOTELS_DATA.map((hotel) => (
-          <View key={hotel.id} style={styles.hotelCard}>
+          <TouchableOpacity
+            key={hotel.id}
+            style={styles.hotelCard}
+            onPress={() => handleSelectService(hotel.serviceId)}
+            activeOpacity={0.92}>
             <View style={styles.imageContainer}>
               <Image source={hotel.image} style={styles.hotelImage} resizeMode="cover" />
               <LinearGradient
@@ -202,7 +244,7 @@ export default function HotelsScreen() {
                   <Text style={styles.regularPriceText}>Tariffa pubblica {hotel.regularPrice}</Text>
                   <View style={styles.vipPriceContainer}>
                     <Text style={styles.vipPrice}>{hotel.vipPrice}</Text>
-                    <Text style={styles.nightText}>/ notte</Text>
+                    <Text style={styles.nightText}>/ quota</Text>
                     <View style={styles.discountPill}>
                       <Text style={styles.discountText}>{hotel.discount}</Text>
                     </View>
@@ -211,19 +253,20 @@ export default function HotelsScreen() {
 
                 <TouchableOpacity
                   style={styles.bookButton}
-                  onPress={() => handleBookHotel(hotel.name)}
+                  onPress={() => handleSelectService(hotel.serviceId)}
                   activeOpacity={0.88}>
                   <LinearGradient
                     colors={[BrandColors.primaryBlue, BrandColors.navyDeep]}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 0 }}
                     style={styles.bookGradient}>
-                    <Text style={styles.bookButtonText}>Prenota VIP</Text>
+                    <Text style={styles.bookButtonText}>Vedi Dettagli</Text>
+                    <Ionicons name="arrow-forward" size={13} color="#FFFFFF" style={{ marginLeft: 4 }} />
                   </LinearGradient>
                 </TouchableOpacity>
               </View>
             </View>
-          </View>
+          </TouchableOpacity>
         ))}
       </ScrollView>
     </View>
@@ -466,6 +509,8 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   bookGradient: {
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingHorizontal: 16,
     paddingVertical: 10,
   },
@@ -473,5 +518,52 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 13,
     fontWeight: '700',
+  },
+  marketplaceBannerCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 16,
+    padding: 14,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: 'rgba(212, 175, 55, 0.35)',
+    shadowColor: '#0A1B40',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.04,
+    shadowRadius: 8,
+    elevation: 2,
+  },
+  marketplaceBannerIcon: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    backgroundColor: 'rgba(212, 175, 55, 0.15)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  marketplaceBannerTitle: {
+    fontSize: 14,
+    fontWeight: '800',
+    color: BrandColors.navyDeep,
+  },
+  marketplaceBannerSub: {
+    fontSize: 11,
+    color: BrandColors.grayMuted,
+    lineHeight: 15,
+    marginTop: 2,
+  },
+  newBadge: {
+    backgroundColor: BrandColors.navyDeep,
+    paddingHorizontal: 6,
+    paddingVertical: 1,
+    borderRadius: 4,
+    marginLeft: 6,
+  },
+  newBadgeText: {
+    color: BrandColors.goldVip,
+    fontSize: 9,
+    fontWeight: '800',
+    letterSpacing: 0.5,
   },
 });

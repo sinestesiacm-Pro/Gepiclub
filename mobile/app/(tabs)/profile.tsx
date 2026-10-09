@@ -8,11 +8,13 @@ import {
   Alert,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { BrandColors } from '@/constants/Colors';
 import { HeaderBrand } from '@/components/HeaderBrand';
+import { useAuth } from '@/context/AuthContext';
 
 const MENU_SECTIONS = [
   {
@@ -59,11 +61,30 @@ const MENU_SECTIONS = [
 
 export default function ProfileScreen() {
   const insets = useSafeAreaInsets();
+  const router = useRouter();
+  const { user, profile, signOut } = useAuth();
+
+  const fullName = profile?.full_name || (user?.email ? user.email.split('@')[0] : 'Luca');
+  const email = profile?.email || user?.email || 'socio@gepiclub.travel';
+  const initial = (fullName.charAt(0) || 'L').toUpperCase();
+  const tierLabel =
+    profile?.membership_tier === 'GOLD_VIP'
+      ? 'Membro Gold VIP'
+      : 'Membro Black Elite • Socio Fondatore';
+  const pointsFormatted = profile?.club_points
+    ? `${(profile.club_points / 1000).toFixed(1)}k`
+    : '42.5k';
 
   const handleLogout = () => {
     Alert.alert('Sessione VIP', 'Sei sicuro di voler effettuare il logout?', [
       { text: 'Annulla', style: 'cancel' },
-      { text: 'Esci', style: 'destructive' },
+      {
+        text: 'Esci',
+        style: 'destructive',
+        onPress: async () => {
+          await signOut();
+        },
+      },
     ]);
   };
 
@@ -88,7 +109,7 @@ export default function ProfileScreen() {
               colors={['#D4AF37', '#AA820A']}
               style={styles.avatarRing}>
               <View style={styles.avatarInner}>
-                <Text style={styles.avatarInitial}>L</Text>
+                <Text style={styles.avatarInitial}>{initial}</Text>
               </View>
             </LinearGradient>
             <View style={styles.badgeVerified}>
@@ -96,12 +117,12 @@ export default function ProfileScreen() {
             </View>
           </View>
 
-          <Text style={styles.profileName}>Luca</Text>
-          <Text style={styles.profileEmail}>luca@gepiclub.travel</Text>
+          <Text style={styles.profileName}>{fullName}</Text>
+          <Text style={styles.profileEmail}>{email}</Text>
 
           <View style={styles.vipTagPill}>
             <Ionicons name="star" size={12} color={BrandColors.goldVip} />
-            <Text style={styles.vipTagText}>Membro Black Elite • Socio Fondatore</Text>
+            <Text style={styles.vipTagText}>{tierLabel}</Text>
           </View>
         </View>
 
@@ -118,7 +139,7 @@ export default function ProfileScreen() {
           </View>
           <View style={styles.statDivider} />
           <View style={styles.statItem}>
-            <Text style={[styles.statNumber, { color: BrandColors.goldVip }]}>42.5k</Text>
+            <Text style={[styles.statNumber, { color: BrandColors.goldVip }]}>{pointsFormatted}</Text>
             <Text style={styles.statLabel}>Punti Club</Text>
           </View>
         </View>
@@ -191,14 +212,26 @@ export default function ProfileScreen() {
           </View>
         ))}
 
-        {/* Logout Button */}
-        <TouchableOpacity
-          style={styles.logoutBtn}
-          onPress={handleLogout}
-          activeOpacity={0.8}>
-          <Ionicons name="log-out-outline" size={18} color={BrandColors.primaryPink} />
-          <Text style={styles.logoutText}>Esci dall'Account</Text>
-        </TouchableOpacity>
+        {/* Auth / Logout Button */}
+        {user ? (
+          <TouchableOpacity
+            style={styles.logoutBtn}
+            onPress={handleLogout}
+            activeOpacity={0.8}>
+            <Ionicons name="log-out-outline" size={18} color={BrandColors.primaryPink} />
+            <Text style={styles.logoutText}>Esci dall'Account</Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            style={[styles.logoutBtn, { backgroundColor: 'rgba(0, 115, 230, 0.08)' }]}
+            onPress={() => router.push('/auth/login')}
+            activeOpacity={0.8}>
+            <Ionicons name="person-outline" size={18} color={BrandColors.primaryBlue} />
+            <Text style={[styles.logoutText, { color: BrandColors.primaryBlue }]}>
+              Accedi al Club VIP
+            </Text>
+          </TouchableOpacity>
+        )}
 
         {/* Footer info */}
         <View style={styles.footerNote}>

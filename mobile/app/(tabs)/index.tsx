@@ -9,6 +9,7 @@ import {
   Platform,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Haptics from 'expo-haptics';
@@ -30,6 +31,7 @@ const POPULAR_ROUTES = [
     vipPrice: '€980',
     discount: '-24%',
     tag: 'Rotta Consigliata',
+    serviceId: 'volo-business-vce-lim',
   },
   {
     id: '2',
@@ -44,6 +46,7 @@ const POPULAR_ROUTES = [
     vipPrice: '€1.120',
     discount: '-23%',
     tag: 'Volo Diretto',
+    serviceId: 'volo-business-vce-lim',
   },
   {
     id: '3',
@@ -58,11 +61,13 @@ const POPULAR_ROUTES = [
     vipPrice: '$110',
     discount: '-33%',
     tag: 'Ande & Machu Picchu',
+    serviceId: 'sanctuary-lodge',
   },
 ];
 
 export default function FlightsScreen() {
   const insets = useSafeAreaInsets();
+  const router = useRouter();
 
   const [tripType, setTripType] = useState<'round' | 'oneWay'>('round');
   const [cabinClass, setCabinClass] = useState<'business' | 'economy'>('business');
@@ -129,7 +134,7 @@ export default function FlightsScreen() {
               style={styles.classBadge}
               onPress={() => setCabinClass(cabinClass === 'business' ? 'economy' : 'business')}>
               <Text style={styles.classBadgeText}>
-                {cabinClass === 'business' ? '💎 Business' : '✈️ Economy'}
+                {cabinClass === 'business' ? 'Business Class' : 'Economy Class'}
               </Text>
             </TouchableOpacity>
           </View>
@@ -182,7 +187,18 @@ export default function FlightsScreen() {
           </View>
 
           {/* Primary CTA (Vibrant Blue & Navy) */}
-          <TouchableOpacity style={styles.searchButton} activeOpacity={0.88}>
+          <TouchableOpacity
+            style={styles.searchButton}
+            onPress={() => {
+              if (Platform.OS === 'ios') {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+              }
+              router.push({
+                pathname: '/service/[id]',
+                params: { id: 'volo-business-vce-lim' },
+              });
+            }}
+            activeOpacity={0.88}>
             <LinearGradient
               colors={[BrandColors.primaryBlue, BrandColors.navyDeep]}
               start={{ x: 0, y: 0 }}
@@ -230,6 +246,106 @@ export default function FlightsScreen() {
           </LinearGradient>
         </View>
 
+        {/* Marketplace Section Preview */}
+        <View style={styles.marketplaceSection}>
+          <View style={styles.sectionHeaderRow}>
+            <View>
+              <Text style={styles.sectionTitle}>Marketplace & Servizi VIP</Text>
+              <Text style={styles.sectionSubtitle}>Palestre, sartoria su misura, cliniche & spa</Text>
+            </View>
+            <TouchableOpacity
+              style={styles.seeAllMarketplaceBtn}
+              onPress={() => {
+                if (Platform.OS === 'ios') {
+                  Haptics.selectionAsync();
+                }
+                router.push('/marketplace');
+              }}
+              activeOpacity={0.8}>
+              <Text style={styles.seeAllMarketplaceText}>Vedi Tutti</Text>
+              <Ionicons name="arrow-forward" size={12} color={BrandColors.primaryBlue} />
+            </TouchableOpacity>
+          </View>
+
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.marketplaceCardsScroll}>
+            
+            {/* 1. Virgin Active */}
+            <TouchableOpacity
+              style={styles.marketMiniCard}
+              onPress={() =>
+                router.push({
+                  pathname: '/service/[id]',
+                  params: { id: 'virgin-active-collection' },
+                })
+              }
+              activeOpacity={0.9}>
+              <Image source={require('@/assets/images/hero-luxury.jpg')} style={styles.miniCardImage} />
+              <View style={styles.miniCardBadge}>
+                <Text style={styles.miniCardBadgeText}>FITNESS</Text>
+              </View>
+              <View style={styles.miniCardBody}>
+                <Text style={styles.miniCardTitle} numberOfLines={1}>Virgin Active Collection</Text>
+                <Text style={styles.miniCardPartner}>Palestre & Spa di Lusso</Text>
+                <View style={styles.miniCardPriceRow}>
+                  <Text style={styles.miniCardPrice}>€160</Text>
+                  <Text style={styles.miniCardTag}>-30% VIP</Text>
+                </View>
+              </View>
+            </TouchableOpacity>
+
+            {/* 2. Sartoria Veneta */}
+            <TouchableOpacity
+              style={styles.marketMiniCard}
+              onPress={() =>
+                router.push({
+                  pathname: '/service/[id]',
+                  params: { id: 'sartoria-veneta' },
+                })
+              }
+              activeOpacity={0.9}>
+              <Image source={require('@/assets/images/madrid.jpg')} style={styles.miniCardImage} />
+              <View style={styles.miniCardBadge}>
+                <Text style={styles.miniCardBadgeText}>ALTA MODA</Text>
+              </View>
+              <View style={styles.miniCardBody}>
+                <Text style={styles.miniCardTitle} numberOfLines={1}>Sartoria Veneta Bespoke</Text>
+                <Text style={styles.miniCardPartner}>Abiti & Camicie su Misura</Text>
+                <View style={styles.miniCardPriceRow}>
+                  <Text style={styles.miniCardPrice}>€1.400</Text>
+                  <Text style={styles.miniCardTag}>-28% VIP</Text>
+                </View>
+              </View>
+            </TouchableOpacity>
+
+            {/* 3. Clinica Med-Spa */}
+            <TouchableOpacity
+              style={styles.marketMiniCard}
+              onPress={() =>
+                router.push({
+                  pathname: '/service/[id]',
+                  params: { id: 'clinica-med-spa' },
+                })
+              }
+              activeOpacity={0.9}>
+              <Image source={require('@/assets/images/cancun-resort.jpg')} style={styles.miniCardImage} />
+              <View style={styles.miniCardBadge}>
+                <Text style={styles.miniCardBadgeText}>COSMETICA</Text>
+              </View>
+              <View style={styles.miniCardBody}>
+                <Text style={styles.miniCardTitle} numberOfLines={1}>Clinica Med-Spa Platinum</Text>
+                <Text style={styles.miniCardPartner}>Biorivitalizzazione & Viso</Text>
+                <View style={styles.miniCardPriceRow}>
+                  <Text style={styles.miniCardPrice}>€240</Text>
+                  <Text style={styles.miniCardTag}>-31% VIP</Text>
+                </View>
+              </View>
+            </TouchableOpacity>
+          </ScrollView>
+        </View>
+
         {/* Recommended Flight Deals Header */}
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>Rotte Esclusive del Club</Text>
@@ -238,7 +354,16 @@ export default function FlightsScreen() {
 
         {/* Route Cards */}
         {POPULAR_ROUTES.map((route) => (
-          <View key={route.id} style={styles.routeCard}>
+          <TouchableOpacity
+            key={route.id}
+            style={styles.routeCard}
+            onPress={() =>
+              router.push({
+                pathname: '/service/[id]',
+                params: { id: route.serviceId },
+              })
+            }
+            activeOpacity={0.92}>
             <View style={styles.routeCardHeader}>
               <View style={styles.routeTagPill}>
                 <Text style={styles.routeTagText}>{route.tag}</Text>
@@ -275,12 +400,20 @@ export default function FlightsScreen() {
                 </View>
               </View>
 
-              <TouchableOpacity style={styles.selectRouteBtn} activeOpacity={0.8}>
+              <TouchableOpacity
+                style={styles.selectRouteBtn}
+                onPress={() =>
+                  router.push({
+                    pathname: '/service/[id]',
+                    params: { id: route.serviceId },
+                  })
+                }
+                activeOpacity={0.8}>
                 <Text style={styles.selectRouteBtnText}>Vedi Volo</Text>
                 <Ionicons name="chevron-forward" size={13} color={BrandColors.primaryBlue} />
               </TouchableOpacity>
             </View>
-          </View>
+          </TouchableOpacity>
         ))}
       </ScrollView>
     </View>
@@ -644,5 +777,99 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: BrandColors.primaryBlue,
     marginRight: 4,
+  },
+  marketplaceSection: {
+    marginBottom: 20,
+  },
+  sectionHeaderRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    marginBottom: 12,
+  },
+  seeAllMarketplaceBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 4,
+  },
+  seeAllMarketplaceText: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: BrandColors.primaryBlue,
+    marginRight: 4,
+  },
+  marketplaceCardsScroll: {
+    paddingRight: 16,
+    gap: 12,
+  },
+  marketMiniCard: {
+    width: 200,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 16,
+    overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: 'rgba(10, 27, 64, 0.08)',
+    shadowColor: '#0A1B40',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.04,
+    shadowRadius: 6,
+    elevation: 2,
+    position: 'relative',
+    marginRight: 10,
+  },
+  miniCardImage: {
+    width: '100%',
+    height: 100,
+  },
+  miniCardBadge: {
+    position: 'absolute',
+    top: 8,
+    left: 8,
+    backgroundColor: BrandColors.navyDeep,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 4,
+  },
+  miniCardBadgeText: {
+    color: '#FFFFFF',
+    fontSize: 8,
+    fontWeight: '800',
+    letterSpacing: 0.5,
+  },
+  miniCardBody: {
+    padding: 10,
+  },
+  miniCardTitle: {
+    fontSize: 13,
+    fontWeight: '800',
+    color: BrandColors.navyDeep,
+  },
+  miniCardPartner: {
+    fontSize: 10,
+    color: BrandColors.grayMuted,
+    marginTop: 2,
+  },
+  miniCardPriceRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: 6,
+    paddingTop: 6,
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(10, 27, 64, 0.05)',
+  },
+  miniCardPrice: {
+    fontSize: 14,
+    fontWeight: '800',
+    color: BrandColors.navyDeep,
+  },
+  miniCardTag: {
+    fontSize: 9,
+    fontWeight: '800',
+    color: BrandColors.emeraldSuccess,
+    backgroundColor: '#ECFDF5',
+    paddingHorizontal: 5,
+    paddingVertical: 1,
+    borderRadius: 4,
   },
 });
