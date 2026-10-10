@@ -242,25 +242,33 @@ export default function FlightsScreen() {
           </View>
         </View>
 
-        {/* Luxury Banner */}
-        <View style={styles.bannerContainer}>
+        {/* Membership 3 Stays Luxury Banner */}
+        <TouchableOpacity
+          style={styles.bannerContainer}
+          onPress={() => {
+            if (Platform.OS === 'ios') {
+              Haptics.selectionAsync();
+            }
+            router.push('/(tabs)/vip');
+          }}
+          activeOpacity={0.9}>
           <Image
-            source={require('@/assets/images/flight-window.jpg')}
+            source={require('@/assets/images/cancun-resort.jpg')}
             style={styles.bannerImage}
             resizeMode="cover"
           />
           <LinearGradient
-            colors={['rgba(10, 27, 64, 0.1)', 'rgba(10, 27, 64, 0.85)']}
+            colors={['rgba(10, 27, 64, 0.15)', 'rgba(10, 27, 64, 0.9)']}
             style={styles.bannerOverlay}>
             <View style={styles.bannerBadge}>
-              <Text style={styles.bannerBadgeText}>PRIVILEGIO SOCI</Text>
+              <Text style={styles.bannerBadgeText}>MEMBRESÍA VIP $99/AÑO</Text>
             </View>
-            <Text style={styles.bannerTitle}>Accesso VIP Lounge & Fast Track</Text>
+            <Text style={styles.bannerTitle}>3 Estadías de Regalo para 4 Personas</Text>
             <Text style={styles.bannerSubtitle}>
-              I soci viaggiano senza attese in oltre 1.400 aeroporti internazionali.
+              Cancún (5D/4N), Miami (7D/6N) y Colombia (3D/2N) con $0 costo de alojamiento.
             </Text>
           </LinearGradient>
-        </View>
+        </TouchableOpacity>
 
         {/* Marketplace Section Preview */}
         <View style={styles.marketplaceSection}>

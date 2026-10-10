@@ -21,13 +21,92 @@ import { BrandColors } from '@/constants/Colors';
 import { HeaderBrand } from '@/components/HeaderBrand';
 import { DestinationBannerCard } from '@/components/DestinationBannerCard';
 
-const CATEGORIES = ['Tutti', '5★ Lusso', 'Vista Mare', 'Resort & Spa', 'All-Inclusive'];
+const CATEGORIES = ['Todos', 'Estadías Membresía', 'Hoteles 5★', 'Tours VIP', 'Traslados VIP'];
 
-const HOTELS_DATA = [
+const SERVICES_DATA = [
+  // 1. ESTADÍAS INCLUIDAS DE MEMBRESÍA ($99 HERO PRODUCT)
   {
-    id: '1',
+    id: 's-1',
+    serviceId: 'estadia-cancun',
+    categoryType: 'Estadías Membresía',
+    category: 'Estadía Incluida',
+    categoryIcon: 'gift-outline' as const,
+    city: 'Cancún (5D / 4N)',
+    name: 'Cancún Luxury Beach Resort (5D / 4N)',
+    location: 'Zona Hotelera, Cancún, México',
+    image: require('@/assets/images/cancun-resort.jpg'),
+    discountText: '100% Bonificado',
+    disclaimer: '*4 personas incluidas con tu membresía anual',
+    price: '$0 VIP',
+  },
+  {
+    id: 's-2',
+    serviceId: 'estadia-miami',
+    categoryType: 'Estadías Membresía',
+    category: 'Estadía Incluida',
+    categoryIcon: 'gift-outline' as const,
+    city: 'Miami (7D / 6N)',
+    name: 'Miami Oceanfront Suites (7D / 6N)',
+    location: 'South Beach & Sunny Isles, Miami, USA',
+    image: require('@/assets/images/caribbean-resort.jpg'),
+    discountText: '100% Bonificado',
+    disclaimer: '*4 personas incluidas con tu membresía anual',
+    price: '$0 VIP',
+  },
+  {
+    id: 's-3',
+    serviceId: 'estadia-colombia',
+    categoryType: 'Estadías Membresía',
+    category: 'Estadía Incluida',
+    categoryIcon: 'gift-outline' as const,
+    city: 'Cartagena (3D / 2N)',
+    name: 'Cartagena de Indias Colonial & Beach (3D / 2N)',
+    location: 'Centro Histórico & Bocagrande, Colombia',
+    image: require('@/assets/images/cruise.jpg'),
+    discountText: '100% Bonificado',
+    disclaimer: '*4 personas incluidas con tu membresía anual',
+    price: '$0 VIP',
+  },
+
+  // 2. TOURS VIP
+  {
+    id: 't-1',
+    serviceId: 'tour-machu-picchu',
+    categoryType: 'Tours VIP',
+    category: 'Tours & Experiencias',
+    categoryIcon: 'compass-outline' as const,
+    city: 'Machu Picchu VIP',
+    name: 'Machu Picchu VIP & Valle Sagrado con Tren Panorámico',
+    location: 'Cusco & Machu Picchu, Perú',
+    image: require('@/assets/images/machu-picchu.jpg'),
+    discountText: 'de descuento',
+    disclaimer: '*tren panorámico y guía arqueológico privado',
+    price: '$240 VIP',
+  },
+
+  // 3. TRASLADOS VIP
+  {
+    id: 'tr-1',
+    serviceId: 'transfer-mercedes-vip',
+    categoryType: 'Traslados VIP',
+    category: 'Traslados Chauffeur',
+    categoryIcon: 'car-sport-outline' as const,
+    city: 'Mercedes Classe S / V',
+    name: 'Transfer Ejecutivo Mercedes Chauffeur Aeropuerto',
+    location: 'Venezia / Lima / Madrid / Miami',
+    image: require('@/assets/images/hero-luxury.jpg'),
+    discountText: 'de descuento',
+    disclaimer: '*chofer de traje con espera prioritaria',
+    price: '€95 VIP',
+  },
+
+  // 4. HOTELES 5★
+  {
+    id: 'h-1',
     serviceId: 'hotel-cipriani',
+    categoryType: 'Hoteles 5★',
     category: 'Hoteles',
+    categoryIcon: 'bed-outline' as const,
     city: 'Madrid',
     name: 'Mandarin Oriental Ritz & Four Seasons',
     location: 'Madrid, España',
@@ -37,9 +116,11 @@ const HOTELS_DATA = [
     price: '€280',
   },
   {
-    id: '2',
+    id: 'h-2',
     serviceId: 'cancun-resort',
+    categoryType: 'Hoteles 5★',
     category: 'Hoteles',
+    categoryIcon: 'bed-outline' as const,
     city: 'Miami',
     name: 'Faena Hotel & 1 Hotel South Beach',
     location: 'Miami Beach, USA',
@@ -49,9 +130,11 @@ const HOTELS_DATA = [
     price: '$340',
   },
   {
-    id: '3',
+    id: 'h-3',
     serviceId: 'sanctuary-lodge',
+    categoryType: 'Hoteles 5★',
     category: 'Hoteles',
+    categoryIcon: 'bed-outline' as const,
     city: 'Lima',
     name: 'Miraflores Park & Country Club Lima',
     location: 'Lima, Perú',
@@ -61,9 +144,11 @@ const HOTELS_DATA = [
     price: '$180',
   },
   {
-    id: '4',
+    id: 'h-4',
     serviceId: 'cancun-resort',
+    categoryType: 'Hoteles 5★',
     category: 'Hoteles',
+    categoryIcon: 'bed-outline' as const,
     city: 'Cancún',
     name: 'Grand Fiesta Americana Coral Beach',
     location: 'Cancún, México',
@@ -73,9 +158,11 @@ const HOTELS_DATA = [
     price: '$290',
   },
   {
-    id: '5',
+    id: 'h-5',
     serviceId: 'caribbean-luxury',
+    categoryType: 'Hoteles 5★',
     category: 'Hoteles',
+    categoryIcon: 'bed-outline' as const,
     city: 'Cartagena',
     name: 'Sofitel Legend Santa Clara & Bastión',
     location: 'Cartagena de Indias, Colombia',
@@ -85,9 +172,11 @@ const HOTELS_DATA = [
     price: '$210',
   },
   {
-    id: '6',
+    id: 'h-6',
     serviceId: 'hotel-cipriani',
+    categoryType: 'Hoteles 5★',
     category: 'Hoteles',
+    categoryIcon: 'bed-outline' as const,
     city: 'Punta Cana',
     name: 'Eden Roc Cap Cana & Tortuga Bay',
     location: 'Punta Cana, Rep. Dominicana',
@@ -101,8 +190,21 @@ const HOTELS_DATA = [
 export default function HotelsScreen() {
   const insets = useSafeAreaInsets();
   const router = useRouter();
-  const [activeCategory, setActiveCategory] = useState('Tutti');
+  const [activeCategory, setActiveCategory] = useState('Todos');
   const [searchQuery, setSearchQuery] = useState('');
+
+  const filteredData = SERVICES_DATA.filter((item) => {
+    const matchesCategory =
+      activeCategory === 'Todos' || item.categoryType === activeCategory;
+    const query = searchQuery.trim().toLowerCase();
+    const matchesQuery =
+      query === '' ||
+      item.city.toLowerCase().includes(query) ||
+      item.name.toLowerCase().includes(query) ||
+      item.location.toLowerCase().includes(query) ||
+      item.category.toLowerCase().includes(query);
+    return matchesCategory && matchesQuery;
+  });
 
   const handleSelectService = (serviceId: string) => {
     if (Platform.OS === 'ios') {
@@ -202,19 +304,19 @@ export default function HotelsScreen() {
           <Ionicons name="chevron-forward" size={18} color={BrandColors.navyDeep} />
         </TouchableOpacity>
 
-        {/* Hotel Cards List (Screenshot 3 Full-Bleed Luxury Banner Style) */}
+        {/* Cards List (Screenshot 3 Full-Bleed Luxury Banner Style) */}
         <View style={{ marginTop: 6 }}>
-          {HOTELS_DATA.map((hotel) => (
+          {filteredData.map((item) => (
             <DestinationBannerCard
-              key={hotel.id}
-              category={hotel.category}
-              categoryIcon="bed-outline"
-              destination={hotel.city}
-              image={hotel.image}
-              discountText={hotel.discountText}
-              disclaimer={hotel.disclaimer}
-              price={hotel.price}
-              onPress={() => handleSelectService(hotel.serviceId)}
+              key={item.id}
+              category={item.category}
+              categoryIcon={item.categoryIcon}
+              destination={item.city}
+              image={item.image}
+              discountText={item.discountText}
+              disclaimer={item.disclaimer}
+              price={item.price}
+              onPress={() => handleSelectService(item.serviceId)}
             />
           ))}
         </View>

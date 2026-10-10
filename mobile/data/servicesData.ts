@@ -1,4 +1,4 @@
-export type ServiceCategory = 'viaggi' | 'fitness' | 'moda' | 'cosmetica';
+export type ServiceCategory = 'viaggi' | 'fitness' | 'moda' | 'cosmetica' | 'estadias' | 'tours' | 'traslados';
 
 export interface ServiceItem {
   id: string;
@@ -31,6 +31,211 @@ export interface ServiceItem {
 }
 
 export const SERVICES_CATALOG: ServiceItem[] = [
+  // 0. ESTADÍAS INCLUIDAS DE MEMBRESÍA ($99 HERO PRODUCT)
+  {
+    id: 'estadia-cancun',
+    category: 'estadias',
+    categoryLabel: 'Estadía de Regalo Membresía',
+    title: 'Cancún Luxury Beach Resort (5D / 4N)',
+    partnerName: 'Cancún Diamond Collection',
+    location: 'Zona Hotelera, Cancún, México',
+    rating: 5.0,
+    reviewsCount: 620,
+    image: require('@/assets/images/cancun-resort.jpg'),
+    shortDescription: '5 días y 4 noches para 4 personas incluidas con tu membresía anual Gepiclub.',
+    fullDescription:
+      'Disfruta de las paradisíacas playas de Cancún con tu familia o amigos. Esta estadía para hasta 4 personas está completamente incluida como beneficio de bienvenida al afiliarte a Gepiclub. Suites de lujo frente al mar, piscinas infinitas y acceso exclusivo.',
+    publicPrice: 1200,
+    vipPrice: 0,
+    currency: 'USD',
+    currencySymbol: '$',
+    discountPercentage: 100,
+    pointsEarned: 2400,
+    vipPerks: [
+      'Estadía completa de 4 noches para hasta 4 personas',
+      'Acceso libre a instalaciones de resort 5 estrellas',
+      'Asistencia y reserva prioritaria con tu Concierge 24/7',
+      'Descuento exclusivo en tours y gastronomía del resort',
+    ],
+    options: [
+      {
+        id: 'opt-standard-4p',
+        label: 'Suite Familiar (4 Personas)',
+        priceModifier: 0,
+        description: 'Capacidad para 2 adultos y 2 niños o 4 adultos',
+      },
+      {
+        id: 'opt-all-inclusive-upgrade',
+        label: 'Upgrade Plan Todo Incluido Gourmet',
+        priceModifier: 190,
+        description: 'Bebidas ilimitadas y 6 restaurantes de especialidad por estancia',
+      },
+    ],
+    includes: [
+      '4 noches de alojamiento de lujo para 4 personas',
+      'WiFi de alta velocidad y acceso a club de playa',
+      'Impuestos hoteleros e IVA cubiertos',
+      'Concierge personal asignado antes de tu llegada',
+    ],
+    terms: 'Válido durante todo el año de tu membresía. Fechas sujetas a disponibilidad previa reserva con tu Concierge.',
+  },
+  {
+    id: 'estadia-miami',
+    category: 'estadias',
+    categoryLabel: 'Estadía de Regalo Membresía',
+    title: 'Miami Oceanfront Suites (7D / 6N)',
+    partnerName: 'Miami Luxury Bay Suites',
+    location: 'South Beach & Sunny Isles, Miami, USA',
+    rating: 4.9,
+    reviewsCount: 510,
+    image: require('@/assets/images/caribbean-resort.jpg'),
+    shortDescription: '7 días y 6 noches en Miami Beach para 4 personas incluidas con tu membresía.',
+    fullDescription:
+      'Vive una semana inolvidable en el corazón del sol de Miami. Suites de diseño contemporáneo a pasos de la arena blanca y la vida cosmopolita de Florida, incluidas para 4 huéspedes con tu membresía Gepiclub.',
+    publicPrice: 1600,
+    vipPrice: 0,
+    currency: 'USD',
+    currencySymbol: '$',
+    discountPercentage: 100,
+    pointsEarned: 3200,
+    vipPerks: [
+      '6 noches consecutivas para hasta 4 huéspedes',
+      'Piscina infinita con vista al océano y gimnasio panorámico',
+      'Descuento del 20% en alquiler de autos convertibles y SUV',
+      'Check-out extendido sin costo para socios Gepiclub',
+    ],
+    options: [
+      {
+        id: 'opt-ocean-suite',
+        label: 'Ocean View Suite (4 Huéspedes)',
+        priceModifier: 0,
+        description: 'Cama King + Sofá cama matrimonial con cocina completa',
+      },
+    ],
+    includes: [
+      '6 noches de estancia completa para 4 personas',
+      'Acceso privado a playa con sombrillas y toallas',
+      'Seguro de viaje nacional en destino',
+    ],
+    terms: 'Reserva con un mínimo de 15 días de anticipación mediante la línea VIP de tu app o WhatsApp.',
+  },
+  {
+    id: 'estadia-colombia',
+    category: 'estadias',
+    categoryLabel: 'Estadía de Regalo Membresía',
+    title: 'Cartagena de Indias Colonial & Beach (3D / 2N)',
+    partnerName: 'Cartagena Heritage Collection',
+    location: 'Centro Histórico & Bocagrande, Colombia',
+    rating: 4.9,
+    reviewsCount: 430,
+    image: require('@/assets/images/cruise.jpg'),
+    shortDescription: '3 días y 2 noches en la joya colonial del Caribe para 4 personas.',
+    fullDescription:
+      'La magia de las murallas coloniales, balcones floridos y la brisa caribeña. Tu escapada perfecta a Colombia incluida con tu membresía anual.',
+    publicPrice: 650,
+    vipPrice: 0,
+    currency: 'USD',
+    currencySymbol: '$',
+    discountPercentage: 100,
+    pointsEarned: 1300,
+    vipPerks: [
+      '2 noches para 4 personas en hotel boutique colonial',
+      'Desayuno caribeño gourmet incluido',
+      'Paseo privado en coche de caballos al atardecer',
+    ],
+    options: [
+      {
+        id: 'opt-colonial-suite',
+        label: 'Suite Colonial Familiar (4 Personas)',
+        priceModifier: 0,
+        description: 'Techos altos, vigas de madera y máximo confort',
+      },
+    ],
+    includes: [
+      '2 noches para hasta 4 huéspedes',
+      'Cóctel de bienvenida de frutas exóticas',
+      'Concierge en español disponible 24/7',
+    ],
+    terms: 'Canjeable en cualquier momento durante la vigencia de tu membresía activa.',
+  },
+  // TOURS & EXPERIENCIAS
+  {
+    id: 'tour-machu-picchu',
+    category: 'tours',
+    categoryLabel: 'Tours & Experiencias',
+    title: 'Machu Picchu VIP & Valle Sagrado',
+    partnerName: 'Inca Trail & Heritage Luxury',
+    location: 'Cusco & Machu Picchu, Perú',
+    rating: 5.0,
+    reviewsCount: 780,
+    image: require('@/assets/images/machu-picchu.jpg'),
+    shortDescription: 'Tren panorámico Vistadome, guía arqueológico privado y entradas VIP.',
+    fullDescription:
+      'Descubre la maravilla del mundo con el máximo nivel de exclusividad. Recorrido privado sin multitudes, almuerzo gourmet en Belmond Sanctuary Lodge y vistas inolvidables.',
+    publicPrice: 380,
+    vipPrice: 240,
+    currency: 'USD',
+    currencySymbol: '$',
+    discountPercentage: 37,
+    pointsEarned: 480,
+    vipPerks: [
+      'Guía privado exclusivo para tu grupo',
+      'Tickets de tren panorámico ida y vuelta',
+      'Almuerzo buffet gourmet en la montaña',
+    ],
+    options: [
+      {
+        id: 'opt-expedition',
+        label: 'Pase VIP Completo (1 Día)',
+        priceModifier: 0,
+        description: 'Todo incluido desde tu hotel en Cusco',
+      },
+    ],
+    includes: ['Traslados privados', 'Tickets de ingreso', 'Guía y almuerzo'],
+    terms: 'Confirmación sujeta a disponibilidad de boletos oficiales del parque.',
+  },
+  // TRASLADOS VIP
+  {
+    id: 'transfer-mercedes-vip',
+    category: 'traslados',
+    categoryLabel: 'Traslados & Chauffeur',
+    title: 'Transfer Ejecutivo Mercedes Classe S / V Aeropuerto',
+    partnerName: 'Black Car Executive Mobility',
+    location: 'Venezia / Lima / Madrid / Miami',
+    rating: 4.9,
+    reviewsCount: 290,
+    image: require('@/assets/images/hero-luxury.jpg'),
+    shortDescription: 'Chofer profesional de traje, espera con cartel y agua mineral premium.',
+    fullDescription:
+      'Llega a tu destino con tranquilidad total. Flota de vehículos Mercedes Benz de última generación, seguimiento de vuelo en tiempo real y asistencia con tu equipaje.',
+    publicPrice: 160,
+    vipPrice: 95,
+    currency: 'EUR',
+    currencySymbol: '€',
+    discountPercentage: 40,
+    pointsEarned: 190,
+    vipPerks: [
+      'Espera de hasta 60 minutos en aeropuerto sin costo extra',
+      'Vehículo desinfectado con WiFi a bordo y cargadores',
+      'Cancelación gratuita hasta 24h antes',
+    ],
+    options: [
+      {
+        id: 'opt-sedan',
+        label: 'Sedan Ejecutivo (1-3 Pasajeros)',
+        priceModifier: 0,
+        description: 'Mercedes Classe E o Classe S',
+      },
+      {
+        id: 'opt-van',
+        label: 'Van VIP (4-7 Pasajeros)',
+        priceModifier: 40,
+        description: 'Mercedes Classe V con asientos en conferencia',
+      },
+    ],
+    includes: ['Combustible, peajes y chofer privado', 'Seguro de transporte de pasajeros'],
+    terms: 'Reserva mínima 12 horas antes de la llegada de tu vuelo.',
+  },
   // 1. VIAGGI
   {
     id: 'hotel-cipriani',
