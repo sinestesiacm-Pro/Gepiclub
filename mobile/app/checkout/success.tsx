@@ -46,7 +46,7 @@ export default function CheckoutSuccessScreen() {
 
   const [walletAdded, setWalletAdded] = useState(false);
 
-  const formattedDate = new Date().toLocaleDateString('it-IT', {
+  const formattedDate = new Date().toLocaleDateString('es-ES', {
     day: '2-digit',
     month: 'long',
     year: 'numeric',
@@ -62,7 +62,7 @@ export default function CheckoutSuccessScreen() {
   const handleShareVoucher = async () => {
     try {
       await Share.share({
-        message: `Pass VIP Gepiclub per ${service.title}\nCodice Prenotazione: ${orderCode}\nTitolare: ${guestName || 'Socio VIP'}\nImporto VIP: ${service.currencySymbol}${finalAmount}\nAssistenza Concierge H24 attiva.`,
+        message: `Pase VIP Gepiclub para ${service.title}\nCódigo de Reserva: ${orderCode}\nTitular: ${guestName || 'Socio VIP'}\nImporte VIP: ${service.currencySymbol}${finalAmount}\nAsistencia Concierge 24/7 activa.`,
       });
     } catch {
       // Ignored
@@ -73,7 +73,7 @@ export default function CheckoutSuccessScreen() {
     if (Platform.OS === 'ios') {
       Haptics.selectionAsync();
     }
-    const message = `Salve Concierge Gepiclub, ho appena completato la prenotazione VIP!\n\nCodice Voucher: ${orderCode}\nServizio: ${service.title} (${selectedOption?.label})\nTitolare: ${guestName || 'Socio VIP'}\nImporto: ${service.currencySymbol}${finalAmount}\n\nPotete verificare e confermare tutti i dettagli con il partner? Grazie!`;
+    const message = `Hola Concierge Gepiclub, ¡acabo de completar mi reserva VIP!\n\nCódigo de Voucher: ${orderCode}\nServicio: ${service.title} (${selectedOption?.label})\nTitular: ${guestName || 'Socio VIP'}\nImporte: ${service.currencySymbol}${finalAmount}\n\n¿Podrían confirmar todos los detalles con el operador asociado? ¡Muchas gracias!`;
     Linking.openURL(
       `https://wa.me/51999999999?text=${encodeURIComponent(message)}`
     );
@@ -97,9 +97,9 @@ export default function CheckoutSuccessScreen() {
             <Ionicons name="checkmark" size={32} color="#FFFFFF" />
           </View>
 
-          <Text style={styles.celebrationTitle}>Prenotazione Confermata!</Text>
+          <Text style={styles.celebrationTitle}>¡Reserva Confirmada!</Text>
           <Text style={styles.celebrationSub}>
-            Il tuo voucher digitale Gepiclub è attivo e garantito al 100%.
+            Tu voucher digital Gepiclub está activo y garantizado al 100%.
           </Text>
         </View>
 
@@ -118,7 +118,7 @@ export default function CheckoutSuccessScreen() {
 
             <View style={styles.confirmedPill}>
               <View style={styles.confirmedDot} />
-              <Text style={styles.confirmedPillText}>EMESSO</Text>
+              <Text style={styles.confirmedPillText}>EMITIDO</Text>
             </View>
           </LinearGradient>
 
@@ -142,24 +142,24 @@ export default function CheckoutSuccessScreen() {
             <View style={styles.passOptionBox}>
               <Ionicons name="sparkles" size={13} color={BrandColors.goldDark} />
               <Text style={styles.passOptionText}>
-                Configurazione: <Text style={{ fontWeight: '800' }}>{selectedOption?.label}</Text>
+                Opción Seleccionada: <Text style={{ fontWeight: '800' }}>{selectedOption?.label}</Text>
               </Text>
             </View>
 
             {/* Grid Information */}
             <View style={styles.passGrid}>
               <View style={styles.gridItem}>
-                <Text style={styles.gridLabel}>TITOLARE</Text>
-                <Text style={styles.gridValue}>{guestName || 'Luca Rossi'}</Text>
+                <Text style={styles.gridLabel}>TITULAR</Text>
+                <Text style={styles.gridValue}>{guestName || 'Socio VIP'}</Text>
               </View>
 
               <View style={styles.gridItem}>
-                <Text style={styles.gridLabel}>DATA EMISSIONE</Text>
+                <Text style={styles.gridLabel}>FECHA DE EMISIÓN</Text>
                 <Text style={styles.gridValue}>{formattedDate}</Text>
               </View>
 
               <View style={styles.gridItem}>
-                <Text style={styles.gridLabel}>IMPORTO VIP SALDATO</Text>
+                <Text style={styles.gridLabel}>IMPORTE VIP PAGADO</Text>
                 <Text style={styles.gridValueHighlight}>
                   {service.currencySymbol}
                   {finalAmount || service.vipPrice}
@@ -167,8 +167,8 @@ export default function CheckoutSuccessScreen() {
               </View>
 
               <View style={styles.gridItem}>
-                <Text style={styles.gridLabel}>STATUS CONCILIERGE</Text>
-                <Text style={styles.gridValueStatus}>Attivo H24</Text>
+                <Text style={styles.gridLabel}>CONCIERGE 24/7</Text>
+                <Text style={styles.gridValueStatus}>Activo 24/7</Text>
               </View>
             </View>
 
@@ -199,8 +199,8 @@ export default function CheckoutSuccessScreen() {
               </View>
 
               <Text style={styles.qrInstruction}>
-                Presenta questo codice digitale al check-in presso la struttura o al personale
-                convenzionato.
+                Presenta este código digital al momento del check-in o al personal del servicio
+                conveniado.
               </Text>
             </View>
           </View>
@@ -213,10 +213,10 @@ export default function CheckoutSuccessScreen() {
           </View>
           <View style={{ flex: 1, marginLeft: 12 }}>
             <Text style={styles.pointsCreditedTitle}>
-              +{pointsEarned || service.pointsEarned} Punti Gepiclub Accreditati
+              +{pointsEarned || service.pointsEarned} Puntos Gepiclub Acreditados
             </Text>
             <Text style={styles.pointsCreditedSub}>
-              I punti sono già disponibili sul tuo saldo tessera VIP.
+              Los puntos ya están disponibles en el saldo de tu membresía VIP.
             </Text>
           </View>
         </View>
@@ -237,7 +237,7 @@ export default function CheckoutSuccessScreen() {
               color={walletAdded ? '#FFFFFF' : '#FFFFFF'}
             />
             <Text style={styles.walletBtnText}>
-              {walletAdded ? 'Aggiunto ad Apple Wallet' : 'Aggiungi ad Apple Wallet'}
+              {walletAdded ? 'Añadido a Apple Wallet' : 'Añadir a Apple Wallet'}
             </Text>
           </TouchableOpacity>
 
@@ -250,7 +250,7 @@ export default function CheckoutSuccessScreen() {
               colors={['#25D366', '#128C7E']}
               style={styles.whatsAppGradient}>
               <Ionicons name="logo-whatsapp" size={18} color="#FFFFFF" />
-              <Text style={styles.whatsAppBtnText}>Invia Voucher al Concierge WhatsApp</Text>
+              <Text style={styles.whatsAppBtnText}>Enviar Voucher al Concierge por WhatsApp</Text>
             </LinearGradient>
           </TouchableOpacity>
 
@@ -260,7 +260,7 @@ export default function CheckoutSuccessScreen() {
             onPress={handleShareVoucher}
             activeOpacity={0.8}>
             <Ionicons name="share-outline" size={17} color={BrandColors.navyDeep} />
-            <Text style={styles.secondaryActionText}>Condividi o Salva Pass VIP</Text>
+            <Text style={styles.secondaryActionText}>Compartir o Guardar Pase VIP</Text>
           </TouchableOpacity>
 
           {/* Return to Home / Catalog */}
@@ -268,7 +268,7 @@ export default function CheckoutSuccessScreen() {
             style={styles.homeBtn}
             onPress={() => router.replace('/(tabs)')}
             activeOpacity={0.8}>
-            <Text style={styles.homeBtnText}>Torna alla Home del Club</Text>
+            <Text style={styles.homeBtnText}>Volver al Inicio del Club</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

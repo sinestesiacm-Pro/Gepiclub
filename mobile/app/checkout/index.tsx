@@ -102,9 +102,7 @@ export default function CheckoutScreen() {
         },
       });
     }, 700);
-  };
-
-  return (
+  };    return (
     <View style={styles.container}>
       {/* Top Header with Progress Step */}
       <View
@@ -122,7 +120,7 @@ export default function CheckoutScreen() {
         </TouchableOpacity>
 
         <View style={styles.headerTitleCenter}>
-          <Text style={styles.headerTitleText}>Checkout Sicuro VIP</Text>
+          <Text style={styles.headerTitleText}>Checkout Seguro VIP</Text>
           <View style={styles.stepsIndicator}>
             <View style={[styles.stepDot, styles.stepDotDone]} />
             <View style={[styles.stepLine, styles.stepLineActive]} />
@@ -174,10 +172,10 @@ export default function CheckoutScreen() {
           <View style={styles.selectedOptionBox}>
             <View style={styles.optionTag}>
               <Ionicons name="checkmark-circle" size={14} color={BrandColors.primaryBlue} />
-              <Text style={styles.optionTagLabel}>Opzione: {selectedOption?.label}</Text>
+              <Text style={styles.optionTagLabel}>Opción: {selectedOption?.label}</Text>
             </View>
             <Text style={styles.optionTagPrice}>
-              {optionModifier > 0 ? `+${service.currencySymbol}${optionModifier}` : 'Inclusa'}
+              {optionModifier > 0 ? `+${service.currencySymbol}${optionModifier}` : 'Incluida'}
             </Text>
           </View>
         </View>
@@ -189,30 +187,30 @@ export default function CheckoutScreen() {
               <Ionicons name="person" size={16} color={BrandColors.primaryBlue} />
             </View>
             <View style={{ flex: 1, marginLeft: 10 }}>
-              <Text style={styles.cardSectionTitle}>Intestatario della Prenotazione</Text>
+              <Text style={styles.cardSectionTitle}>Titular de la Reserva</Text>
               <Text style={styles.cardSectionSub}>
-                Tessera {profile?.membership_tier === 'GOLD_VIP' ? 'Gold VIP' : 'Black Elite'} #
+                Membresía {profile?.membership_tier === 'GOLD_VIP' ? 'Gold VIP' : 'Black Elite'} #
                 {profile?.vip_card_number?.slice(-4) || '8829'}
               </Text>
             </View>
           </View>
 
           <View style={styles.inputGroup}>
-            <Text style={styles.inputLabel}>NOME E COGNOME DEL TITOLARE / OSPITE</Text>
+            <Text style={styles.inputLabel}>NOMBRE Y APELLIDO DEL TITULAR / HUÉSPED</Text>
             <View style={styles.inputFieldWrap}>
               <Ionicons name="person-outline" size={16} color={BrandColors.grayMuted} />
               <TextInput
                 style={styles.textInput}
                 value={guestName}
                 onChangeText={setGuestName}
-                placeholder="Nome Cognome"
+                placeholder="Nombre y Apellido"
                 placeholderTextColor={BrandColors.grayMuted}
               />
             </View>
           </View>
 
           <View style={[styles.inputGroup, { marginTop: 12 }]}>
-            <Text style={styles.inputLabel}>EMAIL DI CONFERMA & BIGLIETTO</Text>
+            <Text style={styles.inputLabel}>CORREO ELECTRÓNICO DE CONFIRMACIÓN</Text>
             <View style={[styles.inputFieldWrap, styles.inputFieldDisabled]}>
               <Ionicons name="mail-outline" size={16} color={BrandColors.grayMuted} />
               <Text style={styles.disabledInputText}>
@@ -222,14 +220,14 @@ export default function CheckoutScreen() {
           </View>
 
           <View style={[styles.inputGroup, { marginTop: 12 }]}>
-            <Text style={styles.inputLabel}>NOTE O RICHIESTE PARTICOLARI PER IL CONCIERGE</Text>
+            <Text style={styles.inputLabel}>NOTAS O SOLICITUDES ESPECIALES AL CONCIERGE</Text>
             <View style={styles.inputFieldWrap}>
               <Ionicons name="create-outline" size={16} color={BrandColors.grayMuted} />
               <TextInput
                 style={styles.textInput}
                 value={specialNotes}
                 onChangeText={setSpecialNotes}
-                placeholder="Es. arrivo in serata, preferenza cuscini, allergie..."
+                placeholder="Ej. llegada tardía, preferencias de habitación, traslados..."
                 placeholderTextColor={BrandColors.grayMuted}
               />
             </View>
@@ -243,9 +241,9 @@ export default function CheckoutScreen() {
               <Ionicons name="sparkles" size={18} color={BrandColors.goldVip} />
             </View>
             <View style={{ flex: 1, marginLeft: 10 }}>
-              <Text style={styles.pointsCardTitle}>Riscatta Punti Gepiclub</Text>
+              <Text style={styles.pointsCardTitle}>Canjear Puntos Gepiclub</Text>
               <Text style={styles.pointsCardBalance}>
-                Saldo disponibile: {availablePoints.toLocaleString('it-IT')} pts
+                Saldo disponible: {availablePoints.toLocaleString('es-ES')} pts
               </Text>
             </View>
 
@@ -267,13 +265,13 @@ export default function CheckoutScreen() {
 
           <View style={styles.pointsExplanation}>
             <Text style={styles.pointsExplanationText}>
-              Usa 5.000 punti per ricevere uno sconto immediato di -€50 sul totale.
+              Usa 5.000 puntos para recibir un descuento inmediato de -50€ en el total.
             </Text>
             {usePoints && (
               <View style={styles.pointsAppliedPill}>
                 <Ionicons name="checkmark-circle" size={13} color={BrandColors.emeraldSuccess} />
                 <Text style={styles.pointsAppliedText}>
-                  Sconto di €50 applicato al totale
+                  Descuento de 50€ aplicado al total
                 </Text>
               </View>
             )}
@@ -287,8 +285,8 @@ export default function CheckoutScreen() {
               <Ionicons name="card" size={16} color={BrandColors.primaryBlue} />
             </View>
             <View style={{ flex: 1, marginLeft: 10 }}>
-              <Text style={styles.cardSectionTitle}>Metodo di Pagamento</Text>
-              <Text style={styles.cardSectionSub}>Transazioni cifrate a 256-bit</Text>
+              <Text style={styles.cardSectionTitle}>Método de Pago</Text>
+              <Text style={styles.cardSectionSub}>Transacciones seguras cifradas a 256 bits</Text>
             </View>
           </View>
 
@@ -308,11 +306,11 @@ export default function CheckoutScreen() {
                 <Ionicons name="card-outline" size={18} color={BrandColors.navyDeep} />
               </View>
               <View style={{ flex: 1, marginLeft: 10 }}>
-                <Text style={styles.paymentTitle}>Carta Black Elite Gepiclub</Text>
-                <Text style={styles.paymentSub}>Circuito protetto •••• 8829</Text>
+                <Text style={styles.paymentTitle}>Tarjeta Black Elite Gepiclub</Text>
+                <Text style={styles.paymentSub}>Circuito preferencial •••• 8829</Text>
               </View>
               <View style={styles.preferredTag}>
-                <Text style={styles.preferredTagText}>PREDEFINITA</Text>
+                <Text style={styles.preferredTagText}>PREFERIDA</Text>
               </View>
             </TouchableOpacity>
 
@@ -332,7 +330,7 @@ export default function CheckoutScreen() {
               </View>
               <View style={{ flex: 1, marginLeft: 10 }}>
                 <Text style={styles.paymentTitle}>Apple Pay</Text>
-                <Text style={styles.paymentSub}>Autorizzazione Face ID immediata</Text>
+                <Text style={styles.paymentSub}>Autorización con Face ID inmediata</Text>
               </View>
             </TouchableOpacity>
 
@@ -351,8 +349,8 @@ export default function CheckoutScreen() {
                 <Ionicons name="business-outline" size={18} color={BrandColors.navyDeep} />
               </View>
               <View style={{ flex: 1, marginLeft: 10 }}>
-                <Text style={styles.paymentTitle}>Bonifico Istantaneo B2B</Text>
-                <Text style={styles.paymentSub}>Gestito dal Concierge senza commissioni</Text>
+                <Text style={styles.paymentTitle}>Transferencia Inmediata / Concierge</Text>
+                <Text style={styles.paymentSub}>Gestionado directamente sin comisiones</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -360,10 +358,10 @@ export default function CheckoutScreen() {
 
         {/* 5. Summary / Price Breakdown */}
         <View style={styles.cardContainer}>
-          <Text style={styles.breakdownHeaderTitle}>Riepilogo Tariffa Gepiclub</Text>
+          <Text style={styles.breakdownHeaderTitle}>Resumen de Tarifas Gepiclub</Text>
 
           <View style={styles.breakdownRow}>
-            <Text style={styles.breakdownLabel}>Prezzo ufficiale di listino</Text>
+            <Text style={styles.breakdownLabel}>Precio oficial de catálogo</Text>
             <Text style={styles.breakdownValueMuted}>
               {service.currencySymbol}
               {basePublicPrice}
@@ -371,7 +369,7 @@ export default function CheckoutScreen() {
           </View>
 
           <View style={styles.breakdownRow}>
-            <Text style={styles.breakdownLabelHighlight}>Sconto Riservato Soci VIP</Text>
+            <Text style={styles.breakdownLabelHighlight}>Ahorro Exclusivo Socios VIP</Text>
             <Text style={styles.breakdownValueDiscount}>
               -{service.currencySymbol}
               {clubSavings}
@@ -380,7 +378,7 @@ export default function CheckoutScreen() {
 
           {optionModifier > 0 && (
             <View style={styles.breakdownRow}>
-              <Text style={styles.breakdownLabel}>Opzione: {selectedOption?.label}</Text>
+              <Text style={styles.breakdownLabel}>Opción: {selectedOption?.label}</Text>
               <Text style={styles.breakdownValue}>
                 +{service.currencySymbol}
                 {optionModifier}
@@ -390,7 +388,7 @@ export default function CheckoutScreen() {
 
           {pointsDiscountApplied > 0 && (
             <View style={styles.breakdownRow}>
-              <Text style={styles.breakdownLabelPoints}>Riscatto 5.000 Punti Club</Text>
+              <Text style={styles.breakdownLabelPoints}>Canje de 5.000 Puntos Club</Text>
               <Text style={styles.breakdownValuePoints}>
                 -{service.currencySymbol}
                 {pointsDiscountApplied}
@@ -402,8 +400,8 @@ export default function CheckoutScreen() {
 
           <View style={styles.breakdownTotalRow}>
             <View>
-              <Text style={styles.breakdownTotalLabel}>TOTALE DA CORRISPONDERE</Text>
-              <Text style={styles.breakdownTotalSub}>Tasse, IVA e assistenza incluse</Text>
+              <Text style={styles.breakdownTotalLabel}>TOTAL A PAGAR</Text>
+              <Text style={styles.breakdownTotalSub}>Impuestos, tasas y asistencia incluidos</Text>
             </View>
             <Text style={styles.breakdownTotalValue}>
               {service.currencySymbol}
@@ -415,8 +413,8 @@ export default function CheckoutScreen() {
           <View style={styles.pointsEarnedBox}>
             <Ionicons name="sparkles" size={14} color={BrandColors.goldDark} />
             <Text style={styles.pointsEarnedText}>
-              Con questa prenotazione accumulerai{' '}
-              <Text style={{ fontWeight: '800' }}>+{service.pointsEarned} Punti Club</Text>
+              Con esta reserva acumularás{' '}
+              <Text style={{ fontWeight: '800' }}>+{service.pointsEarned} Puntos Club</Text>
             </Text>
           </View>
         </View>
@@ -425,15 +423,15 @@ export default function CheckoutScreen() {
         <View style={styles.trustBadgesRow}>
           <View style={styles.trustBadgeItem}>
             <Ionicons name="shield-checkmark-outline" size={16} color={BrandColors.emeraldSuccess} />
-            <Text style={styles.trustBadgeText}>Garanzia Tariffa VIP</Text>
+            <Text style={styles.trustBadgeText}>Garantía Tarifa VIP</Text>
           </View>
           <View style={styles.trustBadgeItem}>
             <Ionicons name="lock-closed-outline" size={16} color={BrandColors.primaryBlue} />
-            <Text style={styles.trustBadgeText}>Pagamento Sicuro SSL</Text>
+            <Text style={styles.trustBadgeText}>Pago Seguro SSL</Text>
           </View>
           <View style={styles.trustBadgeItem}>
             <Ionicons name="headset-outline" size={16} color={BrandColors.goldDark} />
-            <Text style={styles.trustBadgeText}>Concierge H24</Text>
+            <Text style={styles.trustBadgeText}>Concierge 24/7</Text>
           </View>
         </View>
       </ScrollView>
@@ -447,7 +445,7 @@ export default function CheckoutScreen() {
           },
         ]}>
         <View style={styles.bottomPriceCol}>
-          <Text style={styles.bottomTotalLabel}>TOTALE DOVUTO</Text>
+          <Text style={styles.bottomTotalLabel}>TOTAL A PAGAR</Text>
           <Text style={styles.bottomTotalAmount}>
             {service.currencySymbol}
             {finalTotal}
@@ -468,7 +466,7 @@ export default function CheckoutScreen() {
               <ActivityIndicator color="#FFFFFF" size="small" />
             ) : (
               <>
-                <Text style={styles.payBtnText}>Conferma e Paga</Text>
+                <Text style={styles.payBtnText}>Confirmar y Reservar</Text>
                 <Ionicons name="arrow-forward" size={16} color="#FFFFFF" style={{ marginLeft: 6 }} />
               </>
             )}

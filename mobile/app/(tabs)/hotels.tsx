@@ -21,7 +21,7 @@ import { BrandColors } from '@/constants/Colors';
 import { HeaderBrand } from '@/components/HeaderBrand';
 import { DestinationBannerCard } from '@/components/DestinationBannerCard';
 
-const CATEGORIES = ['Todos', 'Estadías Membresía', 'Hoteles 5★', 'Tours VIP', 'Traslados VIP'];
+const CATEGORIES = ['Todos', 'Estadías Membresía', 'Streaming & Ocio', 'Hoteles 5★', 'Tours VIP', 'Traslados VIP'];
 
 const SERVICES_DATA = [
   // 1. ESTADÍAS INCLUIDAS DE MEMBRESÍA ($99 HERO PRODUCT)
@@ -68,7 +68,51 @@ const SERVICES_DATA = [
     price: '$0 VIP',
   },
 
-  // 2. TOURS VIP
+  // 2. STREAMING & ENTRETENIMIENTO VIP
+  {
+    id: 'str-1',
+    serviceId: 'streaming-pass-vip',
+    categoryType: 'Streaming & Ocio',
+    category: 'Streaming & Ocio',
+    categoryIcon: 'film-outline' as const,
+    city: 'Pase Streaming Global VIP',
+    name: 'Netflix 4K + Disney+ + Spotify Premium Anual',
+    location: 'Acceso Global sin límites geográficos',
+    image: require('@/assets/images/flight-window.jpg'),
+    discountText: '75% de descuento',
+    disclaimer: '*cuentas 4K UHD para viajes y hogar',
+    price: '$45 VIP',
+  },
+  {
+    id: 'str-2',
+    serviceId: 'starlink-travel-wifi',
+    categoryType: 'Streaming & Ocio',
+    category: 'WiFi Satelital',
+    categoryIcon: 'wifi-outline' as const,
+    city: 'Starlink Satelital Global',
+    name: 'Internet Satelital In-Flight & Rutas Marítimas',
+    location: 'Cobertura en más de 120 países y vuelos',
+    image: require('@/assets/images/hero-luxury.jpg'),
+    discountText: '70% de descuento',
+    disclaimer: '*hasta 220 Mbps ilimitados sin roaming',
+    price: '$35 VIP',
+  },
+  {
+    id: 'str-3',
+    serviceId: 'cinema-vip-pass',
+    categoryType: 'Streaming & Ocio',
+    category: 'Cine VIP & Estrenos',
+    categoryIcon: 'ticket-outline' as const,
+    city: 'Cine VIP 2x1 Anual',
+    name: 'Pase 2x1 Salas Prime & Butacas Reclinables',
+    location: 'Perú, España, Italia, México & USA',
+    image: require('@/assets/images/hotel-suite.jpg'),
+    discountText: '70% de descuento',
+    disclaimer: '*entradas 2x1 y barra gourmet todo el año',
+    price: '$18 VIP',
+  },
+
+  // 3. TOURS VIP
   {
     id: 't-1',
     serviceId: 'tour-machu-picchu',
@@ -84,16 +128,16 @@ const SERVICES_DATA = [
     price: '$240 VIP',
   },
 
-  // 3. TRASLADOS VIP
+  // 4. TRASLADOS VIP
   {
     id: 'tr-1',
     serviceId: 'transfer-mercedes-vip',
     categoryType: 'Traslados VIP',
     category: 'Traslados Chauffeur',
     categoryIcon: 'car-sport-outline' as const,
-    city: 'Mercedes Classe S / V',
+    city: 'Mercedes Clase S / V',
     name: 'Transfer Ejecutivo Mercedes Chauffeur Aeropuerto',
-    location: 'Venezia / Lima / Madrid / Miami',
+    location: 'Lima / Madrid / Miami / Venecia',
     image: require('@/assets/images/hero-luxury.jpg'),
     discountText: 'de descuento',
     disclaimer: '*chofer de traje con espera prioritaria',
@@ -232,9 +276,9 @@ export default function HotelsScreen() {
 
         {/* Title Section */}
         <View style={styles.titleSection}>
-          <Text style={styles.screenTitle}>Hotel & Resort Esclusivi</Text>
+          <Text style={styles.screenTitle}>Hoteles & Experiencias Exclusivas</Text>
           <Text style={styles.screenSubtitle}>
-            Soggiorni 5 stelle e oasi private selezionate con tariffe riservate
+            Estadías 5 estrellas, streaming, tours y beneficios reservados para socios
           </Text>
         </View>
 
@@ -242,7 +286,7 @@ export default function HotelsScreen() {
         <View style={styles.searchBar}>
           <Ionicons name="search-outline" size={19} color={BrandColors.primaryBlue} />
           <TextInput
-            placeholder="Cerca città, resort o isola privata..."
+            placeholder="Buscar destino, hotel, tour o streaming..."
             placeholderTextColor={BrandColors.grayMuted}
             style={styles.searchInput}
             value={searchQuery}
@@ -298,7 +342,7 @@ export default function HotelsScreen() {
               </View>
             </View>
             <Text style={styles.marketplaceBannerSub}>
-              Palestre d'élite, alta sartoria e med-beauty con sconti fino al -35%
+              Gimnasios de élite, alta sastrería y spas con descuentos de hasta el -35%
             </Text>
           </View>
           <Ionicons name="chevron-forward" size={18} color={BrandColors.navyDeep} />

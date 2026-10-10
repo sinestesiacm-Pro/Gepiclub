@@ -18,42 +18,42 @@ import { useAuth } from '@/context/AuthContext';
 
 const MENU_SECTIONS = [
   {
-    title: 'VIAGGIO & PREFERENZE',
+    title: 'VIAJES & PREFERENCIAS',
     items: [
       {
         icon: 'airplane-outline' as const,
-        title: 'Preferenze di Volo',
-        subtitle: 'Posto finestrino • Menu Gourmet • Lounge',
+        title: 'Preferencias de Vuelo',
+        subtitle: 'Asiento ventana • Menú Gourmet • Lounge VIP',
       },
       {
         icon: 'document-text-outline' as const,
-        title: 'Documenti & Passaporti',
-        subtitle: 'Passaporto UE registrato • Scadenza 2031',
+        title: 'Documentos & Pasaportes',
+        subtitle: 'Pasaporte registrado • Vigencia 2031',
       },
       {
         icon: 'card-outline' as const,
-        title: 'Metodi di Pagamento VIP',
-        subtitle: 'Carta Black Elite • Apple Pay',
+        title: 'Métodos de Pago VIP',
+        subtitle: 'Tarjeta Black Elite • Apple Pay / Google Pay',
       },
     ],
   },
   {
-    title: 'IMPOSTAZIONI APP',
+    title: 'CONFIGURACIÓN DE LA APP',
     items: [
       {
         icon: 'cash-outline' as const,
-        title: 'Valuta di Riferimento',
-        subtitle: 'EUR (€) • Euro',
+        title: 'Moneda de Referencia',
+        subtitle: 'USD ($) • Dólares Americanos',
       },
       {
         icon: 'notifications-outline' as const,
-        title: 'Notifiche Offerte Private',
-        subtitle: 'Avvisi prioritari per tariffe errore e sconti club',
+        title: 'Notificaciones de Ofertas Exclusivas',
+        subtitle: 'Alertas prioritarias de tarifas error y beneficios del club',
       },
       {
         icon: 'shield-checkmark-outline' as const,
-        title: 'Sicurezza & Privacy',
-        subtitle: 'Biometria Face ID attiva',
+        title: 'Seguridad & Privacidad',
+        subtitle: 'Biometría Face ID / Huella digital activa',
       },
     ],
   },
@@ -69,17 +69,17 @@ export default function ProfileScreen() {
   const initial = (fullName.charAt(0) || 'L').toUpperCase();
   const tierLabel =
     profile?.membership_tier === 'GOLD_VIP'
-      ? 'Membro Gold VIP'
-      : 'Membro Black Elite • Socio Fondatore';
+      ? 'Miembro Gold VIP'
+      : 'Miembro Black Elite • Socio Fundador';
   const pointsFormatted = profile?.club_points
     ? `${(profile.club_points / 1000).toFixed(1)}k`
     : '42.5k';
 
   const handleLogout = () => {
-    Alert.alert('Sessione VIP', 'Sei sicuro di voler effettuare il logout?', [
-      { text: 'Annulla', style: 'cancel' },
+    Alert.alert('Sesión VIP', '¿Estás seguro de que deseas cerrar sesión?', [
+      { text: 'Cancelar', style: 'cancel' },
       {
-        text: 'Esci',
+        text: 'Cerrar Sesión',
         style: 'destructive',
         onPress: async () => {
           await signOut();
@@ -130,37 +130,37 @@ export default function ProfileScreen() {
         <View style={styles.statsCard}>
           <View style={styles.statItem}>
             <Text style={styles.statNumber}>14</Text>
-            <Text style={styles.statLabel}>Viaggi</Text>
+            <Text style={styles.statLabel}>Viajes</Text>
           </View>
           <View style={styles.statDivider} />
           <View style={styles.statItem}>
             <Text style={styles.statNumber}>3</Text>
-            <Text style={styles.statLabel}>Continenti</Text>
+            <Text style={styles.statLabel}>Continentes</Text>
           </View>
           <View style={styles.statDivider} />
           <View style={styles.statItem}>
             <Text style={[styles.statNumber, { color: BrandColors.goldVip }]}>{pointsFormatted}</Text>
-            <Text style={styles.statLabel}>Punti Club</Text>
+            <Text style={styles.statLabel}>Puntos Club</Text>
           </View>
         </View>
 
         {/* Active Trip Card */}
         <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Prossimo Viaggio Confermato</Text>
+          <Text style={styles.sectionTitle}>Próximo Viaje Confirmado</Text>
         </View>
 
         <View style={styles.tripCard}>
           <View style={styles.tripCardHeader}>
             <View style={styles.tripClassBadge}>
-              <Text style={styles.tripClassText}>BUSINESS CLASS</Text>
+              <Text style={styles.tripClassText}>CLASE EJECUTIVA</Text>
             </View>
             <Text style={styles.tripDate}>18 Nov 2026</Text>
           </View>
 
           <View style={styles.tripRouteRow}>
             <View>
-              <Text style={styles.tripCode}>VCE</Text>
-              <Text style={styles.tripCity}>Venezia</Text>
+              <Text style={styles.tripCode}>MAD</Text>
+              <Text style={styles.tripCity}>Madrid</Text>
             </View>
 
             <View style={styles.tripFlightLine}>
@@ -176,9 +176,9 @@ export default function ProfileScreen() {
           </View>
 
           <View style={styles.tripCardFooter}>
-            <Text style={styles.tripSeatText}>Posto 2A • Finestrino • Menu Gourmet</Text>
+            <Text style={styles.tripSeatText}>Asiento 2A • Ventana • Menú Gourmet</Text>
             <TouchableOpacity style={styles.boardingPassBtn} activeOpacity={0.8}>
-              <Text style={styles.boardingPassText}>Dettagli</Text>
+              <Text style={styles.boardingPassText}>Detalles</Text>
               <Ionicons name="chevron-forward" size={12} color={BrandColors.primaryBlue} />
             </TouchableOpacity>
           </View>
@@ -219,7 +219,7 @@ export default function ProfileScreen() {
             onPress={handleLogout}
             activeOpacity={0.8}>
             <Ionicons name="log-out-outline" size={18} color={BrandColors.primaryPink} />
-            <Text style={styles.logoutText}>Esci dall'Account</Text>
+            <Text style={styles.logoutText}>Cerrar Sesión</Text>
           </TouchableOpacity>
         ) : (
           <TouchableOpacity
@@ -228,7 +228,7 @@ export default function ProfileScreen() {
             activeOpacity={0.8}>
             <Ionicons name="person-outline" size={18} color={BrandColors.primaryBlue} />
             <Text style={[styles.logoutText, { color: BrandColors.primaryBlue }]}>
-              Accedi al Club VIP
+              Iniciar Sesión en Club VIP
             </Text>
           </TouchableOpacity>
         )}
@@ -236,7 +236,7 @@ export default function ProfileScreen() {
         {/* Footer info */}
         <View style={styles.footerNote}>
           <Text style={styles.footerText}>Gepiclub Travel Mobile • v1.0.0 (Build 2026)</Text>
-          <Text style={styles.footerText}>Protetto da crittografia end-to-end 256-bit</Text>
+          <Text style={styles.footerText}>Protegido con cifrado de extremo a extremo de 256 bits</Text>
         </View>
       </ScrollView>
     </View>

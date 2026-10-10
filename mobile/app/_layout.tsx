@@ -58,12 +58,16 @@ export default function RootLayout() {
           screenOptions={{
             headerShown: false,
             contentStyle: { backgroundColor: '#F8FAFC' },
+            animation: 'slide_from_right',
+            animationDuration: 220,
           }}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen
             name="auth/login"
             options={{
               presentation: 'modal',
+              animation: 'fade_from_bottom',
+              animationDuration: 240,
               headerShown: false,
             }}
           />
@@ -72,6 +76,7 @@ export default function RootLayout() {
             options={{
               headerShown: false,
               animation: 'slide_from_right',
+              animationDuration: 220,
             }}
           />
           <Stack.Screen
@@ -79,6 +84,7 @@ export default function RootLayout() {
             options={{
               headerShown: false,
               animation: 'slide_from_right',
+              animationDuration: 220,
             }}
           />
           <Stack.Screen
@@ -87,6 +93,7 @@ export default function RootLayout() {
               headerShown: false,
               presentation: 'modal',
               animation: 'fade_from_bottom',
+              animationDuration: 240,
             }}
           />
           <Stack.Screen
@@ -94,9 +101,10 @@ export default function RootLayout() {
             options={{
               headerShown: false,
               animation: 'slide_from_right',
+              animationDuration: 220,
             }}
           />
-          <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+          <Stack.Screen name="modal" options={{ presentation: 'modal', animation: 'fade_from_bottom' }} />
         </Stack>
       </ThemeProvider>
     </AuthProvider>

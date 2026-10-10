@@ -9,8 +9,10 @@ import { TabIcon } from '@/components/TabIcon';
 
 export default function TabLayout() {
   const triggerHaptic = () => {
-    if (Platform.OS === 'ios') {
+    try {
       Haptics.selectionAsync();
+    } catch {
+      // Ignored
     }
   };
 
@@ -53,7 +55,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Voli',
+          title: 'Vuelos',
           tabBarIcon: ({ color, focused }) => (
             <TabIcon name="flights" color={color} focused={focused} />
           ),
@@ -65,7 +67,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="hotels"
         options={{
-          title: 'Hotel',
+          title: 'Hoteles',
           tabBarIcon: ({ color, focused }) => (
             <TabIcon name="hotels" color={color} focused={focused} />
           ),
@@ -90,7 +92,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="profile"
         options={{
-          title: 'Profilo',
+          title: 'Perfil',
           tabBarIcon: ({ color, focused }) => (
             <TabIcon name="profile" color={color} focused={focused} />
           ),

@@ -3,7 +3,7 @@ import {
   StyleSheet,
   View,
   Text,
-  TouchableOpacity,
+  Pressable,
   ImageBackground,
   ImageSourcePropType,
   Platform,
@@ -40,17 +40,25 @@ export function DestinationBannerCard({
   style,
 }: DestinationBannerCardProps) {
   const handlePress = () => {
-    if (Platform.OS === 'ios') {
+    try {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    } catch {
+      // Ignored
     }
     if (onPress) onPress();
   };
 
   return (
-    <TouchableOpacity
-      activeOpacity={0.92}
+    <Pressable
       onPress={handlePress}
-      style={[styles.container, style]}>
+      style={({ pressed }) => [
+        styles.container,
+        {
+          transform: [{ scale: pressed ? 0.98 : 1 }],
+          opacity: pressed ? 0.94 : 1,
+        },
+        style,
+      ]}>
       <ImageBackground
         source={image}
         style={styles.imageBackground}
@@ -113,13 +121,13 @@ export function DestinationBannerCard({
 
           {price && (
             <View style={styles.pricePill}>
-              <Text style={styles.pricePillLabel}>Da</Text>
+              <Text style={styles.pricePillLabel}>Desde</Text>
               <Text style={styles.pricePillValue}>{price}</Text>
             </View>
           )}
         </View>
       </ImageBackground>
-    </TouchableOpacity>
+    </Pressable>
   );
 }
 

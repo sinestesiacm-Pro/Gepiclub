@@ -29,10 +29,14 @@ interface CategoryFilter {
 }
 
 const CATEGORY_TABS: CategoryFilter[] = [
-  { id: 'tutti', label: 'Tutti', icon: 'grid-outline' },
-  { id: 'viaggi', label: 'Viaggi & Resort', icon: 'airplane-outline' },
-  { id: 'fitness', label: 'Palestre & Spa', icon: 'barbell-outline' },
-  { id: 'moda', label: 'Alta Sartoria', icon: 'shirt-outline' },
+  { id: 'tutti', label: 'Todos', icon: 'grid-outline' },
+  { id: 'estadias', label: 'Estadías Membresía', icon: 'gift-outline' },
+  { id: 'streaming', label: 'Streaming & Ocio', icon: 'film-outline' },
+  { id: 'viaggi', label: 'Viajes & Hoteles', icon: 'airplane-outline' },
+  { id: 'tours', label: 'Tours & Experiencias', icon: 'compass-outline' },
+  { id: 'traslados', label: 'Traslados VIP', icon: 'car-sport-outline' },
+  { id: 'fitness', label: 'Gimnasios & Spa', icon: 'barbell-outline' },
+  { id: 'moda', label: 'Alta Sastrería', icon: 'shirt-outline' },
   { id: 'cosmetica', label: 'Med-Beauty', icon: 'sparkles-outline' },
 ];
 
@@ -59,15 +63,19 @@ export default function MarketplaceScreen() {
   }, [activeCategory, searchQuery]);
 
   const handleSelectCategory = (catId: 'tutti' | ServiceCategory) => {
-    if (Platform.OS === 'ios') {
+    try {
       Haptics.selectionAsync();
+    } catch {
+      // Ignored
     }
     setActiveCategory(catId);
   };
 
   const handleOpenService = (item: ServiceItem) => {
-    if (Platform.OS === 'ios') {
+    try {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    } catch {
+      // Ignored
     }
     router.push({
       pathname: '/service/[id]',
@@ -95,12 +103,12 @@ export default function MarketplaceScreen() {
 
           <View style={styles.headerTitleBox}>
             <Text style={styles.headerTitle}>Marketplace Gepiclub</Text>
-            <Text style={styles.headerSub}>Esperienze & Convenzioni Esclusive VIP</Text>
+            <Text style={styles.headerSub}>Experiencias & Convenios Exclusivos VIP</Text>
           </View>
 
           <View style={styles.vipBadgeHeader}>
             <Ionicons name="shield-checkmark" size={13} color={BrandColors.goldVip} />
-            <Text style={styles.vipBadgeHeaderText}>SOCI</Text>
+            <Text style={styles.vipBadgeHeaderText}>SOCIOS</Text>
           </View>
         </View>
 
@@ -109,7 +117,7 @@ export default function MarketplaceScreen() {
           <Ionicons name="search-outline" size={17} color={BrandColors.grayMuted} />
           <TextInput
             style={styles.searchInput}
-            placeholder="Cerca viaggi, palestre, abiti su misura, spa..."
+            placeholder="Buscar viajes, streaming, gimnasios, sastrería, spas..."
             placeholderTextColor={BrandColors.grayMuted}
             value={searchQuery}
             onChangeText={setSearchQuery}
@@ -146,7 +154,7 @@ export default function MarketplaceScreen() {
                 <Text
                   style={[
                     styles.tabPillText,
-                    isActive && styles.tabPillTextActive,
+                    isActive && styles.tabPillActive && styles.tabPillTextActive,
                   ]}>
                   {tab.label}
                 </Text>
@@ -172,10 +180,10 @@ export default function MarketplaceScreen() {
             <Ionicons name="ribbon" size={20} color={BrandColors.goldVip} />
           </View>
           <View style={{ flex: 1, marginLeft: 12 }}>
-            <Text style={styles.introTitle}>Convenzioni B2B ad Alto Valore</Text>
+            <Text style={styles.introTitle}>Convenios B2B y Beneficios Exclusivos</Text>
             <Text style={styles.introSub}>
-              Oltre ai viaggi d’élite, i soci accedono a tariffe negoziate nei migliori centri
-              fitness, atelier sartoriali e cliniche medico-estetiche d'Italia e del Perù.
+              Además de viajes de élite y estadías de bienvenida, accede a tarifas negociadas en
+              streaming, centros de fitness, sastrería y clínicas de bienestar.
             </Text>
           </View>
         </View>
@@ -184,7 +192,7 @@ export default function MarketplaceScreen() {
         <View style={styles.resultsCountRow}>
           <Text style={styles.resultsCountText}>
             Mostrando {filteredServices.length}{' '}
-            {filteredServices.length === 1 ? 'convenzione' : 'convenzioni VIP'}
+            {filteredServices.length === 1 ? 'beneficio' : 'beneficios VIP'}
           </Text>
         </View>
 
@@ -192,9 +200,9 @@ export default function MarketplaceScreen() {
         {filteredServices.length === 0 ? (
           <View style={styles.emptyStateBox}>
             <Ionicons name="search-outline" size={38} color={BrandColors.grayMuted} />
-            <Text style={styles.emptyTitle}>Nessuna esperienza trovata</Text>
+            <Text style={styles.emptyTitle}>No se encontraron experiencias</Text>
             <Text style={styles.emptySub}>
-              Prova a cercare con altri termini o seleziona la scheda 'Tutti'.
+              Intenta buscar con otros términos o selecciona 'Todos'.
             </Text>
             <TouchableOpacity
               style={styles.emptyResetBtn}
@@ -202,7 +210,7 @@ export default function MarketplaceScreen() {
                 setActiveCategory('tutti');
                 setSearchQuery('');
               }}>
-              <Text style={styles.emptyResetBtnText}>Reimposta Filtri</Text>
+              <Text style={styles.emptyResetBtnText}>Restablecer Filtros</Text>
             </TouchableOpacity>
           </View>
         ) : (
@@ -278,7 +286,7 @@ export default function MarketplaceScreen() {
                 <View style={styles.cardFooter}>
                   <View>
                     <Text style={styles.priceListinoText}>
-                      Tariffa standard {item.currencySymbol}
+                      Precio regular {item.currencySymbol}
                       {item.publicPrice}
                     </Text>
                     <View style={styles.priceRow}>
@@ -286,19 +294,19 @@ export default function MarketplaceScreen() {
                         {item.currencySymbol}
                         {item.vipPrice}
                       </Text>
-                      <Text style={styles.tariffaVipLabel}>Tariffa VIP</Text>
+                      <Text style={styles.tariffaVipLabel}>Tarifa VIP</Text>
                     </View>
                     <View style={styles.pointsEarnedChip}>
                       <Ionicons name="sparkles" size={10} color={BrandColors.goldDark} />
                       <Text style={styles.pointsEarnedChipText}>
-                        +{item.pointsEarned} Punti
+                        +{item.pointsEarned} Puntos
                       </Text>
                     </View>
                   </View>
 
                   <View style={styles.openDetailsBtn}>
-                    <Text style={styles.openDetailsBtnText}>Dettagli</Text>
-                    <Ionicons name="arrow-forward" size={13} color="#FFFFFF" />
+                    <Text style={styles.openDetailsBtnText}>Ver Detalle</Text>
+                    <Ionicons name="arrow-forward" size={12} color="#FFFFFF" />
                   </View>
                 </View>
               </View>

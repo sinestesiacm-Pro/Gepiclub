@@ -35,7 +35,7 @@ const POPULAR_ROUTES = [
     city: 'Miami',
     image: require('@/assets/images/caribbean-resort.jpg'),
     discountText: 'de descuento',
-    disclaimer: '*volo diretto ITA Airways',
+    disclaimer: '*Vuelo directo aerolínea aliada',
     price: '€690',
     serviceId: 'volo-business-vce-lim',
   },
@@ -55,7 +55,7 @@ const POPULAR_ROUTES = [
     city: 'Cancún',
     image: require('@/assets/images/cancun-resort.jpg'),
     discountText: 'de descuento',
-    disclaimer: '*tariffe privilegiate per soci',
+    disclaimer: '*Tarifas preferenciales para socios',
     price: '€640',
     serviceId: 'volo-business-vce-lim',
   },
@@ -65,7 +65,7 @@ const POPULAR_ROUTES = [
     city: 'Cartagena',
     image: require('@/assets/images/cruise.jpg'),
     discountText: 'de descuento',
-    disclaimer: '*collegamento via Bogotà VIP',
+    disclaimer: '*Conexión ejecutiva vía Bogotá',
     price: '€720',
     serviceId: 'volo-business-vce-lim',
   },
@@ -75,7 +75,7 @@ const POPULAR_ROUTES = [
     city: 'Punta Cana',
     image: require('@/assets/images/hotel-suite.jpg'),
     discountText: 'de descuento',
-    disclaimer: '*resort charter incluso',
+    disclaimer: '*Paquete chárter y traslados incluidos',
     price: '€780',
     serviceId: 'volo-business-vce-lim',
   },
@@ -127,7 +127,7 @@ export default function FlightsScreen() {
                   styles.typePillText,
                   tripType === 'round' && styles.typePillTextActive,
                 ]}>
-                Andata e Ritorno
+                Ida y Vuelta
               </Text>
             </TouchableOpacity>
 
@@ -142,7 +142,7 @@ export default function FlightsScreen() {
                   styles.typePillText,
                   tripType === 'oneWay' && styles.typePillTextActive,
                 ]}>
-                Solo Andata
+                Solo Ida
               </Text>
             </TouchableOpacity>
 
@@ -150,7 +150,7 @@ export default function FlightsScreen() {
               style={styles.classBadge}
               onPress={() => setCabinClass(cabinClass === 'business' ? 'economy' : 'business')}>
               <Text style={styles.classBadgeText}>
-                {cabinClass === 'business' ? 'Business Class' : 'Economy Class'}
+                {cabinClass === 'business' ? 'Clase Ejecutiva' : 'Clase Económica'}
               </Text>
             </TouchableOpacity>
           </View>
@@ -158,7 +158,7 @@ export default function FlightsScreen() {
           {/* High-Contrast Origin & Destination */}
           <View style={styles.routeContainer}>
             <View style={styles.airportBox}>
-              <Text style={styles.airportLabel}>DA DOVE</Text>
+              <Text style={styles.airportLabel}>ORIGEN</Text>
               <Text style={styles.airportCode}>{origin.code}</Text>
               <Text style={styles.airportCity} numberOfLines={1}>{origin.city}</Text>
             </View>
@@ -171,7 +171,7 @@ export default function FlightsScreen() {
             </TouchableOpacity>
 
             <View style={[styles.airportBox, { alignItems: 'flex-end' }]}>
-              <Text style={styles.airportLabel}>VERSO DOVE</Text>
+              <Text style={styles.airportLabel}>DESTINO</Text>
               <Text style={styles.airportCode}>{destination.code}</Text>
               <Text style={styles.airportCity} numberOfLines={1}>{destination.city}</Text>
             </View>
@@ -184,7 +184,7 @@ export default function FlightsScreen() {
                 <Ionicons name="calendar-outline" size={16} color={BrandColors.primaryBlue} />
               </View>
               <View style={{ marginLeft: 8 }}>
-                <Text style={styles.metaLabel}>DATE DI VIAGGIO</Text>
+                <Text style={styles.metaLabel}>FECHAS DE VIAJE</Text>
                 <Text style={styles.metaValue}>18 Nov - 02 Dic 2026</Text>
               </View>
             </View>
@@ -196,8 +196,8 @@ export default function FlightsScreen() {
                 <Ionicons name="people-outline" size={16} color={BrandColors.primaryBlue} />
               </View>
               <View style={{ marginLeft: 8 }}>
-                <Text style={styles.metaLabel}>PASSEGGERI</Text>
-                <Text style={styles.metaValue}>1 Adulto • Business</Text>
+                <Text style={styles.metaLabel}>PASAJEROS</Text>
+                <Text style={styles.metaValue}>1 Adulto • Ejecutiva</Text>
               </View>
             </View>
           </View>
@@ -206,8 +206,10 @@ export default function FlightsScreen() {
           <TouchableOpacity
             style={styles.searchButton}
             onPress={() => {
-              if (Platform.OS === 'ios') {
+              try {
                 Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+              } catch {
+                // Ignored
               }
               router.push({
                 pathname: '/service/[id]',
@@ -221,7 +223,7 @@ export default function FlightsScreen() {
               end={{ x: 1, y: 0 }}
               style={styles.searchButtonGradient}>
               <Ionicons name="airplane" size={18} color="#FFFFFF" style={{ marginRight: 8 }} />
-              <Text style={styles.searchButtonText}>Cerca Voli con Tariffa VIP</Text>
+              <Text style={styles.searchButtonText}>Buscar Vuelos con Tarifa VIP</Text>
             </LinearGradient>
           </TouchableOpacity>
         </View>
@@ -230,15 +232,15 @@ export default function FlightsScreen() {
         <View style={styles.perksRow}>
           <View style={styles.perkPill}>
             <Ionicons name="shield-checkmark" size={13} color={BrandColors.goldVip} />
-            <Text style={styles.perkText}>Tariffe Garantite -35%</Text>
+            <Text style={styles.perkText}>Tarifas Garantizadas -35%</Text>
           </View>
           <View style={styles.perkPill}>
             <Ionicons name="briefcase-outline" size={13} color={BrandColors.primaryBlue} />
-            <Text style={styles.perkText}>Bagaglio Stiva Incluso</Text>
+            <Text style={styles.perkText}>Equipaje en Bodega Incluido</Text>
           </View>
           <View style={styles.perkPill}>
             <Ionicons name="headset-outline" size={13} color={BrandColors.emeraldSuccess} />
-            <Text style={styles.perkText}>Assistenza H24</Text>
+            <Text style={styles.perkText}>Asistencia 24/7</Text>
           </View>
         </View>
 
@@ -274,8 +276,8 @@ export default function FlightsScreen() {
         <View style={styles.marketplaceSection}>
           <View style={styles.sectionHeaderRow}>
             <View>
-              <Text style={styles.sectionTitle}>Marketplace & Servizi VIP</Text>
-              <Text style={styles.sectionSubtitle}>Palestre, sartoria su misura, cliniche & spa</Text>
+              <Text style={styles.sectionTitle}>Marketplace & Beneficios del Club</Text>
+              <Text style={styles.sectionSubtitle}>Gimnasios de élite, sastrería, spas y streaming global</Text>
             </View>
             <TouchableOpacity
               style={styles.seeAllMarketplaceBtn}
@@ -286,7 +288,7 @@ export default function FlightsScreen() {
                 router.push('/marketplace');
               }}
               activeOpacity={0.8}>
-              <Text style={styles.seeAllMarketplaceText}>Vedi Tutti</Text>
+              <Text style={styles.seeAllMarketplaceText}>Ver Todos</Text>
               <Ionicons name="arrow-forward" size={12} color={BrandColors.primaryBlue} />
             </TouchableOpacity>
           </View>
@@ -296,6 +298,30 @@ export default function FlightsScreen() {
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.marketplaceCardsScroll}>
             
+            {/* 0. Streaming Pass VIP */}
+            <TouchableOpacity
+              style={styles.marketMiniCard}
+              onPress={() =>
+                router.push({
+                  pathname: '/service/[id]',
+                  params: { id: 'streaming-pass-vip' },
+                })
+              }
+              activeOpacity={0.9}>
+              <Image source={require('@/assets/images/flight-window.jpg')} style={styles.miniCardImage} />
+              <View style={[styles.miniCardBadge, { backgroundColor: '#FF3366' }]}>
+                <Text style={styles.miniCardBadgeText}>STREAMING</Text>
+              </View>
+              <View style={styles.miniCardBody}>
+                <Text style={styles.miniCardTitle} numberOfLines={1}>Pase Streaming Global</Text>
+                <Text style={styles.miniCardPartner}>Netflix 4K, Disney+, Spotify</Text>
+                <View style={styles.miniCardPriceRow}>
+                  <Text style={styles.miniCardPrice}>$45</Text>
+                  <Text style={styles.miniCardTag}>-75% VIP</Text>
+                </View>
+              </View>
+            </TouchableOpacity>
+
             {/* 1. Virgin Active */}
             <TouchableOpacity
               style={styles.marketMiniCard}
@@ -312,9 +338,9 @@ export default function FlightsScreen() {
               </View>
               <View style={styles.miniCardBody}>
                 <Text style={styles.miniCardTitle} numberOfLines={1}>Virgin Active Collection</Text>
-                <Text style={styles.miniCardPartner}>Palestre & Spa di Lusso</Text>
+                <Text style={styles.miniCardPartner}>Gimnasios & Spas de Élite</Text>
                 <View style={styles.miniCardPriceRow}>
-                  <Text style={styles.miniCardPrice}>€160</Text>
+                  <Text style={styles.miniCardPrice}>$160</Text>
                   <Text style={styles.miniCardTag}>-30% VIP</Text>
                 </View>
               </View>
@@ -335,10 +361,10 @@ export default function FlightsScreen() {
                 <Text style={styles.miniCardBadgeText}>ALTA MODA</Text>
               </View>
               <View style={styles.miniCardBody}>
-                <Text style={styles.miniCardTitle} numberOfLines={1}>Sartoria Veneta Bespoke</Text>
-                <Text style={styles.miniCardPartner}>Abiti & Camicie su Misura</Text>
+                <Text style={styles.miniCardTitle} numberOfLines={1}>Sastrería Bespoke</Text>
+                <Text style={styles.miniCardPartner}>Trajes & Camisas a Medida</Text>
                 <View style={styles.miniCardPriceRow}>
-                  <Text style={styles.miniCardPrice}>€1.400</Text>
+                  <Text style={styles.miniCardPrice}>$1.400</Text>
                   <Text style={styles.miniCardTag}>-28% VIP</Text>
                 </View>
               </View>
@@ -356,13 +382,13 @@ export default function FlightsScreen() {
               activeOpacity={0.9}>
               <Image source={require('@/assets/images/hotel-suite.jpg')} style={styles.miniCardImage} />
               <View style={styles.miniCardBadge}>
-                <Text style={styles.miniCardBadgeText}>COSMETICA</Text>
+                <Text style={styles.miniCardBadgeText}>COSMÉTICA</Text>
               </View>
               <View style={styles.miniCardBody}>
-                <Text style={styles.miniCardTitle} numberOfLines={1}>Clinica Med-Spa Platinum</Text>
-                <Text style={styles.miniCardPartner}>Biorivitalizzazione & Viso</Text>
+                <Text style={styles.miniCardTitle} numberOfLines={1}>Clínica Med-Spa Platinum</Text>
+                <Text style={styles.miniCardPartner}>Rejuvenecimiento Facial & Spa</Text>
                 <View style={styles.miniCardPriceRow}>
-                  <Text style={styles.miniCardPrice}>€240</Text>
+                  <Text style={styles.miniCardPrice}>$240</Text>
                   <Text style={styles.miniCardTag}>-31% VIP</Text>
                 </View>
               </View>
@@ -373,7 +399,7 @@ export default function FlightsScreen() {
         {/* Recommended Flight Deals Header */}
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>Vuelos Sugeridos & Destinos del Club</Text>
-          <Text style={styles.sectionSubtitle}>Tariffe preferenziali con sconti fino al 40%</Text>
+          <Text style={styles.sectionSubtitle}>Tarifas preferenciales B2B con hasta 40% de descuento</Text>
         </View>
 
         {/* Route Cards (Screenshot 3 Full-Bleed Luxury Banner Style) */}

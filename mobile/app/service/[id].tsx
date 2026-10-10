@@ -53,7 +53,7 @@ export default function ServiceDetailScreen() {
   const handleShare = async () => {
     try {
       await Share.share({
-        message: `Scopri ${service.title} su Gepiclub Travel con tariffa esclusiva per soci VIP a soli ${service.currencySymbol}${finalVipPrice}!`,
+        message: `¡Descubre ${service.title} en Gepiclub Travel con tarifa exclusiva para socios VIP a solo ${service.currencySymbol}${finalVipPrice}!`,
       });
     } catch {
       // Ignored
@@ -148,7 +148,7 @@ export default function ServiceDetailScreen() {
             <Ionicons name="shield-checkmark" size={14} color={BrandColors.goldVip} />
             <Text style={styles.partnerName}>{service.partnerName}</Text>
             <View style={styles.verifiedChip}>
-              <Text style={styles.verifiedChipText}>PARTNER VERIFICATO</Text>
+              <Text style={styles.verifiedChipText}>PARTNER VERIFICADO</Text>
             </View>
           </View>
 
@@ -169,8 +169,8 @@ export default function ServiceDetailScreen() {
               <Ionicons name="diamond-outline" size={16} color={BrandColors.goldVip} />
             </View>
             <View style={{ marginLeft: 10, flex: 1 }}>
-              <Text style={styles.vipPerksTitle}>Vantaggi Riservati ai Soci Gepiclub</Text>
-              <Text style={styles.vipPerksSubtitle}>Inclusi gratuitamente con la tua adesione VIP</Text>
+              <Text style={styles.vipPerksTitle}>Beneficios Exclusivos para Socios Gepiclub</Text>
+              <Text style={styles.vipPerksSubtitle}>Incluidos sin costo con tu membresía VIP activa</Text>
             </View>
           </View>
 
@@ -188,8 +188,8 @@ export default function ServiceDetailScreen() {
 
         {/* Options / Plan Selection */}
         <View style={styles.optionsSection}>
-          <Text style={styles.sectionHeading}>Seleziona la Configurazione</Text>
-          <Text style={styles.sectionSubheading}>Scegli il livello di servizio desiderato</Text>
+          <Text style={styles.sectionHeading}>Selecciona la Configuración</Text>
+          <Text style={styles.sectionSubheading}>Elige la opción deseada para tu servicio</Text>
 
           <View style={styles.optionsList}>
             {service.options.map((option) => {
@@ -225,7 +225,7 @@ export default function ServiceDetailScreen() {
 
                     <Text style={styles.optionPriceMod}>
                       {option.priceModifier === 0
-                        ? 'Incluso'
+                        ? 'Incluido'
                         : `+${service.currencySymbol}${option.priceModifier}`}
                     </Text>
                   </View>
@@ -237,12 +237,12 @@ export default function ServiceDetailScreen() {
 
         {/* Full Description */}
         <View style={styles.detailsCard}>
-          <Text style={styles.sectionHeading}>Dettagli dell'Esperienza</Text>
+          <Text style={styles.sectionHeading}>Detalles de la Experiencia</Text>
           <Text style={styles.fullDescText}>{service.fullDescription}</Text>
 
           <View style={styles.includesDivider} />
 
-          <Text style={styles.includesHeading}>Cosa è Incluso:</Text>
+          <Text style={styles.includesHeading}>Qué está Incluido:</Text>
           {service.includes.map((inc, i) => (
             <View key={i} style={styles.includeRow}>
               <Ionicons name="radio-button-on" size={12} color={BrandColors.primaryBlue} />
@@ -282,12 +282,12 @@ export default function ServiceDetailScreen() {
               {service.currencySymbol}
               {finalVipPrice}
             </Text>
-            <Text style={styles.tariffaVipLabel}>Tariffa VIP</Text>
+            <Text style={styles.tariffaVipLabel}>Tarifa Socio VIP</Text>
           </View>
 
           <View style={styles.pointsPill}>
             <Ionicons name="sparkles" size={10} color={BrandColors.goldVip} />
-            <Text style={styles.pointsPillText}>+{service.pointsEarned} Punti Club</Text>
+            <Text style={styles.pointsPillText}>+{service.pointsEarned} Puntos Club</Text>
           </View>
         </View>
 
@@ -300,7 +300,7 @@ export default function ServiceDetailScreen() {
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
             style={styles.checkoutGradient}>
-            <Text style={styles.checkoutBtnText}>Procedi al Checkout</Text>
+            <Text style={styles.checkoutBtnText}>Continuar al Checkout</Text>
             <Ionicons name="arrow-forward" size={16} color="#FFFFFF" style={{ marginLeft: 6 }} />
           </LinearGradient>
         </TouchableOpacity>

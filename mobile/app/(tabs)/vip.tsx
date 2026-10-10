@@ -23,28 +23,33 @@ import { useAuth } from '@/context/AuthContext';
 const PRIVILEGES = [
   {
     icon: 'chatbubbles' as const,
-    title: 'Concierge Personale 24/7',
-    description: 'Assistente dedicato in Italia e Perù per ogni richiesta o itinerario su misura.',
+    title: 'Concierge Personal 24/7',
+    description: 'Asistente exclusivo en WhatsApp y llamada para reservas y requerimientos a medida.',
+  },
+  {
+    icon: 'film' as const,
+    title: 'Streaming & Entretenimiento Global',
+    description: 'Pases de streaming 4K, cine VIP 2x1 e Internet satelital Starlink en tus viajes.',
   },
   {
     icon: 'airplane' as const,
-    title: 'Accesso VIP Lounge Aeroportuali',
-    description: 'Ingresso illimitato con ospite in oltre 1.400 lounge mondiali.',
+    title: 'Salas VIP Lounge en Aeropuertos',
+    description: 'Acceso prioritario con acompañante en más de 1.400 salones internacionales.',
   },
   {
     icon: 'pricetag' as const,
-    title: 'Fino al -35% su Voli & Hotel',
-    description: 'Tariffe B2B negoziate direttamente con le catene partner senza intermediari.',
+    title: 'Hasta -35% en Vuelos & Hoteles',
+    description: 'Tarifas B2B negociadas directamente con cadenas y aerolíneas aliadas.',
   },
   {
     icon: 'car-sport' as const,
-    title: 'Chauffeur NCC di Lusso',
-    description: 'Transfer aeroportuale con veicoli executive (Mercedes Classe S o Van VIP).',
+    title: 'Chauffeur Ejecutivo de Lujo',
+    description: 'Traslados con chofer privado de traje en Mercedes Clase S o Van VIP.',
   },
   {
     icon: 'shield-checkmark' as const,
-    title: 'Polizza Platinum Globale',
-    description: 'Copertura medica illimitata, cancellazione volo e tutela bagaglio garantita.',
+    title: 'Póliza Médica Platinum Global',
+    description: 'Cobertura médica internacional, cancelación y protección total de equipaje.',
   },
 ];
 
@@ -91,21 +96,21 @@ export default function VipClubScreen() {
     (user?.email ? user.email.split('@')[0].toUpperCase() : 'LUCA');
   const cardNumber = profile?.vip_card_number || '••••  ••••  ••••  8829';
   const cardTier = profile?.membership_tier === 'GOLD_VIP' ? 'GOLD VIP' : 'BLACK ELITE';
-  const points = (profile?.club_points ?? 42500).toLocaleString('it-IT');
+  const points = (profile?.club_points ?? 42500).toLocaleString('es-ES');
   const creditValue = Math.round((profile?.club_points ?? 42500) * 0.02);
 
   const referralCode = profile?.full_name
     ? `GP-${profile.full_name.split(' ')[0].toUpperCase()}26`
-    : 'GP-LUCA2026';
+    : 'GP-SOCIO2026';
 
   const handleOpenWhatsApp = () => {
     if (Platform.OS === 'ios') {
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     }
     Linking.openURL(
-      `https://wa.me/51999999999?text=Salve%20Concierge%20Gepiclub,%20sono%20il%20socio%20${encodeURIComponent(
+      `https://wa.me/51999999999?text=Hola%20Concierge%20Gepiclub,%20soy%20el%20socio%20${encodeURIComponent(
         cardHolder
-      )}%20(ID:%20${encodeURIComponent(cardNumber)}).%20Desidero%20assistenza%20per%20un%20viaggio.`
+      )}%20(ID:%20${encodeURIComponent(cardNumber)}).%20Deseo%20asistencia%20personalizada%20para%20un%20viaje.`
     );
   };
 
@@ -166,7 +171,7 @@ export default function VipClubScreen() {
             Gepiclub <Text style={{ color: BrandColors.goldVip }}>VIP</Text>
           </Text>
           <Text style={styles.headerSubtitle}>
-            Il tuo passaporto per un'esperienza di viaggio senza compromessi
+            Tu pasaporte a una experiencia de viaje y beneficios sin límites
           </Text>
         </View>
 
@@ -194,15 +199,15 @@ export default function VipClubScreen() {
 
           <View style={styles.cardBottomRow}>
             <View>
-              <Text style={styles.cardLabel}>TITOLARE CARTA</Text>
+              <Text style={styles.cardLabel}>TITULAR DE LA TARJETA</Text>
               <Text style={styles.cardHolderName}>{cardHolder}</Text>
             </View>
 
             <View style={{ alignItems: 'flex-end' }}>
-              <Text style={styles.cardLabel}>STATUS</Text>
+              <Text style={styles.cardLabel}>ESTADO</Text>
               <View style={styles.statusPill}>
                 <View style={styles.statusDot} />
-                <Text style={styles.statusText}>SOCIO ATTIVO</Text>
+                <Text style={styles.statusText}>SOCIO ACTIVO</Text>
               </View>
             </View>
           </View>
@@ -211,13 +216,13 @@ export default function VipClubScreen() {
         {/* Balance Card (Pure White Clean Luxury) */}
         <View style={styles.balanceCard}>
           <View style={styles.balanceInfo}>
-            <Text style={styles.balanceLabel}>SALDO PUNTI GEPICLUB</Text>
+            <Text style={styles.balanceLabel}>SALDO DE PUNTOS GEPICLUB</Text>
             <View style={styles.balanceRow}>
               <Ionicons name="sparkles" size={20} color={BrandColors.goldVip} />
               <Text style={styles.balanceValue}>{points}</Text>
               <Text style={styles.balanceCurrency}>pts</Text>
             </View>
-            <Text style={styles.balanceCredit}>Valore stimato: €{creditValue} di crediti viaggio</Text>
+            <Text style={styles.balanceCredit}>Valor estimado: ${creditValue} en créditos de viaje</Text>
           </View>
 
           <TouchableOpacity
@@ -229,7 +234,7 @@ export default function VipClubScreen() {
               router.push('/marketplace');
             }}
             activeOpacity={0.8}>
-            <Text style={styles.redeemBtnText}>Usa Punti</Text>
+            <Text style={styles.redeemBtnText}>Usar Puntos</Text>
             <Ionicons name="arrow-forward" size={13} color={BrandColors.primaryBlue} />
           </TouchableOpacity>
         </View>
@@ -330,8 +335,8 @@ export default function VipClubScreen() {
                 <Ionicons name="headset" size={20} color={BrandColors.goldVip} />
               </View>
               <View style={{ flex: 1, marginLeft: 12 }}>
-                <Text style={styles.conciergeTitle}>Assistente di Viaggio Personale</Text>
-                <Text style={styles.conciergeSub}>Disponibile 24/7 in linea diretta prioritaria</Text>
+                <Text style={styles.conciergeTitle}>Asistente de Viaje Personal (Concierge 24/7)</Text>
+                <Text style={styles.conciergeSub}>Línea directa prioritaria para resolver tus itinerarios y reservas</Text>
               </View>
             </View>
 
@@ -344,7 +349,7 @@ export default function VipClubScreen() {
                   colors={['#25D366', '#128C7E']}
                   style={styles.conciergeActionGradient}>
                   <Ionicons name="logo-whatsapp" size={16} color="#FFFFFF" />
-                  <Text style={styles.conciergeActionText}>Chat WhatsApp</Text>
+                  <Text style={styles.conciergeActionText}>Chat de WhatsApp</Text>
                 </LinearGradient>
               </TouchableOpacity>
 
@@ -353,7 +358,7 @@ export default function VipClubScreen() {
                 onPress={handleCallLine}
                 activeOpacity={0.85}>
                 <Ionicons name="call-outline" size={16} color="#FFFFFF" />
-                <Text style={styles.conciergeCallText}>Chiama Linea VIP</Text>
+                <Text style={styles.conciergeCallText}>Llamar a Línea VIP</Text>
               </TouchableOpacity>
             </View>
           </LinearGradient>
@@ -374,13 +379,13 @@ export default function VipClubScreen() {
           </View>
           <View style={{ flex: 1, marginLeft: 12 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Text style={styles.vipMarketTitle}>Marketplace & Convenzioni</Text>
+              <Text style={styles.vipMarketTitle}>Marketplace & Convenios</Text>
               <View style={styles.vipMarketBadge}>
                 <Text style={styles.vipMarketBadgeText}>B2B VIP</Text>
               </View>
             </View>
             <Text style={styles.vipMarketSub}>
-              Palestre d'élite, sartoria su misura, cliniche estetiche e resort esclusivi
+              Gimnasios de élite, sastrería a medida, clínicas estéticas y spas
             </Text>
           </View>
           <Ionicons name="chevron-forward" size={18} color={BrandColors.navyDeep} />
@@ -388,8 +393,8 @@ export default function VipClubScreen() {
 
         {/* Exclusive Privileges List */}
         <View style={styles.privilegesHeader}>
-          <Text style={styles.sectionTitle}>I Tuoi Privilegi Esclusivi</Text>
-          <Text style={styles.sectionSubtitle}>Inclusi nella tua adesione Black Elite</Text>
+          <Text style={styles.sectionTitle}>Tus Privilegios Exclusivos</Text>
+          <Text style={styles.sectionSubtitle}>Incluidos con tu membresía activa Gepiclub</Text>
         </View>
 
         {PRIVILEGES.map((item, idx) => (

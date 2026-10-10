@@ -4,24 +4,13 @@ import {
   Text,
   Image,
   StyleSheet,
-  TouchableOpacity,
-  Linking,
   Platform,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Ionicons } from '@expo/vector-icons';
 import { BrandColors } from '@/constants/Colors';
 
-type HeaderBrandProps = {
-  showConcierge?: boolean;
-};
-
-export function HeaderBrand({ showConcierge = true }: HeaderBrandProps) {
+export function HeaderBrand() {
   const insets = useSafeAreaInsets();
-
-  const handleConcierge = () => {
-    Linking.openURL('https://wa.me/51999999999?text=Salve%20Gepiclub,%20desidero%20assistenza%20VIP%20per%20un%20viaggio.');
-  };
 
   return (
     <View
@@ -46,18 +35,6 @@ export function HeaderBrand({ showConcierge = true }: HeaderBrandProps) {
           <Text style={styles.brandSubtitle}>TRAVEL & EXPERIENCES</Text>
         </View>
       </View>
-
-      {/* Right Action: Discreet luxury Concierge pill */}
-      {showConcierge && (
-        <TouchableOpacity
-          style={styles.conciergePill}
-          onPress={handleConcierge}
-          activeOpacity={0.75}>
-          <View style={styles.onlineDot} />
-          <Ionicons name="headset-outline" size={13} color={BrandColors.primaryBlue} style={{ marginRight: 4 }} />
-          <Text style={styles.conciergeText}>Concierge 24/7</Text>
-        </TouchableOpacity>
-      )}
     </View>
   );
 }
@@ -108,28 +85,5 @@ const styles = StyleSheet.create({
     color: BrandColors.grayMuted,
     letterSpacing: 1.1,
     marginTop: 1,
-  },
-  conciergePill: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 115, 230, 0.06)',
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: 'rgba(0, 115, 230, 0.15)',
-  },
-  onlineDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: BrandColors.emeraldSuccess,
-    marginRight: 5,
-  },
-  conciergeText: {
-    fontSize: 11,
-    fontWeight: '700',
-    color: BrandColors.navyDeep,
-    letterSpacing: 0.2,
   },
 });
